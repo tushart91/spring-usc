@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<catalog>
+   <book id="bk101">
+      <author>Mangano, Sal</author>
+      <title>XSLT Cookbook</title>
+      <genre>Computer</genre>
+      <price>44.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description>An in-depth look at creating applications 
+      with XSLT</description>
+      <image>XSLT.jpg</image>
+   </book>
+   <book id="bk102">
+      <author>Davis, Dee</author>
+      <title>Midnight Rain</title>
+      <genre>Fantasy</genre>
+      <price>5.95</price>
+      <publish_date>2004-11-16</publish_date>
+      <description>A former architect battles corporate zombies, 
+      an evil sorceress, and her own childhood to become queen 
+      of the world.</description>
+      <image>Midnight.jpg</image>
+   
+   <book id="bk103">
+      <author>Larrison, Robert</author>
+      <title>Oberon's Minor</title>
+      <genre>Fantasy</genre>
+      <price>5.95</price>
+      <publish_date>2001-03-10</publish_date>
+      <description>The Order of Pendragon, TOP Inc. is on the English 
+      military radar and the mysterious 
+      agent known only as Oberon helps to create a new life 
+      for the inhabitants of London. </description>
+      <image>Oberon.jpg</image>
+   </book>
+   <book id="bk104">
+      <author>Weeks, Sarah</author>
+      <title>Splish Splash!</title>
+      <genre>Childrens</genre>
+      <price>4.95</price>
+      <publish_date>2000-11-02</publish_date>
+      <description>A deep sea diver finds true love twenty 
+      thousand leagues beneath the sea.</description>
+      <image>Splish.jpg</image>
+   </book>
+   <book id="bk105">
+      <author>Kneidel, Sally</author>
+      <title>Creepy Crawlies and the Scientific Method</title>
+      <genre>Horror</genre>
+      <price>4.95</price>
+      <publish_date>1993-12-06</publish_date>
+      <description>An anthology of horror stories about roaches,
+      centipedes, scorpions  and other insects.</description>
+      <image>Creepy.jpg</image>
+   </book>
+   <book id="bk106">
+      <author>Milton, John</author>
+      <title>Paradise Lost</title>
+      <genre>Science Fiction</genre>
+      <price>6.95</price>
+      <publish_date>2000-11-02</publish_date>
+      <description> one of the greatest epic poems in the 
+       English language. It tells the story of the Fall of Man, 
+       a tale of immense drama and excitement, of 
+       rebellion and treachery.</description>
+      <image>Paradise.jpg</image>
+   </book>
+   <book id="bk107">
+      <author>Evjen, Bill</author>
+      <title>Visual Basic .NET Bible</title>
+      <genre>Computer</genre>
+      <price>36.95</price>
+      <publish_date>2000-12-09</publish_date>
+      <description>Microsoft's Visual Basic .NET initiative is explored in 
+      detail in this deep programmer's reference.</description>
+      <image>Visual.jpg</image>
+   </book>

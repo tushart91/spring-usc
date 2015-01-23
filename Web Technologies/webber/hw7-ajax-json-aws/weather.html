@@ -1,0 +1,228 @@
+<html><head>
+	<meta charset="utf-8">
+  <title>HW8</title>
+   
+  <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+  <link rel="stylesheet" href="custom.css">
+				
+  <script language="javascript">
+    var jsonObject;
+  
+    $(document).ready(function() {
+      $('#search-form').submit(function(event) {
+        event.preventDefault(); // prevent page refresh
+        
+        // Check to make sure location was actually entered
+        if((document.forms["search-form"]["location"].value=="") || (document.forms["search-form"]["location"].value==null)){ // check to make sure a location was entered
+            window.alert("Please enter a location.");
+            return false;
+        }
+        
+        var city = false, zip = false;
+        // Check to see if location is a valid city name
+        var re = /^[A-Za-z]+[ ]*[A-Za-z]*,[ ]?[A-Za-z]{2,}(,[ ]?[A-Za-z]{2,})?$/;
+        var match = re.exec(document.forms["search-form"]["location"].value);
+        if (!match) { // the location isn't a city
+          // Check to see if location is a valid zip code
+          re = /^(?:\d{5})$/;
+          var match = re.exec(document.forms["search-form"]["location"].value);
+          if (!match) { // the location isn't a zip code either
+            window.alert("If searching for a zip code, ensure the zip code is composed of 5 numbers. If searching for a city, ensure the city name is followed by a comma and a state or country.");
+            return false;
+          }
+          else {
+            zip = true;
+          }
+        }
+        else {
+          city = true;
+        }
+        
+        var location = document.forms["search-form"]["location"].value;
+        location = location.replace(/ /g, '+');
+        var url = "http://cs-server.usc.edu:65223/examples/servlet/weathersearch?location=";
+        if (city) {
+          url = url + location + "&type=city&tempUnit=f";
+        }
+        else {
+          url = url + location + "&type=zip&tempUnit=f";
+        }
+        var jsonStr;
+      
+        $.ajax({
+          type: 'GET',
+          url: url, 
+          success: function(response){
+            try {
+              jsonObject = JSON.parse(response);
+            } catch(e){
+               console.error("Parsing error:", e);
+               alert("Invalid JSON string.");
+            }
+            if(jsonObject.weather){
+              YUI().use('node', function(Y){
+                if (jsonObject.weather.location.city) {
+                  Y.one('#city-label').set("innerHTML", "<h1>" + jsonObject.weather.location.city + "</h1>");
+                }
+                if (jsonObject.weather.location.region) {
+                  Y.one('#state-country-label').set("innerHTML", "<h4>" + jsonObject.weather.location.region + ", " + jsonObject.weather.location.country + "</h4>");
+                }
+                else {
+                  Y.one('#state-country-label').set("innerHTML", "<h4>" + jsonObject.weather.location.country + "</h4>");
+                }
+                if (jsonObject.weather.img && jsonObject.weather.condition.text) {
+                  Y.one('#weather-image').set("innerHTML", "<img src=\"" + jsonObject.weather.img + "\"><h4>" + jsonObject.weather.condition.text + "</h4>");
+                }
+                else if (jsonObject.weather.img) {
+                  Y.one('#weather-image').set("innerHTML", "<img src=\"" + jsonObject.weather.img + "\">");
+                }
+                else if (jsonObject.weather.condition.text) {
+                  Y.one('#weather-image').set("innerHTML", "<h6>" + jsonObject.weather.condition.text + "</h6>");
+                }
+                if (jsonObject.weather.condition.temp) {
+                  Y.one('#temperature').set("innerHTML", "<h1>" + jsonObject.weather.condition.temp + "</h1>");
+                }
+                Y.one('#forecast-label').set("innerHTML", "<h3>Forecast</h3>");
+                Y.one('#facebook-radios').set("innerHTML", "<form action=\"\"><input type=\"radio\" name=\"current-weather\" id=\"current-weather\">Post Current Weather<br><input type=\"radio\" name=\"weather-forecast\" id=\"weather-forecast\">Post Weather Forecast</form>");
+                Y.one('#facebook-button').set("innerHTML", "<button class=\"pure-button\" id=\"login-button\" onclick=\"login()\">facebook</button>");
+              });
+              
+              YUI().use('datatable', function(Y) {
+                Y.one('#forecast-table').set("innerHTML", "");
+                var table = new Y.DataTable({
+                  columns: ["Day", "Weather", "High", "Low"],
+                  data: jsonObject.weather.forecast
+                });
+                
+                table.render("#forecast-table");
+              });
+            }
+            else { // No results found
+              YUI().use('node', function(Y){
+                Y.one('#results').set("innerHTML", "<h1>Weather information cannot be found!</h1>");
+              });
+            }
+          }
+        });
+
+        return false;
+      });
+    });
+    
+    function login() {
+      FB.login(function(response) {
+          if (response.authResponse) {
+              // User authorized app
+          } else {
+              // User cancelled login or did not fully authorize
+          }
+      }, {scope: 'publish_stream'});
+      
+      setStatusThroughFBUI();
+    }
+    
+    function setStatusThroughFBUI() {
+      var text, obj;
+      if(document.getElementById('current-weather').checked){
+        var text =  "Temperature is " + jsonObject.weather.condition.temp + "F. \n Look at details: <a href=\"" + jsonObject.weather.link + "\">here.</a>";
+        var obj = {
+	        method: 'feed',       
+	        link: 'http://cs-server.usc.edu:65223/examples/servlets/weather.html',
+	        picture: jsonObject.weather.img,
+	        name: jsonObject.weather.location.city + ", " + jsonObject.weather.location.region + ", " + jsonObject.weather.location.country,
+	        caption: 'The current condition for ' + jsonObject.weather.location.city + ' is ' + jsonObject.weather.condition.text,
+	        description: text
+        };
+      }
+      else {
+        var text =  jsonObject.weather.forecast[0].Day + ": " + jsonObject.weather.forecast[0].Weather + ", " + jsonObject.weather.forecast[0].High + "/" + jsonObject.weather.forecast[0].Low + "F; ";
+        text = text + jsonObject.weather.forecast[1].Day + ": " + jsonObject.weather.forecast[1].Weather + ", " + jsonObject.weather.forecast[1].High + "/" + jsonObject.weather.forecast[1].Low + "F; ";
+        text = text + jsonObject.weather.forecast[2].Day + ": " + jsonObject.weather.forecast[2].Weather + ", " + jsonObject.weather.forecast[2].High + "/" + jsonObject.weather.forecast[2].Low + "F; ";
+        text = text + jsonObject.weather.forecast[3].Day + ": " + jsonObject.weather.forecast[3].Weather + ", " + jsonObject.weather.forecast[3].High + "/" + jsonObject.weather.forecast[3].Low + "F; ";
+        text = text + jsonObject.weather.forecast[4].Day + ": " + jsonObject.weather.forecast[4].Weather + ", " + jsonObject.weather.forecast[4].High + "/" + jsonObject.weather.forecast[4].Low + "F; ";
+        text = text + "\n Look at details: <a href=\"" + jsonObject.weather.link + "\">here.</a>";
+        var obj = {
+	        method: 'feed',       
+	        link: 'http://cs-server.usc.edu:65223/examples/servlets/weather.html',
+	        picture: jsonObject.weather.img,
+	        name: jsonObject.weather.location.city + ", " + jsonObject.weather.location.region + ", " + jsonObject.weather.location.country,
+	        caption: 'Weather forecast for ' + jsonObject.weather.location.city,
+	        description: text
+        };
+      }
+	 
+	    function callback(response) {
+	        alert("Post ID: " + response['post_id']);
+	    }
+	 
+	    FB.ui(obj, callback);
+  	}
+    
+</script>
+        
+  
+</head><body>
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      // init the FB JS SDK
+      FB.init({
+        appId      : '181649908695791',                        // App ID from the app dashboard
+        channelUrl : 'http://cs-server.usc.edu:38699/examples/servlets/channel.html', // Channel file for x-domain comms
+        status     : true,                                 // Check Facebook Login status
+        xfbml      : true                                  // Look for social plugins on the page
+      });
+  
+      // Additional initialization code such as adding Event Listeners goes here
+    };
+  
+    // Load the SDK asynchronously
+    (function(){
+       // If we've already installed the SDK, we're done
+       if (document.getElementById('facebook-jssdk')) {return;}
+  
+       // Get the first script element, which we'll use to find the parent node
+       var firstScriptElement = document.getElementsByTagName('script')[0];
+  
+       // Create a new script element and set its id
+       var facebookJS = document.createElement('script'); 
+       facebookJS.id = 'facebook-jssdk';
+  
+       // Set the new script's source to the source of the Facebook JS SDK
+       facebookJS.src = '//connect.facebook.net/en_US/all.js';
+  
+       // Insert the Facebook JS SDK into the DOM
+       firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
+     }());
+    
+  </script>
+
+  <form class="pure-form" name="search-form" id="search-form">
+    <span class="label">Location:</span><input class="input-large" type="text" name="location" placeholder="City name or zip code...">
+    <input type="submit" class="pure-button" value="Search">
+  </form><br><br><br>
+  <div id="results"></div>
+  <div id="city-label"></div>
+  <div id="state-country-label"></div>
+  <div class="pure-g">
+    <div class="pure-u-1-3">
+      <div id="weather-image"></div>
+      <div id="temperature-buttons"></div>
+      <div id="temperature"></div>
+    </div>
+    <div class="pure-u-1-3">
+      <div id="forecast-label"></div>
+      <div class="example yui3-skin-sam">
+        <div id="forecast-table"></div>
+      </div>
+    </div>
+    <div class="pure-u-1-3">
+      <div id="facebook-radios"></div>
+      <div id="facebook-button"></div>
+    </div>
+  </div>
+
+</body></html>
+

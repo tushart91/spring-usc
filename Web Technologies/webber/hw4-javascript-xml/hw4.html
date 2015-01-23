@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	
+    <script type="text/javascript">
+    var xmlDoc;
+    
+    function getURL() {
+        var inputText = document.getElementById('textbox').value;
+        loadXML(inputText);
+    }
+    
+    function processDoc() {
+        var x = xmlDoc.getElementsByTagName("book");
+        if (x.length < 1) {
+            window.alert("Error in XML file");
+        }
+        else {
+            var newWindow = window.open("new");
+            newWindow.document.write("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>HW4</title></head><body>");
+            
+            newWindow.document.write("<table border=1><tr>");
+            newWindow.document.write("<col width=90px><col width=90px><col width=80px><col width=50px><col width=100px><col width=500px><col width=150px>");
+            newWindow.document.write("<th>author</th>");
+            newWindow.document.write("<th>title</th>");
+            newWindow.document.write("<th>genre</th>");
+            newWindow.document.write("<th>price</th>");
+            newWindow.document.write("<th>publish_date</th>");
+            newWindow.document.write("<th>description</th>");
+            newWindow.document.write("<th>image</th></tr>");
+            
+            for(i = 0; i < x.length; i++){
+                newWindow.document.write("<tr><td>");
+                if (x[i].getElementsByTagName("author").length > 0) {
+                    newWindow.document.write(x[i].getElementsByTagName("author")[0].childNodes[0].nodeValue);
+                }
+                else {
+                    newWindow.document.write("none");
+                }
+                newWindow.document.write("</td><td>");
+                
+                if (x[i].getElementsByTagName("title").length > 0) {
+                   newWindow.document.write(x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue); 
+                }
+                else {
+                    newWindow.document.write("none");
+                }
+                newWindow.document.write("</td><td>");
+                
+                if (x[i].getElementsByTagName("genre").length > 0) {
+                   newWindow.document.write(x[i].getElementsByTagName("genre")[0].childNodes[0].nodeValue);
+                }
+                else {
+                    newWindow.document.write("none");
+                }
+                newWindow.document.write("</td><td>");
+                
+                if (x[i].getElementsByTagName("price").length > 0) {
+                   newWindow.document.write(x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue);
+                }
+                else {
+                    newWindow.document.write("none");
+                }
+                newWindow.document.write("</td><td>");
+                
+                if (x[i].getElementsByTagName("publish_date").length > 0) {
+                   newWindow.document.write(x[i].getElementsByTagName("publish_date")[0].childNodes[0].nodeValue);
+                }
+                else {
+                    newWindow.document.write("none");
+                }
+                newWindow.document.write("</td><td>");
+                
+                if (x[i].getElementsByTagName("description").length > 0) {
+                   newWindow.document.write(x[i].getElementsByTagName("description")[0].childNodes[0].nodeValue);
+                }
+                else {
+                    newWindow.document.write("none");
+                }
+                newWindow.document.write("</td><td>");
+                
+                if (x[i].getElementsByTagName("image").length > 0) {
+                   newWindow.document.write("<img src=\"");
+                   newWindow.document.write(x[i].getElementsByTagName("image")[0].childNodes[0].nodeValue);
+                   newWindow.document.write("\" width=\"200px\">");
+                }
+                else {
+                    newWindow.document.write("none");
+                }
+                newWindow.document.write("</td></tr>");
+            }
+            newWindow.document.write("</table>");
+            newWindow.document.write("</bo" + "dy></html>");
+            newWindow.document.close(); 
+        }
+    }
+    
+    function loadXML(url) {
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET",url,false); //open, send, responseXML are
+        xmlhttp.send(); //properties of XMLHTTPRequest 
+        xmlDoc = xmlhttp.responseXML;
+        if(!xmlDoc){          
+          alert("XML file does not exist.");
+        }
+        else if (xmlDoc.documentElement.nodeName=="parsererror") {
+                alert("Error loading XML file: " + xmlDoc.documentElement.childNodes[0].nodeValue);    
+        }
+        else {
+            processDoc();
+        }
+    }
+    
+    </script>
+  
+  <title>HW4</title>
+
+</head>
+<body>
+    <center>
+    <h4>Enter URL for Book XML File</h4>
+    <input type="text" id="textbox"> <br> <br>
+    <button onclick="getURL()">Submit Query</button>
+    </center>
+    <noscript>
+</body>
+</html>

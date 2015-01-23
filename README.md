@@ -1,2 +1,4 @@
-# study-usc
-the master's stroke
+study-usc
+=========
+
+the master's stoke
