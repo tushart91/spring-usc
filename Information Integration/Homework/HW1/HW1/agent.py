@@ -109,7 +109,7 @@ def scrape_painting(name, _id, url, soup, category):
     if artist:
         artists = artist.find_all('a')
         if len(artists) == 1:
-            object['artist'] = scrape_artist(artist)
+            object['artist'] = scrape_artist(artists[0])
         elif len(artists) > 1:
             object['artist'] = []
             for artist in artists:
@@ -150,14 +150,19 @@ def scrape_painting(name, _id, url, soup, category):
             #painting type
             if re.search('(.*on canvas.*)', field.text):
                 object['painting_type'] = field.text.strip()
-            dimensions_str = re.findall('\([0-9]+\.?[0-9]* x [0-9]+\.?[0-9]* cm\)', field.text)
-            if len(dimensions_str) > 0:
-                object['dimensions'] = (dimensions_str[0].translate(str.maketrans('', '', '(xcm)'))).split()
+
+            dimensions_str = re.search('([0-9]+\.?[0-9]*) x ([0-9]+\.?[0-9]*)(?: x )?([0-9]+\.?[0-9]*)? cm', field.text)
+            if dimensions_str and len(dimensions_str.groups()) >= 2:
+                display = re.search('([A-Z,a-z]+):', field.text)
+                if display:
+                    object['display'] = display.group(1)
                 object['dimensions'] = {
-                    				       'units': 'cm',
-                                           'height': object['dimensions'][0].strip(),
-                    					   'width': object['dimensions'][1].strip()
-                					   }
+                                           'units': 'cm',
+                                           'height': dimensions_str.group(1).strip(),
+                                           'width': dimensions_str.group(2).strip()
+                                       }
+                if dimensions_str.group(3):
+                    object['dimensions']['depth'] = dimensions_str.group(3).strip()
 
             if re.search('[^\(]+\([A-Z]*[0-9,\.]+\)', field.text):
                 object['acquired_from'] = field.text.split('(')[0].strip()
@@ -188,7 +193,7 @@ def scrape_page(ROOT_URL, hrefs, category):
     coll = []
     for (name, href, _id) in hrefs:
         URL = ROOT_URL + href
-#        URL = r"http://collections.lacma.org/node/201913"
+#        URL = r"http://collections.lacma.org/node/184481"
         try:
             response = requests.get(URL)
             soup = BeautifulSoup(response.text).find('div',

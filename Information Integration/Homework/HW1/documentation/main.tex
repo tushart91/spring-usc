@@ -163,7 +163,7 @@ I, Tushar Tiwari, declare that the submitted work is original and adheres to all
 \caption{The search page with the option American Paintings already chosen. \\ This provides us with a custom url that can be exploited to navigate and then extract all paintings. \\ \myurl}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{subfigure}{0.5\textwidth}
 \centering
@@ -181,14 +181,14 @@ I, Tushar Tiwari, declare that the submitted work is original and adheres to all
 \section{Sample Record}
 Let's look at a sample painting and the output that it produces. For purposes of demonstration the link to this sample painting is hard-coded into the program so that the output produced is only for the painting in consideration.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \fbox{\includegraphics[width=0.98\textwidth]{184481}}
 \urldef\myurl\url{http://collections.lacma.org/node/184481}
 \caption{The chosen painting found at \myurl.}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{subfigure}{0.5\textwidth}
 \centering
@@ -209,7 +209,7 @@ Let's look at a sample painting and the output that it produces. For purposes of
   \item Not all paintings will have all data fields assosciated with them since the data is unavailable for those paintings. These missing fields have been ignored as they serve no purpose except for increasing the file size which is not desirable.
 \end{itemize}
 \newpage
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \inputminted[frame=single,
                framesep=3mm,
@@ -218,16 +218,17 @@ Let's look at a sample painting and the output that it produces. For purposes of
                tabsize=4]{js} {required/output.json}
 \caption{Output JSON of sample run}
 \end{figure}
+\newpage
+
 \section{Challenges}
 \begin{itemize}
-  \item Unicode characters are a problem in Python 2 since the default string supports only ascii characters. Due to this certain string operations become very complicated. The problem was oversome by porting the code to Python 3 whose default string supports unicode
+  \item Unicode characters are a problem in Python 2 since the default string supports only ascii characters. Due to this, certain string operations become very complicated. The problem was overcome by porting the code to Python 3 where the default string supports unicode.
   \item Extracting the artist's details required complex regular expressions since all information pertaining to the artist, like name, date of birth, place of birth, was provided in a single string in the html.
 \end{itemize}
-\newpage
 
 \section{Tools Used}
 \subsection{Python with BeautifulSoup}
-Python is one of the most easiest to use yet powerful languages out there which works cross-platform. Installing and distributing dependencies is also very easy. Beautiful Soup is a Python library designed for quick turnaround projects like screen-scraping.
+Python is one of the most easiest yet powerful languages out there which works cross-platform. Installing and distributing dependencies is also quite easy. Beautiful Soup is a Python library designed for quick turnaround projects like screen-scraping.
 It parses anything you give it, and does the tree traversal stuff for you. You can tell it "Find all the links", or "Find all the links of class externalLink", or "Find all the links whose urls match "foo.com", or "Find the table heading that's got bold text, then give me that text.". Some of the features that make it powerful are:
 \begin{itemize}
 \item Provides a few simple methods and Pythonic idioms for navigating, searching, and modifying a parse tree: a toolkit for dissecting a document and extracting what you need. It doesn't take much code to write an application
@@ -236,7 +237,11 @@ It parses anything you give it, and does the tree traversal stuff for you. You c
 \end{itemize}
 
 \section{Fields not Extracted}
-There were no fields that were left untouched. Every field was extracted. But, not all paintings have data for every field. All fields were checked for data. If valid information was present only then it was extracted.
+\begin{itemize}
+\item The size of the painting in inches is not extracted because the same size is also presented in centimeteres which is more accurate.
+\item The category of art, i.e. paintings, sculptures, etc., is skipped because we have hardcoded the category to be paintings in our url. Thus, all results fetched are paintings.
+\item The museum disclaimers are also overlooked because they are not related to the painting.
+\end{itemize}
 
 \end{flushleft}
 \end{document}
