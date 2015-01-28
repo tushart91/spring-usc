@@ -1,19 +1,30 @@
 @base <http://collections.lacma.org/node/> .
 @prefix foaf: <http://schema.org/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix un: <http://collections.lacma.org/node/> .
-<184481> foaf:copyrightHolder [
-    a foaf:Organization; foaf:name "Estate of Charles Houghton Howard"
-] .
+@prefix un: <http://collections.lacma.org/> .
 <184481> a foaf:Painting .
 <184481> foaf:title "Double Circle" .
 <184481> foaf:dateCreated "1950"^^xsd:gYear .
 <184481> foaf:image "http://collections.lacma.org/sites/default/files/33 remote_images/piction/ma-31205657-WEB.jpg" .
+<184481> foaf:height "82.55 cm" .
+<184481> foaf:width "105.41 cm" .
+<184481> foaf:depth "3.81 cm" .
+<184481> un:on_view "Art of the Americas Building, floor 3" .
+<184481> un:painting_type "Oil on canvas" .
+<184481> un:display "Framed" .
+<184481> un:category "American" .
 <184481> foaf:author <165564> .
+<184481> foaf:copyrightHolder [
+    a foaf:Organization; foaf:name "Estate of Charles Houghton Howard"
+] .
+<184481> un:acquisition [
+    un:acquired "Bequest of Fannie and Alan Leslie";
+    un:serial "M.2006.73.2" ;
+] .
 <165564> a foaf:Person .
-<165564> foaf:additionalName "Houghton" .
 <165564> foaf:givenName "Charles" .
 <165564> foaf:familyName "Howard" .
+<165564> foaf:additionalName "Houghton" .
 <165564> foaf:birthDate "1899"^^xsd:gYear .
 <165564> foaf:deathDate "1978"^^xsd:gYear .
 <165564> foaf:birthPlace [
@@ -21,8 +32,4 @@
     foaf:address [
         a foaf:PostalAddress; foaf:addressCountry "United States"
     ];
-] .
-<165564> un:acquisition [
-    un:acquired "Bequest of Fannie and Alan Leslie";
-    un:serial "M.2006.73.2" ;
 ] .
