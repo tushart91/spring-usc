@@ -1,0 +1,39 @@
+[
+    {
+        "_id": 184481,
+        "acquired_from": "Bequest of Fannie and Alan Leslie",
+        "acquired_id": "M.2006.73.2",
+        "artist": {
+            "birthplace": {
+                "country": "United States"
+            },
+            "dates": {
+                "born": "1899",
+                "died": "1978"
+            },
+            "link": "http://collections.lacma.org/node/165564",
+            "name": {
+                "first": "Charles",
+                "last": "Howard",
+                "middle": "Houghton"
+            }
+        },
+        "category": "american",
+        "copyright": "Estate of Charles Houghton Howard",
+        "created_country": "United States",
+        "created_year": "1950",
+        "dimensions": {
+            "depth": "3.81",
+            "height": "82.55",
+            "units": "cm",
+            "width": "105.41"
+        },
+        "display": "Framed",
+        "image_link": "http://collections.lacma.org/sites/default/files/
+                    remote_images/piction/ma-31205657-WEB.jpg",
+        "link": "http://collections.lacma.org/node/184481",
+        "name": "Double Circle",
+        "on_view": "Art of the Americas Building, floor 3",
+        "painting_type": "Oil on canvas"
+    }
+]

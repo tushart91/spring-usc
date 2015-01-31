@@ -7,7 +7,7 @@
 <184481> a sc:Painting .
 <184481> sc:title "Double Circle" .
 <184481> sc:dateCreated "1950"^^xsd:gYear .
-<184481> sc:image "http://collections.lacma.org/sites/default/files/33 remote_images/piction/ma-31205657-WEB.jpg" .
+<184481> sc:image "http://collections.lacma.org/sites/default/files/33 remote_images/piction/ma-31205657-WEB.jpg"^^xsd:anyURI .
 <184481> sc:height "82.55 cm" .
 <184481> sc:width "105.41 cm" .
 <184481> sc:depth "3.81 cm" .
