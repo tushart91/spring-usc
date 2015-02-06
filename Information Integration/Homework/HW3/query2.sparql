@@ -2,7 +2,7 @@ BASE                  <http://dbpedia.org/resource/>
 PREFIX dbpedia-owl:   <http://dbpedia.org/ontology/>
 PREFIX dbpprop:       <http://dbpedia.org/property/>
 
-SELECT * WHERE
+SELECT DISTINCT ?university, ?num_of_students WHERE
 {
     ?university dbpprop:type <Private_university>    .
     { ?university dbpprop:location <Los_Angeles> } UNION { ?university dbpprop:city <Los_Angeles> } UNION { ?university dbpedia-owl:city <Los_Angeles> }    .
