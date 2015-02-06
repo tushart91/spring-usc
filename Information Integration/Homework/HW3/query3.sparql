@@ -1,0 +1,15 @@
+BASE                  <http://dbpedia.org/resource/>
+PREFIX dbpedia-owl:   <http://dbpedia.org/ontology/>
+PREFIX dbpprop:       <http://dbpedia.org/property/>
+
+SELECT ?campus, count(?campus) AS ?count WHERE
+{
+    {
+        SELECT DISTINCT ?uni ?campus
+        {
+            ?uni dbpprop:type <Public_university>    .
+            ?uni dbpprop:city <Los_Angeles>    .
+            { ?uni dbpprop:campus ?campus } UNION {  ?uni dbpedia-owl:campus ?campus  }    .
+        }
+    }
+}

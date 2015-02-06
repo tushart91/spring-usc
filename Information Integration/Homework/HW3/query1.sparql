@@ -1,0 +1,8 @@
+BASE                  <http://dbpedia.org/resource/>
+PREFIX dbpedia-owl:   <http://dbpedia.org/ontology/>
+
+SELECT * WHERE
+{
+    <University_of_Southern_California> dbpedia-owl:numberOfStudents ?usc_num .
+    <University_of_California,_Los_Angeles> dbpedia-owl:numberOfStudents ?ucla_num .
+}

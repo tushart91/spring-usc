@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-scp /cygdrive/c/Users/tushart91/Downloads/Dropbox/Study/Web\ Technologies/HW3/HW3/* ttiwari@aludra.usc.edu:/home/scf-32/ttiwari/public_html/webtech/HW3/
