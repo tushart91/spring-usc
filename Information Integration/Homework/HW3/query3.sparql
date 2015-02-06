@@ -5,11 +5,11 @@ PREFIX dbpprop:       <http://dbpedia.org/property/>
 SELECT ?campus, count(?campus) AS ?count WHERE
 {
     {
-        SELECT DISTINCT ?uni ?campus
+        SELECT DISTINCT ?university ?campus
         {
-            ?uni dbpprop:type <Public_university>    .
-            ?uni dbpprop:city <Los_Angeles>    .
-            { ?uni dbpprop:campus ?campus } UNION {  ?uni dbpedia-owl:campus ?campus  }    .
+            ?university dbpprop:type <Public_university>    .
+            ?university dbpprop:city <Los_Angeles>    .
+            { ?university dbpprop:campus ?campus } UNION {  ?university dbpedia-owl:campus ?campus  }    .
         }
     }
 }

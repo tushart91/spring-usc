@@ -2,11 +2,11 @@ BASE                  <http://dbpedia.org/resource/>
 PREFIX dbpedia-owl:   <http://dbpedia.org/ontology/>
 PREFIX dbpprop:       <http://dbpedia.org/property/>
 
-SELECT ?uni, ?established_years WHERE
+SELECT distinct ?university, ?established_years WHERE
 {
-    { ?uni dbpprop:type <Public_university> } UNION { ?uni dbpprop:type <Private_university> }    .
-    { ?uni dbpprop:location <Los_Angeles,_California> } UNION { ?uni dbpprop:city <Los_Angeles> } UNION { ?uni dbpedia-owl:city <Los_Angeles> }    .
-    ?uni dbpprop:established ?established_raw    .
+    { ?university dbpprop:type <Public_university> } UNION { ?university dbpprop:type <Private_university> }    .
+    { ?university dbpprop:location <Los_Angeles> } UNION { ?university dbpprop:city <Los_Angeles> } UNION { ?university dbpedia-owl:city <Los_Angeles> }    .
+    ?university dbpprop:established ?established_raw    .
     BIND(IF(DATATYPE(?established_raw) = xsd:date, YEAR(?established_raw), ?established_raw) AS ?established)    .
     BIND(YEAR(NOW()) - ?established AS ?established_years)    .
     FILTER(?established_years > 100)    .
