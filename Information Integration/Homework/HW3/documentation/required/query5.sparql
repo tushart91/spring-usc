@@ -1,0 +1,15 @@
+BASE                  <http://dbpedia.org/resource/>
+PREFIX dbpedia-owl:   <http://dbpedia.org/ontology/>
+PREFIX dbpprop:       <http://dbpedia.org/property/>
+
+SELECT ?almamater, CONCAT("US$ ", CONCAT(STR(SUM(?networth)), " billion")) AS ?total_worth WHERE {
+    { ?person dbpedia-owl:almaMater <University_of_Southern_California> } UNION { ?person dbpedia-owl:almaMater <University_of_California,_Los_Angeles> }    .
+    ?person dbpprop:networth ?networth_raw    .
+    ?person dbpedia-owl:almaMater ?almamater    .
+    FILTER(?almamater = <University_of_Southern_California> OR ?almamater = <University_of_California,_Los_Angeles>)    .
+    FILTER(REGEX(?networth_raw, "billion", "i"))    .
+    BIND(REPLACE(?networth_raw, "billion\\s?[USD]*$", "", "i") AS ?networth2)    .
+    BIND(REPLACE(?networth2, "^[US]*\\s?\\$", "", "i") AS ?networth3)    .
+    BIND(IF(REGEX(?networth3, ","), xsd:decimal(REPLACE(?networth3, ",", ".")), xsd:decimal(?networth3)) AS ?networth)    .
+}
+GROUP BY ?almamater
