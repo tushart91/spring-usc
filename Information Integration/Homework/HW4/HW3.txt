@@ -1,0 +1,57 @@
+################
+## Solution 1 ##
+################
+mad_cow ≡ cow ⋂ ∃eats.(brain ⋂ ∃part_of.sheep)
+mad_cow is a cow that eats sheep brains.
+
+################
+## Solution 2 ##
+################
+from vegetarian: should not eat an animal or a part of an animal.
+from animal    : should eat Thing
+
+################
+## Solution 3 ##
+################
+Yes. Being a sub-class of vegetarian animals, a mad-cow eats part of an animal although the vegetarian superclass restricts it from doing so.
+
+################
+## Solution 4 ##
+################
+It is equivalent to the Nothing class.
+
+################
+## Solution 5 ##
+################
+Giraffe became a sub-class of vegetarian because it only eats leaves. Leaves is not an animal or part of an animal. Hence it is inferred to be a vegetarian.
+
+################
+## Solution 6 ##
+################
+Walt, Fred, Joe, Kevin, Pete, Minnie, Mick
+
+################
+## Solution 7 ##
+################
+Mick is a male.
+Mick only reads the 'Daily Mirror'.
+Mick drives a white van with plates Q123 ABC.
+Mick has a pet dog named Rex whom he likes.
+
+################
+## Solution 8 ##
+################
+animal lover
+cat owner
+dog owner
+old lady
+
+################
+## Solution 9 ##
+################
+3
+
+#################
+## Solution 10 ##
+#################
+Yes. Although its definiton requires its pets to be of type Thing. Its superclass pet_owner enforces the restriction on has_pets to be animals. That is range of has_pet is animal.
