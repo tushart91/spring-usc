@@ -7,7 +7,7 @@ mad_cow is a cow that eats sheep brains.
 ################
 ## Solution 2 ##
 ################
-from vegetarian: should not eat an animal or a part of an animal.
+from vegetarian: should not eat an animal or part of an animal.
 from animal    : should eat Thing
 
 ################
@@ -18,12 +18,12 @@ Yes. Being a sub-class of vegetarian animals, a mad-cow eats part of an animal a
 ################
 ## Solution 4 ##
 ################
-It is equivalent to the Nothing class.
+It turned red and became equivalent to the Nothing class and consequently a sub-class of every class because Owl:Nothing is sub-class of all classes.
 
 ################
 ## Solution 5 ##
 ################
-Giraffe became a sub-class of vegetarian because it only eats leaves. Leaves is not an animal or part of an animal. Hence it is inferred to be a vegetarian.
+Giraffe became a sub-class of vegetarian because it only eats leaves. Leaf is a part of tree which is a subclass of plant and therefore leaf is not an animal or part of an animal. Hence it is inferred to be a vegetarian.
 
 ################
 ## Solution 6 ##
@@ -34,8 +34,9 @@ Walt, Fred, Joe, Kevin, Pete, Minnie, Mick
 ## Solution 7 ##
 ################
 Mick is a male.
+Mick eats some Thing.
 Mick only reads the 'Daily Mirror'.
-Mick drives a white van with plates Q123 ABC.
+Mick drives a white van 'Q123 ABC'.
 Mick has a pet dog named Rex whom he likes.
 
 ################
@@ -45,6 +46,7 @@ animal lover
 cat owner
 dog owner
 old lady
+Note: mad_cow and Nothing are also descendents because Nothing ≡ mad_cow and Nothing is sub-class of all classes.
 
 ################
 ## Solution 9 ##
@@ -54,4 +56,4 @@ old lady
 #################
 ## Solution 10 ##
 #################
-Yes. Although its definiton requires its pets to be of type Thing. Its superclass pet_owner enforces the restriction on has_pets to be animals. That is range of has_pet is animal.
+Yes. Although its definiton requires its pets to be of type Thing, its superclass pet_owner enforces the restriction on has_pets to be animals. That is range of has_pet is animal.
