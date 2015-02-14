@@ -56,4 +56,4 @@ Note: mad_cow and Nothing are also descendents because Nothing ≡ mad_cow and N
 #################
 ## Solution 10 ##
 #################
-Yes. Although its definiton requires its pets to be of type Thing, its superclass pet_owner enforces the restriction on has_pets to be animals. That is range of has_pet is animal.
+Yes. Although its definiton requires its pets to be of type Thing, there is restriction on range of has_pet to be an animal. So even if a non-animal is given that Thing will be inferred as an animal.
