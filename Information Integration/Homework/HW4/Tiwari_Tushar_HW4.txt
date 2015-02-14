@@ -8,7 +8,7 @@ mad_cow is a cow that eats sheep brains.
 ## Solution 2 ##
 ################
 from vegetarian: should not eat an animal or part of an animal.
-from animal    : should eat Thing
+from animal    : eats some Thing.
 
 ################
 ## Solution 3 ##
@@ -23,7 +23,7 @@ It turned red and became equivalent to the Nothing class and consequently a sub-
 ################
 ## Solution 5 ##
 ################
-Giraffe became a sub-class of vegetarian because it only eats leaves. Leaf is a part of tree which is a subclass of plant and therefore leaf is not an animal or part of an animal. Hence it is inferred to be a vegetarian.
+Giraffe became a sub-class of vegetarian because it only eats leaves. Leaf is a 'part of' tree which is a subclass of plant and therefore leaf is not an animal or part of an animal. Hence it is inferred to be a vegetarian.
 
 ################
 ## Solution 6 ##
@@ -33,11 +33,11 @@ Walt, Fred, Joe, Kevin, Pete, Minnie, Mick
 ################
 ## Solution 7 ##
 ################
-Mick is a male.
+Mick is a male, an animal, a dog owner and a white van man.
 Mick eats some Thing.
-Mick only reads the 'Daily Mirror'.
+Mick only reads the tabloid 'Daily Mirror'.
 Mick drives a white van 'Q123 ABC'.
-Mick has a pet dog named Rex whom he likes.
+Mick has a pet dog (which is also an animal) named Rex whom he likes.
 
 ################
 ## Solution 8 ##
@@ -51,7 +51,7 @@ Note: mad_cow and Nothing are also descendents because Nothing ≡ mad_cow and N
 ################
 ## Solution 9 ##
 ################
-3
+>= 3
 
 #################
 ## Solution 10 ##
