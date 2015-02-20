@@ -186,7 +186,7 @@ showstringspaces=false,
         \subsection{artist2 - last,first name/link/birth year and death year}
         In the case when the painting has only one author then artist1 - (...) fields are filled in with artist2 - (...) fields empty. But if a painting has multiple authors then there are multiple rows for that many authors and the author2 - (...) fields are filled in and the author1 - (...) fields empty.
         \subsection{bibliography}
-        Bibliography is the list of sections for the painting.
+        Bibliography is the list of references used to describe the background of the painting.
     \end{flushleft}
 \end{homeworkProblem}
 \pagebreak
@@ -197,7 +197,7 @@ showstringspaces=false,
         \subsection{display}
         The display field had values like framed, Framed, Frame and unspecified, (blank). So these values were combined. To combine these values first create a text facet on the display column. Then I manually edited in the facets. Changed Frame, framed to Framed and changed unspecified to (blank)
         \subsection{acquired\_from}
-        The acquired\_from field was missing data due to a faulty pull of data. While scraping the data, to separate acquired\_id from acquired\_from a split on \lq(\rq was done. However that did not work out well as there was a \lq(\rq in the text of acquired\_from which was now copied into acquired\_id. So we basically had to strip acquired\_id of this text which belonged to acquired\_from and so we append the value of acquired\_id to acquired\_from.
+        The acquired\_from field was missing data due to a faulty pull of data. While scraping the data, to separate acquired\_id from acquired\_from a split on \lq(\rq was done. However that did not work out well as there was a \lq(\rq in the text of acquired\_from which was now copied into acquired\_id. So we basically had to strip acquired\_id of this text which belonged to acquired\_from and so we append the value of acquired\_id to acquired\_from. To filter out such records do a filter on acquired\_id with 'by exchange'. Then do a transform on acquired\_from.
         \begin{figure}[!ht]
             \centering
             \fbox{\includegraphics[width=0.95\textwidth]{clean_acquired_from}}
