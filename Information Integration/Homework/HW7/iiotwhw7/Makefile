@@ -1,3 +1,5 @@
+compile:
+	mvn clean package
 run:
 	java -jar target/Tiwari_Tushar_HW7.jar
 clean:
