@@ -3,16 +3,16 @@
 **Make sure you are in root folder**
 
 ## For compile and package
-    ```
-    make
-    ```
+```
+make
+```
 
 ## For running the file
-    ```
-    make run
-    ```
+```
+make run
+```
 
 ## For deleting output files
-    ```
-    make clean
-    ```
+```
+make clean
+```
