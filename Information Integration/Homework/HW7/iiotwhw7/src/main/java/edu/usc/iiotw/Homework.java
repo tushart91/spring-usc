@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import info.aduna.iteration.Iterations;
 
@@ -52,13 +53,8 @@ public class Homework {
 		Repository rep = new SailRepository(new MemoryStore());
 		Repository dbpedia = new SPARQLRepository("http://dbpedia.org/sparql");
 		RepositoryConnection conn = null;
-		String queryString = "BASE                  <http://dbpedia.org/resource/>"
-				+ "PREFIX dbpedia-owl:   <http://dbpedia.org/ontology/>"
-				+ "PREFIX dbpprop:       <http://dbpedia.org/property/>"
-				+ "SELECT ?university, ?name WHERE"
-				+ "{    ?university dbpprop:type <Private_university>    ."
-				+ "     ?university dbpedia-owl:state <California>    ."
-				+ "     ?university rdfs:label ?name    ." + "}";
+		
+		String queryString = getQuery("q1");
 
 		TupleQuery tupleQuery = null;
 		TupleQueryResult result = null;
@@ -142,11 +138,9 @@ public class Homework {
 		RepositoryConnection fc_conn = null;
 		Repository rep = map.get("rep");
 		Repository fc_rep = map.get("fc_rep");
-		String queryString = "PREFIX dbpedia: <http://dbpedia.org/resource/>"
-				+ "PREFIX schema:  <http://schema.org/> "
-				+ "PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "SELECT ?person WHERE"
-				+ "{    ?person rdf:type schema:Person }";
+		
+		String queryString = getQuery("q10");
+		
 		TupleQuery tupleQuery = null;
 		TupleQuery fc_tupleQuery = null;
 		BufferedWriter out = null;
@@ -299,11 +293,8 @@ public class Homework {
 	 */
 	public static void question4(Repository rep, String q) {
 
-		String queryString = "PREFIX dbpedia: <http://dbpedia.org/resource/>"
-				+ "PREFIX schema:  <http://schema.org/> "
-				+ "PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "SELECT ?university WHERE"
-				+ "{    ?university rdf:type schema:Organization  }";
+		String queryString = getQuery("q4");
+		
 		TupleQuery tupleQuery = null;
 		RepositoryConnection conn = null;
 		BufferedWriter out = null;
@@ -346,15 +337,7 @@ public class Homework {
 		RepositoryConnection new_conn = null;
 		Repository new_rep = new SailRepository(new MemoryStore());
 
-		String queryString = "PREFIX schema:  <http://schema.org/> "
-				+ "PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX dbpedia: <http://dbpedia.org/resource/> "
-				+ "CONSTRUCT {"
-				+ "     ?university rdf:type schema:CollegeOrUniversity ."
-				+ "     ?university schema:name ?name ." + "} WHERE"
-				+ "{    ?university rdf:type dbpedia:Private_university ."
-				+ "     ?university rdfs:label ?name ." + "}";
+		String queryString = getQuery("q3");		
 
 		GraphQuery graphQuery = null;
 		GraphQueryResult result = null;
@@ -392,6 +375,22 @@ public class Homework {
 			closeRepositoryConnection(new_conn);
 		}
 		return new_rep;
+	}
+	
+	/*
+	 * Util for reading queries
+	 */
+	private static String getQuery(String q) {
+		Homework obj = new Homework();
+		InputStream in = obj.getFileWithUtil("query.turtle");
+		Properties prop = new Properties();
+		try {
+			prop.load(in);
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return prop.getProperty(q);
 	}
 	
 	/*

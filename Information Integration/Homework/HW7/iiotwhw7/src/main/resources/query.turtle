@@ -1,0 +1,35 @@
+# Queries
+
+q1 = BASE <http://dbpedia.org/resource/> \
+     PREFIX dbpedia-owl: <http://dbpedia.org/ontology/> \
+     PREFIX dbpprop: <http://dbpedia.org/property/> \
+     SELECT ?university, ?name \
+     WHERE {\
+         ?university dbpprop:type <Private_university>    .\
+         ?university dbpedia-owl:state <California>    .\
+         ?university rdfs:label ?name    .\
+     }
+
+q3 = PREFIX schema:  <http://schema.org/> \
+     PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
+     PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> \
+     PREFIX dbpedia: <http://dbpedia.org/resource/> \
+     CONSTRUCT { \
+         ?university rdf:type schema:CollegeOrUniversity . \
+         ?university schema:name ?name . \
+     } WHERE { \
+         ?university rdf:type dbpedia:Private_university . \
+         ?university rdfs:label ?name . \
+     } \
+
+q4 = PREFIX dbpedia: <http://dbpedia.org/resource/> \
+     PREFIX schema:  <http://schema.org/> \
+     PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
+     SELECT ?university WHERE \
+     {    ?university rdf:type schema:Organization    } \
+
+q10 = PREFIX dbpedia: <http://dbpedia.org/resource/> \
+      PREFIX schema:  <http://schema.org/> \
+      PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
+      SELECT ?person WHERE \
+      {    ?person rdf:type schema:Person    }
