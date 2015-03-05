@@ -1,0 +1,243 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+% Custom sectioning
+%\usepackage{sectsty}
+%\allsectionsfont{\centering \normalfont\scshape}
+
+\captionsetup{justification=centering,
+singlelinecheck=false
+}
+\graphicspath{ {required/} }
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass}
+\rhead{\hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 6}
+\newcommand{\hmwkDueDate}{February 27, 2015}
+\newcommand{\hmwkClass}{Information Integration on the Web}
+\newcommand{\hmwkClassInstructor}{Prof. Ambite \& Knoblock}
+\newcommand{\hmwkAuthorName}{Tushar Tiwari}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\Large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+% Language Definitions for SPARQL
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{PREFIX},
+morecomment=[l][\color{grey}]{BASE},
+morecomment=[l][\color{olivegreen}]{SELECT},
+morestring=[b][\color{blue}]",
+showstringspaces=false,
+}
+\lstset{%
+  numbers=none,
+  tabsize=4,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  framerule=10pt,
+  columns=fullflexible,
+  language=ttl
+}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+\begin{homeworkProblem}
+    {Write Local-As-View (LAV) rules that describe each source}.\hfill [30 points]
+    \begin{flushleft}
+        \solution\\
+        \begin{itemize}
+        \item $S1(title,genre) \rightarrow Movie(title,director,date, genre) \bigwedge Director(director, "America", birth\_date,$\\$ death\_date) \bigwedge date < 2000$
+        \item $S2(title, date) \rightarrow Movie(title, director, date, genre) \bigwedge Director("David Fincher", nationality,$\\$ birth\_date, death\_date) \bigwedge date > 2001 $
+        \item $S3(title, director) \rightarrow Movie(title, director, date, "Sci-Fi")$
+        \item $S4(title, URL) \rightarrow Movie(title, director, date, genre) \bigwedge Poster(title, URL)$
+        \end{itemize}
+    \end{flushleft}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+    {Given the query that searches for all the Drama movies by American directors released before 2000 that have poster URLs online. The returned results should be the titles of the movies and poster URLs. Write the query using the mediated schema and reformulate the query in LAV using the Bucket algorithm. Show the derivations for each step}.\hfill [30 points]
+    \begin{flushleft}
+        \solution\\
+        \subsection{query}
+        $q(title, URL) :-\ Movie(title,director,date, "Drama") \bigwedge Director(director, "America", birth\_date,$\\$ death\_date) \bigwedge Poster(title, URL) \bigwedge date < 2000$
+        \subsection{filling the buckets}
+        \begin{tabular}{ l | c | r }
+            \hline
+                $Movie(title,director,date, genre)$ & $Director(director, nationality, birth\_date, death\_date)$ & $Poster(title, URL)$ \\ \hline
+                $S1(title, genre)$ & $S1(title, genre')$ & $S4(title, URL)$\\
+                $S4(title, URL')$ & &\\
+            \hline  
+        \end{tabular}
+        \subsection{checking containment}
+        $S1(title, genre), S1(title, genre'), S4(title, URL), genre = "Drama" \rightarrow S1(title, "Drama"), S4(title, URL) \rightarrow Movie(title,director,date,"Drama") \bigwedge Director(director, "America", birth\_date, death\_date) \bigwedge date\ < 2000 \bigwedge Movie(title, director', date', genre') \bigwedge Poster(title, URL) \rightarrow Movie(title,director,date,"Drama") \bigwedge Director(director, "America", birth\_date, death\_date) \bigwedge date < 2000 \bigwedge Poster(title, URL) \rightarrow q'(title, URL) \linebreak \linebreak S1(title, "Drama"), S4(title, URL) \rightarrow q'(title, URL) \equiv q(title, URL)$
+    \end{flushleft}
+\end{homeworkProblem}
+\pagebreak
+\begin{homeworkProblem}
+    {For the same query as in question 2 give the inverse rules program that answers the query, and simplify the program}.\hfill [40 points]
+    \begin{flushleft}
+        \solution\\
+        \subsection{Query}
+        $q(title, URL) :-\ Movie(title,director,date, "Drama") \bigwedge Director(director, "America", birth\_date,$\\$ death\_date) \bigwedge Poster(title, URL) \bigwedge date < 2000$
+        \subsection{Inverse Rules}
+        \begin{enumerate}
+        \item $Movie(title, f_{1}(title, genre), f_{2}(title,genre),genre) \leftarrow S1(title, genre)$
+        \item $Director(f_{1}(title, genre), "America", f_{3}(title,genre), f_{4}(title,genre)) \leftarrow S1(title,genre)$
+        \item $Movie(title, f_{5}(title, date), date,f_{6}(title, date)) \leftarrow S2(title, date)$
+        \item $Director("David Fincher", nationality, f_{7}(title,date), f_{8}(title, date)) \leftarrow S2(title, date)$
+        \item $Movie(title, director, f_{9} (title,director), "Sci-Fi") \leftarrow S3(title, director)$
+        \item $Movie(title, f_{10}(title, URL), f_{11}(title, URL),f_{12}(title, URL)) \leftarrow S4(title, URL)$
+        \item $Poster(title,URL) \leftarrow S4(title, URL)$ 
+        \end{enumerate}
+        \subsection{Simplify}
+        \begin{itemize}
+        \item[Atom 1:]
+            $Movie(title,director,date, "Drama") \ unified\ with\ Rule\ 1.\linebreak
+            \sigma = \{title \rightarrow t_{1}, genre \rightarrow "Drama", f_{1}(t_{1}, "Drama") \rightarrow dir_{1}, f_{2}(t_{1},"Drama") \rightarrow date_{1}\}\linebreak
+            \sigma(Movie(title,director,date,"Drama")) \equiv \sigma(Movie(title,f_{1}(title,genre),f_{2}(title,genre),genre)) \equiv Movie(t_{1},dir_{1},date_{1},"Drama")\linebreak
+            S1(t_{1}, "Drama") \leftarrow Movie(t_{1}, dir_{1}, date_{1}, "Drama")$
+        \item[Atom 2:]
+            $Director(director, "America", birth\_date, death\_date)\ unified\ with\ Rule\ 2.\linebreak
+            \sigma = \{director \rightarrow dir_{1}, f_{3}(t_{1},"Drama") \rightarrow bd_{1}, f_{4}(t_{1},"Drama") \rightarrow dd_{1} \}\linebreak
+            \sigma(Director(director, "America", birth\_date, death\_date)) \equiv \sigma(Director(f_{1}(title, genre), "America", f_{3}(title,genre), f_{4}(title,genre))) \equiv Director(dir_{1}, "America", bd_{1}, dd_{1}) \linebreak
+            S1(t_{1}, "Drama") \leftarrow Director(dir_{1}, "America", bd_{1}, dd_{1})$
+        \item[Atom 3:]
+            $Poster(title, URL)\ unified\ with\ Rule\ 7.\linebreak
+            \sigma = \{title=t_{1}, URL=u_{1}\} \linebreak
+            \sigma(Poster(title,URL)) \equiv Poster(t_{1}, u_{1}) \linebreak
+            S4(t_{1}, u_{1}) \leftarrow Poster(t_{1}, u_{1})$ \end{itemize}
+        $q(t_{1}, u_{1}) \leftarrow S1(t_{1}, "Drama") \bigwedge S4(t_{1}, u_{1})$
+    \end{flushleft}
+\end{homeworkProblem}
+\end{document}
