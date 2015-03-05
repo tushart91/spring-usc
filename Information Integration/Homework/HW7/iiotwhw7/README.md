@@ -8,8 +8,8 @@ make
 ```
 
 ## For running the file
-**```
-make run
+```
+**make run**
 ```**
 
 ## For deleting output files
