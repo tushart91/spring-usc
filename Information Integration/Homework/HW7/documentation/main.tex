@@ -1,0 +1,289 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+% Custom sectioning
+%\usepackage{sectsty}
+%\allsectionsfont{\centering \normalfont\scshape}
+
+\captionsetup{justification=centering,
+singlelinecheck=false
+}
+\graphicspath{ {required/} }
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass}
+\rhead{\hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 7}
+\newcommand{\hmwkDueDate}{March 6, 2015}
+\newcommand{\hmwkClass}{Information Integration on the Web}
+\newcommand{\hmwkClassInstructor}{Prof. Ambite \& Knoblock}
+\newcommand{\hmwkAuthorName}{Tushar Tiwari}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\section{\textbf{\Large Solution}}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+% Language Definitions for SPARQL
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{PREFIX},
+morecomment=[l][\color{grey}]{BASE},
+morecomment=[l][\color{olivegreen}]{SELECT},
+morestring=[b][\color{blue}]",
+showstringspaces=false,
+}
+\lstset{%
+  numbers=none,
+  tabsize=4,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  framerule=10pt,
+  columns=fullflexible,
+  language=ttl
+}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+% Language Definitions for Turtle
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{@},
+morecomment=[l][\color{grey}]{PREFIX},
+morecomment=[l][\color{grey}]{BASE},
+morecomment=[l][\color{olivegreen}]{\#},
+morestring=[b][\color{blue}]\",
+showstringspaces=false,
+}
+\lstset{%
+  numbers=none,
+  tabsize=4,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  framerule=10pt,
+  columns=fullflexible,
+  language=ttl
+}
+\section{Turtle triples}
+
+\begin{homeworkProblem}
+    {Queries for 1, 3, 4 and 10}
+    \solution
+    \subsubsection{Question 1}
+    \begin{lstlisting}
+        BASE <http://dbpedia.org/resource/>
+        PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+        PREFIX dbpprop: <http://dbpedia.org/property/>
+        SELECT ?university, ?name
+        WHERE {
+            ?university dbpprop:type <Private_university>    .
+            ?university dbpedia-owl:state <California>    .
+            ?university rdfs:label ?name    .
+        }
+    \end{lstlisting}
+    \subsubsection{Question 3}
+    \begin{lstlisting}
+        PREFIX schema:  <http://schema.org/>
+	    PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	    PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+	    PREFIX dbpedia: <http://dbpedia.org/resource/>
+	    CONSTRUCT {
+	        ?university rdf:type schema:CollegeOrUniversity .
+	        ?university schema:name ?name .
+	    } WHERE {
+	 	    ?university rdf:type dbpedia:Private_university .
+	        ?university rdfs:label ?name .
+	    }
+    \end{lstlisting}
+    \subsubsection{Question 4}
+    \begin{lstlisting}
+        PREFIX dbpedia: <http://dbpedia.org/resource/>
+        PREFIX schema:  <http://schema.org/>
+        PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        SELECT ?university WHERE
+        {    ?university rdf:type schema:Organization    }
+    \end{lstlisting}
+    \subsubsection{Question 10}
+    \begin{lstlisting}
+        PREFIX dbpedia: <http://dbpedia.org/resource/>
+        PREFIX schema:  <http://schema.org/>
+        PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        SELECT ?person WHERE
+        {    ?person rdf:type schema:Person    }
+    \end{lstlisting}
+\end{homeworkProblem}
+\pagebreak
+\begin{homeworkProblem}
+    {Description of tasks}
+    \solution
+    \subsubsection{Question 1}
+    To fetch data from the dbpedia sparql endpoint (http://dbpedia.org/sparql) into our memory store a SPARQL Repository is used which is plugged with query1. The Memory store used for this is a regular Memory Store without Forward Chaining.
+    \subsubsection{Question 2}
+    The model that we will be using here will create data like this:
+    \begin{lstlisting}
+        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+        @prefix schema: <http://schema.org/> .
+        @prefix dbpedia: <http://dbpedia.org/resource/> .
+        dbpedia:University_of_Southern_California a schema:CollegeOrUniversity ;
+	        schema:name "University of Southern California"@en,
+	                     "University of Southern California"@de, ...
+    \end{lstlisting}
+    \subsubsection{Question 3}
+    Used query 3 with the construct query and evaluated it against the local triple store that has data from query 1. Stored the returned graph with the new schema in a new Memory Store (without forward chaining). Deleted the previous memory store with the old schema.
+    \subsection{Question 4}
+    Used query 4 and evaluated against the local triple store. Writing results to file. The output was an empty file because the results were empty. This is because there is no record that has rdf:type schema:Organization. Also, schema:Organization does not exist in the repository yet.
+    \subsection{Question 5}
+    Downloaded the NTriples file from schema.org for the schema and loaded it into the local striple store which already consists of information about universities.
+    \subsection{Question 6}
+    Evaluated query 4 again. Again the output file was empty. This was because, although there exists a record which describes the subclass relationship between Organization and CollegeOrUniversity, there is no URI that has rdf:type Organization because the relationship is yet to be inferred for records that have rdf:type CollegeOrUniversity.
+    \subsection{Question 7}
+    Created a new Memory Store with forward chaining enabled. Copied all records from previous memory store to the fc enabled memory store. Now we maintain two repositories: memory store and fc memory store.
+    \subsection{Question 8}
+    Evaluated query 4 against the fc memory store. The output file contains all the university URIs. This is because the forward chaining inferencer adds new records to the memory store by inferring the subclass relationships of CollegeOrUniversity and unifying the dbpedia:university entries with this subclass rule. Additional rdf:types are added for each CollegeOrUniversity rdf:type record namely EducationalOrganization, Organization and Thing.
+    \subsection{Question 9}
+    First synced the memory store and fc memory store such that they both contain the same records. Added the below record to both the repositories:
+    \begin{lstlisting}
+        @prefix schema: <http://schema.org/> .
+        @prefix dbpedia: <http://dbpedia.org/resource/> .
+        dbpedia:University_of_Southern_California schema:alumni dbpedia:C._L._Max_Nikias .
+    \end{lstlisting}
+    \subsection{Question 10}
+    Evaluated query 10 against both the memory stores. The memory store without fc gave an empty file and the fc memory store gave the URI of dbpedia:C.\_L.\_Max\_Nikias. The reason for this is without the forward chaining inferencer it cannot infer that the range of schema:alumni is rdf:type Person. Both the rule and the dbpedia:C.\_L.\_Max\_Nikias entry exist as separate records with no relationship. In the fc memory store the two records are unified and hence the new record added to the memory store is:
+    \begin{lstlisting}
+        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+        @prefix schema: <http://schema.org/> .
+        @prefix dbpedia: <http://dbpedia.org/resource/> .
+        dbpedia:C._L._Max_Nikias rdf:type schema:Person .
+    \end{lstlisting}
+\end{homeworkProblem}
+\end{document}
