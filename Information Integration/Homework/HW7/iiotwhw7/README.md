@@ -8,9 +8,9 @@ make
 ```
 
 ## For running the file
-```
+**```
 make run
-```
+```**
 
 ## For deleting output files
 ```
