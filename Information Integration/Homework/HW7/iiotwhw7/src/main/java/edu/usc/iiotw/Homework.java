@@ -204,7 +204,6 @@ public class Homework {
 	/*
 	 * Question 9
 	 */
-
 	public static Map<String, Repository> question9(Map<String, Repository> map) {
 		RepositoryConnection conn = null;
 		RepositoryConnection fc_conn = null;
@@ -242,7 +241,6 @@ public class Homework {
 	/*
 	 * Question 7 & 8
 	 */
-
 	public static Map<String, Repository> question7(Repository rep) {
 		RepositoryConnection conn = null;
 		RepositoryConnection fc_conn = null;
@@ -273,7 +271,6 @@ public class Homework {
 	/*
 	 * Question 5 and 6
 	 */
-
 	public static Repository question5(Repository rep) {
 		RepositoryConnection conn = null;
 		InputStream in = null;
@@ -300,7 +297,6 @@ public class Homework {
 	/*
 	 * Question 4
 	 */
-
 	public static void question4(Repository rep, String q) {
 
 		String queryString = "PREFIX dbpedia: <http://dbpedia.org/resource/>"
@@ -345,7 +341,6 @@ public class Homework {
 	/*
 	 * Question 3:
 	 */
-
 	public static Repository question3(Repository rep) {
 		RepositoryConnection conn = null;
 		RepositoryConnection new_conn = null;
@@ -398,7 +393,10 @@ public class Homework {
 		}
 		return new_rep;
 	}
-
+	
+	/*
+	 * Util for reading schema file
+	 */
 	private InputStream getFileWithUtil(String fileName) {
 
 		InputStream result = null;
@@ -408,7 +406,10 @@ public class Homework {
 
 		return result;
 	}
-
+	
+	/*
+	 * Util for printing a repo given connection
+	 */
 	static void printRep(RepositoryConnection conn, OutputStream out) {
 		RepositoryResult<Statement> statements = null;
 		Model model = null;
@@ -427,6 +428,9 @@ public class Homework {
 		}
 	}
 
+	/*
+	 * Util for printing a repo given repo
+	 */
 	static void printRep(Repository rep, OutputStream out) {
 		RepositoryResult<Statement> statements = null;
 		Model model = null;
