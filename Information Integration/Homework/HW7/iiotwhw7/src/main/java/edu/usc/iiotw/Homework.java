@@ -1,19 +1,16 @@
 package edu.usc.iiotw;
 
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 import info.aduna.iteration.Iterations;
 
-import org.apache.commons.io.IOUtils;
 import org.openrdf.model.Model;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
