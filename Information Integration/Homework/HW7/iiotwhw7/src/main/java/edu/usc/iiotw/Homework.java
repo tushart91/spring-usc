@@ -29,11 +29,21 @@ import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQuery;
 import org.openrdf.query.TupleQueryResult;
+import org.openrdf.query.algebra.Projection;
+import org.openrdf.query.algebra.ProjectionElem;
+import org.openrdf.query.algebra.ProjectionElemList;
+import org.openrdf.query.algebra.StatementPattern;
+import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.openrdf.query.algebra.TupleExpr;
+import org.openrdf.query.algebra.Var;
+import org.openrdf.query.parser.ParsedTupleQuery;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.RepositoryResult;
 import org.openrdf.repository.sail.SailRepository;
+import org.openrdf.repository.sail.SailRepositoryConnection;
+import org.openrdf.repository.sail.SailTupleQuery;
 import org.openrdf.repository.sparql.SPARQLRepository;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFHandlerException;
@@ -50,7 +60,7 @@ public class Homework {
 
 	public static void main(String args[]) {
 
-		Repository rep = new SailRepository(new MemoryStore());
+		SailRepository rep = new SailRepository(new MemoryStore());
 		Repository dbpedia = new SPARQLRepository("http://dbpedia.org/sparql");
 		RepositoryConnection conn = null;
 		
@@ -114,6 +124,7 @@ public class Homework {
 			map = question9(map);
 			System.out.println("\n\nQuestion 10:\n");
 			question10(map);
+			System.out.println("\n\nTermination may take about a minute\n");
 		} catch (RepositoryException e1) {
 			e1.printStackTrace();
 		} catch (MalformedQueryException e1) {
@@ -238,7 +249,7 @@ public class Homework {
 	public static Map<String, Repository> question7(Repository rep) {
 		RepositoryConnection conn = null;
 		RepositoryConnection fc_conn = null;
-		Repository fc_rep = new SailRepository(
+		SailRepository fc_rep = new SailRepository(
 				new ForwardChainingRDFSInferencer(new MemoryStore()));
 		try {
 			conn = rep.getConnection();
@@ -265,7 +276,7 @@ public class Homework {
 	/*
 	 * Question 5 and 6
 	 */
-	public static Repository question5(Repository rep) {
+	public static SailRepository question5(SailRepository rep) {
 		RepositoryConnection conn = null;
 		InputStream in = null;
 		try {
@@ -291,20 +302,31 @@ public class Homework {
 	/*
 	 * Question 4
 	 */
-	public static void question4(Repository rep, String q) {
+	public static void question4(SailRepository rep, String q) {
 
 		String queryString = getQuery("q4");
 		
 		TupleQuery tupleQuery = null;
-		RepositoryConnection conn = null;
+		SailRepositoryConnection conn = null;
 		BufferedWriter out = null;
 		TupleQueryResult result = null;
+		
 		try {
 			conn = rep.getConnection();
 			tupleQuery = conn.prepareTupleQuery(QueryLanguage.SPARQL,
 					queryString);
-
+			
 			out = new BufferedWriter(new FileWriter("q" + q + ".txt", false));
+			if (q.equalsIgnoreCase("4")) {
+				Var x = new Var("university");
+				Var y = new Var(RDFS.NAMESPACE + "type");
+				Var z = new Var(schema + "Organization" );
+				TupleExpr genQuery = new Projection(new StatementPattern(x, y, z), 
+						new ProjectionElemList(new ProjectionElem("university")));
+				System.out.println(new ParsedTupleQuery(genQuery));
+				out.write((new ParsedTupleQuery(genQuery)).toString());
+				out.write("\n");
+			}
 			result = tupleQuery.evaluate();
 			while (result.hasNext()) { // iterate over the result
 				BindingSet bindingSet = result.next();
@@ -332,10 +354,10 @@ public class Homework {
 	/*
 	 * Question 3:
 	 */
-	public static Repository question3(Repository rep) {
+	public static SailRepository question3(SailRepository rep) {
 		RepositoryConnection conn = null;
 		RepositoryConnection new_conn = null;
-		Repository new_rep = new SailRepository(new MemoryStore());
+		SailRepository new_rep = new SailRepository(new MemoryStore());
 
 		String queryString = getQuery("q3");		
 
