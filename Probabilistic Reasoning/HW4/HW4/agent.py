@@ -29,6 +29,10 @@ def pointwise_multiply(factor_3d, factor_1d):
     return [psi_3d0, psi_3d1]
 
 def agent():
+
+    ########################
+    ## Initialize Cliques ##
+    ########################
     factor_T = matrix([[0.2], [0.8]])
     factor_JTA0 = matrix([ 
                       [0.98, 0.02],
@@ -68,9 +72,65 @@ def agent():
     psi_EBA = pointwise_multiply(factor_EBA, factor_B)
     factor_BEA = [psi_EBA[0].T, psi_EBA[1].T]
     psi_BEA = pointwise_multiply(factor_BEA, factor_E)
-    print psi_BEA[0]
-    print psi_BEA[1]
+
+    ########################
+    ## Compute the deltas ##
+    ########################
+   
+    def marginalize(psi, config):
+        ret_psi = []
+        if config == 1:
+            ret_psi.append(np.sum(np.sum(psi[0], axis = 0)))
+            ret_psi.append(np.sum(np.sum(psi[1], axis = 0)))
+            return ret_psi
+
+    delta_A_JTA_BEA = marginalize(psi_JTA, 1)
+    delta_A_MNA_BEA = marginalize(psi_MNA, 1)
+    delta_A_BEA_JTA = marginalize(psi_BEA, 1)
+    delta_A_BEA_MNA = marginalize(psi_BEA, 1)
+    
+    ########################
+    ## Compute the beiefs ##
+    ########################
+
+    belief_BEA = [np.multiply(np.multiply(psi_BEA[0], delta_A_JTA_BEA[0]),
+                        delta_A_MNA_BEA[0]),
+                    np.multiply(np.multiply(psi_BEA[1], delta_A_JTA_BEA[1]),
+                        delta_A_MNA_BEA[1])]
+    belief_JTA = [np.multiply(psi_JTA[0], delta_A_BEA_JTA[0]),
+                    np.multiply(psi_JTA[1], delta_A_BEA_JTA[1])]
+    belief_MNA = [np.multiply(psi_MNA[0], delta_A_BEA_MNA[0]),
+                    np.multiply(psi_MNA[1], delta_A_BEA_MNA[1])]
+
+    ###############################
+    ## Compute the distributions ##
+    ###############################
+    
+    def marginalize_last(belief):
+        return belief[0] + belief[1]
+
+    def marginalize_middle(belief):
+        return np.sum(belief, axis = 0)
+
+    def marginalize_first(belief):
+        return np.sum(belief, axis = 1)
+
+    def marginalize_first_second(belief):
+        return np.matrix([np.sum(belief[0]), np.sum(belief[1])])
+
+    probability_JT = marginalize_last(belief_JTA)
+    probability_J  = marginalize_middle(probability_JT)
+    probability_T  = marginalize_first(probability_JT)
+    probability_MN = marginalize_last(belief_MNA)
+    probability_M  = marginalize_middle(probability_MN)
+    probability_N  = marginalize_first(probability_MN)
+
+    probability_A = marginalize_first_second(belief_BEA)
+    probability_BE = marginalize_last(belief_BEA)
+    probability_B  = marginalize_middle(probability_BE)
+    probability_E  = marginalize_first(probability_BE)
+    print probability_B
 
 if __name__ == "__main__":
-    np.set_printoptions(suppress=True)
+    np.set_printoptions(suppress=True, precision=8)
     agent()

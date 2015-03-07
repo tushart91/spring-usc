@@ -1,0 +1,8 @@
+Projection
+   ProjectionElemList
+      ProjectionElem "university"
+   StatementPattern
+      Var (name=university)
+      Var (name=http://www.w3.org/2000/01/rdf-schema#type)
+      Var (name=http://schema.org/Organization)
+

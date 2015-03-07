@@ -1,0 +1,363 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+dbpedia:Point_Loma_Nazarene_University a schema:CollegeOrUniversity ;
+	schema:name "Point Loma Nazarene University"@en , "Universidade Nazarena de Point Loma"@pt .
+
+dbpedia:University_of_Southern_California a schema:CollegeOrUniversity ;
+	schema:name "University of Southern California"@en , "جامعة جنوب كاليفورنيا"@ar , "University of Southern California"@de , "Universidad del Sur de California"@es , "Université de Californie du Sud"@fr , "University of Southern California"@it , "南カリフォルニア大学"@ja , "University of Southern California"@nl , "University of Southern California"@pl , "Universidade do Sul da Califórnia"@pt , "Университет Южной Калифорнии"@ru , "南加州大学"@zh .
+
+dbpedia:Lincoln_Law_School_of_Sacramento a schema:CollegeOrUniversity ;
+	schema:name "Lincoln Law School of Sacramento"@en .
+
+dbpedia:Lincoln_Law_School_of_San_Jose a schema:CollegeOrUniversity ;
+	schema:name "Lincoln Law School of San Jose"@en .
+
+<http://dbpedia.org/resource/University_of_Northern_California,_Lorenzo_Pati%C3%B1o_School_of_Law> a schema:CollegeOrUniversity ;
+	schema:name "University of Northern California, Lorenzo Patiño School of Law"@en .
+
+dbpedia:Pacific_School_of_Religion a schema:CollegeOrUniversity ;
+	schema:name "Pacific School of Religion"@en , "Тихоокеанская школа религии"@ru .
+
+dbpedia:Southwestern_Law_School a schema:CollegeOrUniversity ;
+	schema:name "Southwestern Law School"@en .
+
+dbpedia:Silicon_Valley_University a schema:CollegeOrUniversity ;
+	schema:name "Silicon Valley University"@en , "美國加州矽谷大學"@zh .
+
+dbpedia:Taft_Law_School a schema:CollegeOrUniversity ;
+	schema:name "Taft Law School"@en .
+
+dbpedia:Los_Angeles_Recording_School a schema:CollegeOrUniversity ;
+	schema:name "Los Angeles Recording School"@en .
+
+dbpedia:Loma_Linda_University_School_of_Public_Health a schema:CollegeOrUniversity ;
+	schema:name "Loma Linda University School of Public Health"@en .
+
+dbpedia:NewSchool_of_Architecture_and_Design a schema:CollegeOrUniversity ;
+	schema:name "NewSchool of Architecture and Design"@en .
+
+dbpedia:Abraham_Lincoln_University a schema:CollegeOrUniversity ;
+	schema:name "Abraham Lincoln University"@en .
+
+dbpedia:Western_Sierra_Law_School a schema:CollegeOrUniversity ;
+	schema:name "Western Sierra Law School"@en .
+
+dbpedia:California_Southern_University a schema:CollegeOrUniversity ;
+	schema:name "California Southern University"@en .
+
+dbpedia:Loma_Linda_University_School_of_Dentistry a schema:CollegeOrUniversity ;
+	schema:name "Loma Linda University School of Dentistry"@en .
+
+dbpedia:USC_School_of_Architecture a schema:CollegeOrUniversity ;
+	schema:name "USC School of Architecture"@en .
+
+dbpedia:Occidental_College a schema:CollegeOrUniversity ;
+	schema:name "Occidental College"@en , "Occidental College"@es , "Occidental College"@fr , "オクシデンタル大学"@ja , "Occidental College"@nl , "西方學院"@zh .
+
+dbpedia:Stanford_University a schema:CollegeOrUniversity ;
+	schema:name "Stanford University"@en , "جامعة ستانفورد"@ar , "Stanford University"@de , "Universidad Stanford"@es , "Université Stanford"@fr , "Università di Stanford"@it , "スタンフォード大学"@ja , "Stanford-universiteit"@nl , "Stanford University"@pl , "Universidade Stanford"@pt , "Стэнфордский университет"@ru , "史丹佛大學"@zh .
+
+dbpedia:University_of_the_West a schema:CollegeOrUniversity ;
+	schema:name "University of the West"@en .
+
+dbpedia:Antioch_University_Santa_Barbara a schema:CollegeOrUniversity ;
+	schema:name "Antioch University Santa Barbara"@en .
+
+dbpedia:California_InterContinental_University a schema:CollegeOrUniversity ;
+	schema:name "California InterContinental University"@en .
+
+dbpedia:Graziadio_School_of_Business_and_Management a schema:CollegeOrUniversity ;
+	schema:name "Graziadio School of Business and Management"@en .
+
+dbpedia:San_Luis_Rey_College a schema:CollegeOrUniversity ;
+	schema:name "San Luis Rey College"@en .
+
+dbpedia:USC_Marshall_Executive_Education a schema:CollegeOrUniversity ;
+	schema:name "USC Marshall Executive Education"@en .
+
+dbpedia:University_of_La_Verne a schema:CollegeOrUniversity ;
+	schema:name "University of La Verne"@en , "Universidad de La Verne"@es .
+
+dbpedia:Antioch_University_Los_Angeles a schema:CollegeOrUniversity ;
+	schema:name "Antioch University Los Angeles"@en .
+
+dbpedia:College_of_Osteopathic_Medicine_of_the_Pacific a schema:CollegeOrUniversity ;
+	schema:name "College of Osteopathic Medicine of the Pacific"@en .
+
+dbpedia:Franciscan_School_of_Theology a schema:CollegeOrUniversity ;
+	schema:name "Franciscan School of Theology"@en .
+
+dbpedia:Keck_Graduate_Institute_of_Applied_Life_Sciences a schema:CollegeOrUniversity ;
+	schema:name "Keck Graduate Institute of Applied Life Sciences"@en .
+
+dbpedia:Pacific_Coast_University a schema:CollegeOrUniversity ;
+	schema:name "Pacific Coast University"@en .
+
+dbpedia:San_Francisco_Law_School a schema:CollegeOrUniversity ;
+	schema:name "San Francisco Law School"@en .
+
+dbpedia:University_of_San_Francisco a schema:CollegeOrUniversity ;
+	schema:name "University of San Francisco"@en , "University of San Francisco"@de , "Universidad de San Francisco"@es , "Université de San Francisco"@fr , "Università di San Francisco"@it , "Universiteit van San Francisco"@nl , "Universidade de São Francisco"@pt , "旧金山大学"@zh .
+
+dbpedia:University_of_Santa_Monica a schema:CollegeOrUniversity ;
+	schema:name "University of Santa Monica"@en .
+
+dbpedia:Vanguard_University_of_Southern_California a schema:CollegeOrUniversity ;
+	schema:name "Vanguard University of Southern California"@en .
+
+dbpedia:Whittier_College a schema:CollegeOrUniversity ;
+	schema:name "Whittier College"@en .
+
+dbpedia:Whittier_Law_School a schema:CollegeOrUniversity ;
+	schema:name "Whittier Law School"@en .
+
+dbpedia:Santa_Clara_University_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Santa Clara University School of Law"@en .
+
+<http://dbpedia.org/resource/Fashion_Institute_of_Design_&_Merchandising> a schema:CollegeOrUniversity ;
+	schema:name "Fashion Institute of Design & Merchandising"@en .
+
+dbpedia:Pacific_Oaks_College a schema:CollegeOrUniversity ;
+	schema:name "Pacific Oaks College"@en .
+
+dbpedia:Loma_Linda_University_School_of_Allied_Health_Professions a schema:CollegeOrUniversity ;
+	schema:name "Loma Linda University School of Allied Health Professions"@en .
+
+dbpedia:Anaheim_University a schema:CollegeOrUniversity ;
+	schema:name "Anaheim University"@en , "アナハイム大学"@ja .
+
+dbpedia:Azusa_Pacific_University a schema:CollegeOrUniversity ;
+	schema:name "Azusa Pacific University"@en , "Azusa Pacific University"@de .
+
+dbpedia:Glendale_University_College_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Glendale University College of Law"@en .
+
+dbpedia:John_F._Kennedy_University a schema:CollegeOrUniversity ;
+	schema:name "John F. Kennedy University"@en , "John F. Kennedy University"@de , "Университет Джона Ф. Кеннеди"@ru .
+
+dbpedia:Singularity_University a schema:CollegeOrUniversity ;
+	schema:name "Singularity University"@en , "Universidad de la Singularidad"@es , "Singularity University"@pl .
+
+dbpedia:Touro_University_California a schema:CollegeOrUniversity ;
+	schema:name "Touro University California"@en , "جامعة تورو كلية الطب التقويمي"@ar .
+
+dbpedia:Trinity_Law_School a schema:CollegeOrUniversity ;
+	schema:name "Trinity Law School"@en .
+
+dbpedia:USC_Marshall_School_of_Business a schema:CollegeOrUniversity ;
+	schema:name "USC Marshall School of Business"@en , "USC Marshall School of Business"@es , "Marshall School of Business"@fr , "馬歇爾商學院"@zh .
+
+<http://dbpedia.org/resource/University_of_the_Pacific_(United_States)> a schema:CollegeOrUniversity ;
+	schema:name "University of the Pacific (United States)"@en , "University of the Pacific"@de , "Universidad del Pacífico (Estados Unidos)"@es , "Université du Pacifique"@fr , "パシフィック大学"@ja , "University of the Pacific"@nl , "太平洋大学"@zh .
+
+dbpedia:West_Coast_University a schema:CollegeOrUniversity ;
+	schema:name "West Coast University"@en .
+
+dbpedia:Mount_Madonna_Institute a schema:CollegeOrUniversity ;
+	schema:name "Mount Madonna Institute"@en .
+
+dbpedia:Santa_Clara_University_School_of_Engineering a schema:CollegeOrUniversity ;
+	schema:name "Santa Clara University School of Engineering"@en .
+
+dbpedia:California_College_of_Ayurveda a schema:CollegeOrUniversity ;
+	schema:name "California College of Ayurveda"@en .
+
+<http://dbpedia.org/resource/Conservatory_of_Music,_University_of_the_Pacific> a schema:CollegeOrUniversity ;
+	schema:name "Conservatory of Music, University of the Pacific"@en .
+
+dbpedia:Art_Center_College_of_Design a schema:CollegeOrUniversity ;
+	schema:name "Art Center College of Design"@en , "Art Center College of Design"@de , "Art Center School"@es , "アートセンター・カレッジ・オブ・デザイン"@ja , "Art Center College of Design"@pt .
+
+dbpedia:Loyola_Marymount_University a schema:CollegeOrUniversity ;
+	schema:name "Loyola Marymount University"@en , "Loyola Marymount University"@de , "Universidad Loyola Marymount"@es , "Loyola Marymount University"@it , "Université Loyola Marymount"@fr , "Loyola Marymount University"@nl , "Loyola Marymount University"@pl .
+
+dbpedia:Monterey_Institute_of_International_Studies a schema:CollegeOrUniversity ;
+	schema:name "Monterey Institute of International Studies"@en , "Monterey Institute of International Studies"@de .
+
+dbpedia:United_States_University a schema:CollegeOrUniversity ;
+	schema:name "United States University"@en .
+
+dbpedia:California_Western_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "California Western School of Law"@en .
+
+dbpedia:Culinary_Institute_of_America_at_Greystone a schema:CollegeOrUniversity ;
+	schema:name "Culinary Institute of America at Greystone"@en .
+
+dbpedia:Keck_School_of_Medicine_of_USC a schema:CollegeOrUniversity ;
+	schema:name "Keck School of Medicine of USC"@en , "مدرسة الطب في جامعة كيك في كاليفورنيا الجنوبية"@ar .
+
+dbpedia:Patten_University a schema:CollegeOrUniversity ;
+	schema:name "Patten University"@en .
+
+dbpedia:American_Baptist_Seminary_of_the_West a schema:CollegeOrUniversity ;
+	schema:name "American Baptist Seminary of the West"@en .
+
+dbpedia:Western_University_College_of_Veterinary_Medicine a schema:CollegeOrUniversity ;
+	schema:name "Western University College of Veterinary Medicine"@en .
+
+dbpedia:American_Heritage_University_of_Southern_California a schema:CollegeOrUniversity ;
+	schema:name "American Heritage University of Southern California"@en .
+
+<http://dbpedia.org/resource/Latin_American_Bible_Institute,_California> a schema:CollegeOrUniversity ;
+	schema:name "Latin American Bible Institute, California"@en .
+
+dbpedia:Western_University_College_of_Podiatric_Medicine a schema:CollegeOrUniversity ;
+	schema:name "Western University College of Podiatric Medicine"@en .
+
+dbpedia:Herguan_University a schema:CollegeOrUniversity ;
+	schema:name "Herguan University"@en .
+
+dbpedia:Robert_Day_School a schema:CollegeOrUniversity ;
+	schema:name "Robert Day School"@en .
+
+dbpedia:California_Southern_Law_School a schema:CollegeOrUniversity ;
+	schema:name "California Southern Law School"@en .
+
+dbpedia:McMillan_Academy_of_Law a schema:CollegeOrUniversity ;
+	schema:name "McMillan Academy of Law"@en .
+
+dbpedia:Stanford_Law_School a schema:CollegeOrUniversity ;
+	schema:name "Stanford Law School"@en , "Stanford School of Law"@it , "斯坦福法学院"@zh .
+
+dbpedia:Palo_Alto_University a schema:CollegeOrUniversity ;
+	schema:name "Palo Alto University"@en , "太平洋心理学研究所"@zh .
+
+dbpedia:San_Joaquin_College_of_Law a schema:CollegeOrUniversity ;
+	schema:name "San Joaquin College of Law"@en .
+
+dbpedia:Southern_California_University_of_Health_Sciences a schema:CollegeOrUniversity ;
+	schema:name "Southern California University of Health Sciences"@en .
+
+dbpedia:Brandman_University a schema:CollegeOrUniversity ;
+	schema:name "Brandman University"@en .
+
+dbpedia:University_of_La_Verne_College_of_Law a schema:CollegeOrUniversity ;
+	schema:name "University of La Verne College of Law"@en .
+
+dbpedia:Pepperdine_University a schema:CollegeOrUniversity ;
+	schema:name "Pepperdine University"@en , "Pepperdine University"@de , "Universidad Pepperdine"@es , "Université Pepperdine"@fr , "Pepperdine University Women's Volleyball"@it , "Pepperdine-universiteit"@nl , "ペパーダイン大学"@ja , "Universidade Pepperdine"@pt .
+
+dbpedia:Kensington_College a schema:CollegeOrUniversity ;
+	schema:name "Kensington College"@en .
+
+dbpedia:University_of_San_Francisco_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "University of San Francisco School of Law"@en .
+
+dbpedia:Cal_Northern_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Cal Northern School of Law"@en .
+
+dbpedia:Empire_College_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Empire College School of Law"@en .
+
+dbpedia:Humphreys_College_Laurence_Drivon_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Humphreys College Laurence Drivon School of Law"@en .
+
+dbpedia:Monterey_College_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Monterey College of Law"@en .
+
+<http://dbpedia.org/resource/Santa_Barbara_&_Ventura_Colleges_of_Law> a schema:CollegeOrUniversity ;
+	schema:name "Santa Barbara & Ventura Colleges of Law"@en .
+
+dbpedia:University_of_Silicon_Valley_Law_School a schema:CollegeOrUniversity ;
+	schema:name "University of Silicon Valley Law School"@en .
+
+dbpedia:University_of_West_Los_Angeles a schema:CollegeOrUniversity ;
+	schema:name "University of West Los Angeles"@en .
+
+dbpedia:Stanford_Graduate_School_of_Education a schema:CollegeOrUniversity ;
+	schema:name "Stanford Graduate School of Education"@en .
+
+dbpedia:USC_School_of_Dramatic_Arts a schema:CollegeOrUniversity ;
+	schema:name "USC School of Dramatic Arts"@en .
+
+dbpedia:American_Sports_University a schema:CollegeOrUniversity ;
+	schema:name "American Sports University"@en .
+
+dbpedia:Chapman_University a schema:CollegeOrUniversity ;
+	schema:name "Chapman University"@en , "Université Chapman"@fr , "Чепменский университет"@ru .
+
+dbpedia:Cogswell_Polytechnical_College a schema:CollegeOrUniversity ;
+	schema:name "Cogswell Polytechnical College"@en .
+
+dbpedia:Loyola_Law_School a schema:CollegeOrUniversity ;
+	schema:name "Loyola Law School"@en , "洛约拉法学院"@zh .
+
+dbpedia:Olivet_University a schema:CollegeOrUniversity ;
+	schema:name "Olivet University"@en .
+
+dbpedia:Pacific_States_University a schema:CollegeOrUniversity ;
+	schema:name "Pacific States University"@en .
+
+dbpedia:Simpson_University a schema:CollegeOrUniversity ;
+	schema:name "Simpson University"@en .
+
+dbpedia:USC_Rossier_School_of_Education a schema:CollegeOrUniversity ;
+	schema:name "USC Rossier School of Education"@en .
+
+dbpedia:Drexel_University_Sacramento a schema:CollegeOrUniversity ;
+	schema:name "Drexel University Sacramento"@en .
+
+dbpedia:Northwestern_California_University_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Northwestern California University School of Law"@en .
+
+dbpedia:Pacific_Union_College a schema:CollegeOrUniversity ;
+	schema:name "Pacific Union College"@en , "Pacific Union College"@fr , "太平洋聯合學院"@zh .
+
+dbpedia:USC_Viterbi_School_of_Engineering a schema:CollegeOrUniversity ;
+	schema:name "USC Viterbi School of Engineering"@en , "維特比工程學院"@zh .
+
+dbpedia:Northwestern_Polytechnic_University a schema:CollegeOrUniversity ;
+	schema:name "Northwestern Polytechnic University"@en , "Northwestern Polytechnic University"@fr , "Universidade Politécnica do Noroeste dos Estados Unidos"@pt .
+
+dbpedia:St._Francis_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "St. Francis School of Law"@en .
+
+dbpedia:Academy_of_Chinese_Culture_and_Health_Sciences a schema:CollegeOrUniversity ;
+	schema:name "Academy of Chinese Culture and Health Sciences"@en .
+
+dbpedia:Bethany_University a schema:CollegeOrUniversity ;
+	schema:name "Bethany University"@en .
+
+dbpedia:Chapman_University_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Chapman University School of Law"@en .
+
+dbpedia:Epic_Bible_College a schema:CollegeOrUniversity ;
+	schema:name "Epic Bible College"@en .
+
+dbpedia:Pepperdine_University_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Pepperdine University School of Law"@en .
+
+dbpedia:KGI_School_of_Pharmacy a schema:CollegeOrUniversity ;
+	schema:name "KGI School of Pharmacy"@en .
+
+dbpedia:National_Hispanic_University a schema:CollegeOrUniversity ;
+	schema:name "National Hispanic University"@en .
+
+dbpedia:McGeorge_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "McGeorge School of Law"@en .
+
+<http://dbpedia.org/resource/Mount_St._Mary's_College> a schema:CollegeOrUniversity ;
+	schema:name "Mount St. Mary's College"@en .
+
+dbpedia:San_Diego_Christian_College a schema:CollegeOrUniversity ;
+	schema:name "San Diego Christian College"@en , "San Diego Christian College"@es .
+
+dbpedia:University_of_San_Diego a schema:CollegeOrUniversity ;
+	schema:name "University of San Diego"@en , "University of San Diego"@de , "Universidad de San Diego"@es , "Université de San Diego"@fr , "サンディエゴ大学"@ja .
+
+<http://dbpedia.org/resource/Platt_College_(San_Diego)> a schema:CollegeOrUniversity ;
+	schema:name "Platt College (San Diego)"@en .
+
+dbpedia:University_of_San_Diego_School_of_Law a schema:CollegeOrUniversity ;
+	schema:name "University of San Diego School of Law"@en .
+
+dbpedia:Southern_California_Institute_of_Law a schema:CollegeOrUniversity ;
+	schema:name "Southern California Institute of Law"@en .
+
+dbpedia:The_Art_Institute_of_California_%E2%80%93_Hollywood a schema:CollegeOrUniversity ;
+	schema:name "The Art Institute of California – Hollywood"@en .
