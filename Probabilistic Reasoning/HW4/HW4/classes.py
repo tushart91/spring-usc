@@ -12,7 +12,7 @@
 import numpy as np
 from numpy import matrix
 
-def table(item, string):
+def print_3d(item, string):
     print "#########################################################################"
     print("#\t"+string[-1]+"\t|\t"+string[-2]+"\t|\t"+string[-3]+"\t|\t"+\
             "      P\t\t#")
@@ -30,6 +30,21 @@ def table(item, string):
             middle = not middle
         last = not last
     print "#########################################################################"
+
+def print_2d(item, string):
+    print "#########################################################"
+    print("#\t"+string[-1]+"\t|\t"+string[-2]+"\t|\t      P\t\t#")
+    print "#########################################################"
+
+    last   = False
+    middle = False
+    for i in range(2):
+        for j in range(2):
+            print("|\t"+str(last)+"\t|\t"+str(middle)+"\t|\t"+\
+                    str('%f' % round(item[i].item(j),8))+"\t|")
+            middle = not middle
+        last = not last
+    print "#########################################################"
 
 def print_1d(item):
     print "False", "=", round(item.item(0), 8)
@@ -123,16 +138,17 @@ class Clique:
         for i in self.incoming_deltas:
             self.belief = matrixwise_multiply(self.belief, i.value) 
 
-    def compute_prob(self):
-        probability_3 = marginalize_first_second(self.belief)
-        probability_12 = marginalize_last(self.belief)
-        probability_1  = marginalize_middle(probability_12)
-        probability_2  = marginalize_first(probability_12)
-        return {
-                self.id[0]: probability_1, 
-                self.id[1]: probability_2, 
-                self.id[2]: probability_3
-        }
+    def compute_prob(self, evidence=False):
+        ret = {}
+        if not evidence:
+            ret[self.id[2]] = normalized(marginalize_first_second(self.belief))
+            probability_12 = marginalize_last(self.belief)
+            ret[self.id[0]] = normalized(marginalize_middle(probability_12))
+            ret[self.id[1]] = normalized(marginalize_first(probability_12))
+        else:
+            ret[self.id[2]] = normalized(marginalize_first_second(self.belief))
+            ret[self.id[1]] = normalized(marginalize_last(self.belief))
+        return ret
 
     @property
     def ready(self):
