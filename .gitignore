@@ -21,6 +21,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+*.pyc
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -56,3 +57,6 @@ target/
 # Custom
 Probabilistic\ Reasoning/Probablistic\ Graphic\ Models.pdf
 Probabilistic\ Reasoning/HW3/Msbn3.Err
+Probabilistic\ Reasoning/HW4/Msbn3.Err
+*.swp
+
