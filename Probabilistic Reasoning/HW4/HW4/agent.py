@@ -13,45 +13,46 @@ import numpy as np
 from numpy import matrix
 from classes import *
 
-factor_T = matrix([[0.2], [0.8]])
-factor_JTA0 = matrix([ 
+factor_T = [[0.2], [0.8]]
+factor_JTA0 = [ 
                   [0.98, 0.02],
                   [0.97, 0.03] 
-              ])
-factor_JTA1 = matrix(
-              [
+              ]
+factor_JTA1 = [
                   [0.12, 0.88],
                   [0.55, 0.45] 
-              ])
+              ]
 factor_JTA = [factor_JTA0, factor_JTA1]
 psi_JTA = pointwise_multiply(factor_JTA, factor_T)
 
-factor_N = matrix([[0.75], [0.25]])
-factor_MNA0 = matrix([
+factor_N = [[0.75], [0.25]]
+factor_MNA0 = [
                     [0.99, 0.01],
                     [0.999, 0.001]
-                ])
-factor_MNA1 = matrix([
+                ]
+factor_MNA1 = [
                     [0.25, 0.75],
                     [0.75, 0.25]
-                ])
+                ]
 factor_MNA = [factor_MNA0, factor_MNA1]
 psi_MNA = pointwise_multiply(factor_MNA, factor_N)
 
-factor_E = matrix([[0.999],[0.001]])
-factor_B = matrix([[0.998],[0.002]])
-factor_EBA0 = matrix([
+factor_E = [[0.999],[0.001]]
+factor_B = [[0.998],[0.002]]
+factor_EBA0 = [
                     [0.998, 0.4],
                     [0.15, 0.07]
-                ])
-factor_EBA1 = matrix([
+                ]
+factor_EBA1 = [
                     [0.002, 0.6],
                     [0.85, 0.93]
-                ])
+                ]
 factor_EBA = [factor_EBA0, factor_EBA1]
 psi_EBA = pointwise_multiply(factor_EBA, factor_B)
-factor_BEA = [psi_EBA[0].T, psi_EBA[1].T]
+factor_BEA = [zip(*psi_EBA[0]), zip(*psi_EBA[1])]
 psi_BEA = pointwise_multiply(factor_BEA, factor_E)
+
+print psi_BEA
 
 def agent():
     
@@ -130,6 +131,7 @@ def agent():
                 print_1d(normalized(prob[key]))
                 print
 
+
     #######################################
     ## Compute probability of P(E|j1,m0) ##
     #######################################
@@ -141,8 +143,12 @@ def agent():
 
     ## Compute new psi's for clique JTA and MNA
 
-    JTA.psi = np.concatenate((JTA.psi[0][:,1].T, JTA.psi[1][:,1].T), axis=0)
-    MNA.psi = np.concatenate((MNA.psi[0][:,0].T, MNA.psi[1][:,0].T), axis=0)
+    for i in range(len(JTA.psi)):
+        for j in range(len(JTA.psi[i])):
+            JTA.psi[i][j] = JTA.psi[i][j][1]
+    for i in range(len(MNA.psi)):
+        for j in range(len(MNA.psi[i])):
+            MNA.psi[i][j] = MNA.psi[i][j][0]
 
     for clique in cliques:
         clique.incoming_deltas_ready = 0
@@ -187,7 +193,7 @@ def agent():
     print "In Clique", BEA
     BEA.compute_belief()
     print "Unnormalized Distribution for", BEA
-    print_2d(BEA.belief, BEA.id)
+    print_3d(BEA.belief, BEA.id)
     print
     prob = BEA.compute_prob()
     for key in prob.keys():

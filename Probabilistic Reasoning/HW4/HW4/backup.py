@@ -150,6 +150,7 @@ def agent():
    
     ## Compute new psi's for clique JTA and MNA
 
+    print psi_JTA
     psi_JTA = np.concatenate((psi_JTA[0][:,1].T, psi_JTA[1][:,1].T), axis=0)
     psi_MNA = np.concatenate((psi_MNA[0][:,0].T, psi_MNA[1][:,0].T), axis=0)
 

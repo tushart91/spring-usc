@@ -11,6 +11,7 @@
 
 import numpy as np
 from numpy import matrix
+import copy
 
 def print_3d(item, string):
     print "#########################################################################"
@@ -25,7 +26,7 @@ def print_3d(item, string):
         for j in range(2):
             for k in range(2):
                 print("|\t"+str(last)+"\t|\t"+str(middle)+"\t|\t"+str(first)\
-                        +"\t|\t"+str('%f' % round(item[i].item(j,k),8))+"\t|")
+                        +"\t|\t"+str('%f' % round(item[i][j][k],8))+"\t|")
                 first = not first
             middle = not middle
         last = not last
@@ -41,53 +42,86 @@ def print_2d(item, string):
     for i in range(2):
         for j in range(2):
             print("|\t"+str(last)+"\t|\t"+str(middle)+"\t|\t"+\
-                    str('%f' % round(item[i].item(j),8))+"\t|")
+                    str('%f' % round(item[i][j],8))+"\t|")
             middle = not middle
         last = not last
     print "#########################################################"
 
 def print_1d(item):
-    print "False", "=", round(item.item(0), 8)
-    print "True", " =", round(item.item(1), 8)
+    print "False", "=", round(item[0], 8)
+    print "True", " =", round(item[1], 8)
 
 def pointwise_multiply(factor_3d, factor_1d):
-    psi_3d0 = matrix([
-                        [factor_3d[0].item(0,0) * factor_1d.item(0),
-                         factor_3d[0].item(0,1) * factor_1d.item(0)],
-                        [factor_3d[0].item(1,0) * factor_1d.item(1),
-                         factor_3d[0].item(1,1) * factor_1d.item(1)]
-                    ])
+    psi_3d0 = [
+                    [factor_3d[0][0][0] * factor_1d[0][0],
+                        factor_3d[0][0][1] * factor_1d[0][0]],
+                    [factor_3d[0][1][0] * factor_1d[1][0],
+                        factor_3d[0][1][1] * factor_1d[1][0]]
+                ]
 
-    psi_3d1 = matrix([
-                        [factor_3d[1].item(0,0) * factor_1d.item(0),
-                         factor_3d[1].item(0,1) * factor_1d.item(0)],
-                        [factor_3d[1].item(1,0) * factor_1d.item(1),
-                         factor_3d[1].item(1,1) * factor_1d.item(1)]
-                    ])
+    psi_3d1 = [
+                    [factor_3d[1][0][0] * factor_1d[0][0],
+                        factor_3d[1][0][1] * factor_1d[0][0]],
+                    [factor_3d[1][1][0] * factor_1d[1][0],
+                        factor_3d[1][1][1] * factor_1d[1][0]]
+                ]
     return [psi_3d0, psi_3d1]
 
 def matrixwise_multiply(belief, value):
-    return [np.multiply(belief[0], value.item(0)),
-            np.multiply(belief[1], value.item(1))]
-
+    temp = copy.deepcopy(belief)
+    if type(belief[0][0]) is not list:
+        for i in range(len(belief)):
+            for j in range(len(belief[i])):
+                temp[i][j] = temp[i][j] * value[i]
+    else:
+        for k in range(len(belief)):
+            for i in range(len(belief[k])):
+                for j in range(len(belief[k][i])):
+                    temp[k][i][j] = temp[k][i][j] * value[k]
+    return temp
+                
 def normalized(prob):
-    A = prob.item(0)
-    B = prob.item(1)
-    prob.itemset(0, A / (A+B))
-    prob.itemset(1, B / (A+B))
+    A = prob[0]
+    B = prob[1]
+    prob[0] = A / (A+B)
+    prob[1] = B / (A+B)
     return prob
 
 def marginalize_last(belief):
-    return belief[0] + belief[1]
+    temp = copy.deepcopy(belief[0])
+    if type(belief[0][0]) is not list:
+        for i in range(len(belief)):
+            if i == 0:
+                temp[0] = 0
+                temp[1] = 0
+            temp[0] = temp[0] + belief[i][0]
+            temp[1] = temp[1] + belief[i][1]
+        return temp
+        
+
+    for i in range(len(belief[0])):
+        for j in range(len(belief[0][i])):
+            temp[i][j] = belief[0][i][j] + belief[1][i][j]
+    return temp
 
 def marginalize_middle(belief):
-    return np.sum(belief, axis = 0)
+    temp = copy.deepcopy(belief)
+    temp = zip(*temp)
+    for i in range(len(temp)):
+        temp[i] = sum(temp[i])
+    return temp
 
 def marginalize_first(belief):
-    return np.sum(belief, axis = 1)
+    temp = copy.deepcopy(belief)
+    for i in range(len(temp)):
+        temp[i] = sum(temp[i])
+    return temp
 
 def marginalize_first_second(belief):
-    return np.matrix([np.sum(belief[0]), np.sum(belief[1])])
+    temp = copy.deepcopy(belief)
+    if type(belief[0][0]) is not list:
+        return [sum(temp[0]), sum(temp[1])]
+    return [sum(sum(temp[0], [])), sum(sum(temp[1], []))]
 
 class Delta(object):
     def __init__(self, _from_, _to_, inverse = None):
@@ -134,7 +168,7 @@ class Clique:
         self.belief = None
 
     def compute_belief(self):
-        self.belief = self.psi[:]
+        self.belief = copy.deepcopy(self.psi)
         for i in self.incoming_deltas:
             self.belief = matrixwise_multiply(self.belief, i.value) 
 
