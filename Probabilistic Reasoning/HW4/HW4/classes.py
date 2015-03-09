@@ -9,8 +9,6 @@
 # @date     2015-03-07
 ########################################
 
-import numpy as np
-from numpy import matrix
 import copy
 
 def print_3d(item, string):

@@ -9,8 +9,6 @@
 # @date     2015-03-05
 ########################################
 
-import numpy as np
-from numpy import matrix
 from classes import *
 
 factor_T = [[0.2], [0.8]]
@@ -52,10 +50,12 @@ psi_EBA = pointwise_multiply(factor_EBA, factor_B)
 factor_BEA = [zip(*psi_EBA[0]), zip(*psi_EBA[1])]
 psi_BEA = pointwise_multiply(factor_BEA, factor_E)
 
-print psi_BEA
-
 def agent():
-    
+
+    print "########################"
+    print "## Initialize Cliques ##"
+    print "########################"
+
     JTA = Clique("JTA", psi_JTA)
     MNA = Clique("MNA", psi_MNA)
     BEA = Clique("BEA", psi_BEA)
@@ -88,8 +88,7 @@ def agent():
                 if delta.ready == False:
                     outgoing_delta = delta.inverse
                 else:
-                    psi = [np.multiply(psi[0], delta.value.item(0)),
-                            np.multiply(psi[1], delta.value.item(1))]
+                    psi = matrixwise_multiply(psi, delta.value)
                 print "Delta:", outgoing_delta, "value:"
                 outgoing_delta.value = marginalize_first_second(psi)
                 print_1d(outgoing_delta.value)
@@ -202,6 +201,5 @@ def agent():
         print
     
 if __name__ == "__main__":
-    np.set_printoptions(suppress=True, precision=8)
     print
     agent()
