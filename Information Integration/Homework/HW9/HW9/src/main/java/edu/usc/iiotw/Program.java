@@ -56,10 +56,20 @@ public class Program {
 		// outputs the results
 //		SimpleExample.outputResult(result, metric, str1, str2);
 		
-		//declarations
+		//declarations for data structure
 		Program obj = new Program();
 		LinkedHashMap<String, List<String>>[] d1 = obj.get_d1(N);
 		Set<String>[] d2 = obj.get_d2(N);
+		LinkedHashMap<String, HashSet<Integer>>[] stringToClass = new LinkedHashMap[N];
+		LinkedHashMap<Integer, HashSet<String>>[] classToString = new LinkedHashMap[N];
+		obj.get_groundtruth(classToString, stringToClass);
+		
+//		System.out.println(stringToClass[0].keySet().iterator().next() + ": " + 
+//				stringToClass[0].get(stringToClass[0].keySet().iterator().next()));
+//		System.out.println(stringToClass[0].get("'hotel bel-air'"));
+//		System.out.println(stringToClass[0].get("'bel-air hotel'"));
+		
+		//declarations
 		String str1 = "";
 		String str2 = "";
 		String res[]  = {"", "", "", "", ""};
@@ -210,16 +220,15 @@ public class Program {
 		return d2;
 	}
 	
-	public void get_groundtruth() {
+	public void get_groundtruth(LinkedHashMap<Integer, HashSet<String>>[] classToString, 
+			LinkedHashMap<String, HashSet<Integer>>[] stringToClass) {
 		
 		//Initialize data structure
-		HashMap<Integer, HashSet<String>>[] classToString = new HashMap[N];
-		HashMap<String, HashSet<Integer>>[] stringToClass = new HashMap[N];
 		HashSet<String> stringSet = null;
 		HashSet<Integer> classSet = null;
 		for (int i = 0; i < N; i++) {
-			classToString[i] = new HashMap<Integer, HashSet<String>>();
-			stringToClass[i]  = new HashMap<String, HashSet<Integer>>();
+			classToString[i] = new LinkedHashMap<Integer, HashSet<String>>();
+			stringToClass[i]  = new LinkedHashMap<String, HashSet<Integer>>();
 		}
 		
 		// Get file from resources folder
@@ -244,7 +253,7 @@ public class Program {
 					else
 						stringSet = new HashSet<String>();
 					
-					//add to set and assign set to key in dict
+					//add to set and assign set to key in dictionary
 					stringSet.add(parts[i]);
 					classToString[i].put(klass, stringSet);
 					
@@ -254,7 +263,7 @@ public class Program {
 					else
 						classSet = new HashSet<Integer>();
 						
-					//add to set and assign set to key in dict
+					//add to set and assign set to key in dictionary
 					classSet.add(klass);
 					stringToClass[i].put(parts[i], classSet);
 				}
