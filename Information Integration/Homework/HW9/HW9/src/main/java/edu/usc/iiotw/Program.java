@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -26,6 +28,7 @@ public class Program {
 	private static final Integer ADDR = 1;
 	private static final Integer CITY = 2;
 	private static final Integer TYPE = 3;
+	private static final Integer CLASS = 4;
 	private static final Integer N    = 4;
 	private static final Integer LEV  = 0;
 	private static final Integer NW   = 1;
@@ -63,7 +66,7 @@ public class Program {
 		float[] max = {-1, -1, -1, -1, -1};
 		Iterator<String> it_D1 = null;
 		Iterator<String> it_D2 = null;
-		ArrayList<String> arr = new ArrayList<String>();
+		ArrayList<String> arr;
 		File file = null;
 		FileOutputStream fout = null;
 		BufferedWriter out = null;
@@ -89,7 +92,7 @@ public class Program {
 				it_D2 = d2[i].iterator();
 				
 				//clear evrything
-				arr.clear();
+				arr = new ArrayList<String>();
 				max[LEV] = max[SW] = max[NW] = max[JW] = max[SX] =  -1;
 				res[LEV] = res[SW] = res[NW] = res[JW] = res[SX] = "";
 				
@@ -154,8 +157,7 @@ public class Program {
 
 		// Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = null;
-		inputStream = classLoader.getResourceAsStream("d1.csv");
+		InputStream inputStream = classLoader.getResourceAsStream("d1.csv");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				inputStream));
 		String line = "";
@@ -169,6 +171,7 @@ public class Program {
 				d1[CITY].put(parts[CITY], null);
 				d1[TYPE].put(parts[TYPE], null);
 			}
+			reader.close();
 			inputStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -184,8 +187,7 @@ public class Program {
 
 		// Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = null;
-		inputStream = classLoader.getResourceAsStream("d2.csv");
+		InputStream inputStream = classLoader.getResourceAsStream("d2.csv");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				inputStream));
 		String line = "";
@@ -199,12 +201,69 @@ public class Program {
 				d2[CITY].add(parts[CITY]);
 				d2[TYPE].add(parts[TYPE]);
 			}
+			reader.close();
 			inputStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		return d2;
+	}
+	
+	public void get_groundtruth() {
+		
+		//Initialize data structure
+		HashMap<Integer, HashSet<String>>[] classToString = new HashMap[N];
+		HashMap<String, HashSet<Integer>>[] stringToClass = new HashMap[N];
+		HashSet<String> stringSet = null;
+		HashSet<Integer> classSet = null;
+		for (int i = 0; i < N; i++) {
+			classToString[i] = new HashMap<Integer, HashSet<String>>();
+			stringToClass[i]  = new HashMap<String, HashSet<Integer>>();
+		}
+		
+		// Get file from resources folder
+		ClassLoader classLoader = getClass().getClassLoader();
+		InputStream inputStream = classLoader.getResourceAsStream("groundtruth.csv");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				inputStream));
+		String line = "";
+		String[] parts = null;
+		Integer klass = 0;
+		
+		//Read groundtruth.csv
+		try {
+			reader.readLine();
+			while ((line = reader.readLine()) != null) {
+				parts = line.split(",", 5);
+				for (int i = 0; i < N; i++) {
+					klass = Integer.parseInt(parts[CLASS]);
+					//classToString HashSet
+					if (classToString[i].containsKey(klass)) 
+						stringSet = classToString[i].get(klass);
+					else
+						stringSet = new HashSet<String>();
+					
+					//add to set and assign set to key in dict
+					stringSet.add(parts[i]);
+					classToString[i].put(klass, stringSet);
+					
+					//stringToClass HashSet
+					if (stringToClass[i].containsKey(parts[i]))
+						classSet = stringToClass[i].get(parts[i]);
+					else
+						classSet = new HashSet<Integer>();
+						
+					//add to set and assign set to key in dict
+					classSet.add(klass);
+					stringToClass[i].put(parts[i], classSet);
+				}
+			}
+			reader.close();
+			inputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
