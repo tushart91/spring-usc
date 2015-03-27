@@ -1,32 +1,32 @@
-d1,Levenshtein,Needleman-Wunch,Smith-Waterman,Jaro-Winkler,Soundex,Cosine-Similarity
-steakhouses,steakhouses,steakhouses,steakhouses,steakhouses,'steak houses',steakhouses
-delis,delis,delis,delis,delis,delis,delis
-californian,californian,californian,californian,californian,californian,californian
-'french bistro','french bistro','french bistro',french,'french bistro','french bistro','french bistro'
-'pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave'
-'french (new)','french (new)','french (new)',french,'french (new)','french (new)','french (new)'
-'american (traditional)','american (new)','ext 6108 international',american,'french bistro',american,'american (new)'
-japanese,japanese,japanese,japanese,japanese,japanese,japanese
-'french (classic)','french (classic)','french (classic)',french,'french (classic)','french (classic)','french (classic)'
-italian,italian,italian,italian,italian,italian,italian
-seafood,seafood,seafood,seafood,seafood,seafood,seafood
-cafeterias,cafeterias,cafeterias,cafeterias,cafeterias,cafeterias,cafeterias
-'nuova cucina italian','tel caribbean',italian,italian,'only in las vegas',coffeehouses,american
-chinese,chinese,chinese,chinese,chinese,chinese,chinese
-'american (new)','american (new)','american (new)',american,'american (new)',american,'american (new)'
-scandinavian,indonesian,indonesian,asian,spanish,sandwiches,american
-coffeehouses,coffeehouses,coffeehouses,coffeehouses,coffeehouses,coffeehouses,coffeehouses
-indian,indian,indian,indian,indian,indian,indian
-caribbean,caribbean,caribbean,'tel caribbean',caribbean,caribbean,caribbean
-asian,asian,asian,asian,asian,asian,asian
-southwestern,southwestern,southwestern,southwestern,southwestern,southwestern,southwestern
-mexican,mexican,mexican,mexican,mexican,mexican,mexican
-russian,russian,russian,russian/german,russian,russian,russian
-mediterranean,mediterranean,mediterranean,mediterranean,mediterranean,mediterranean,mediterranean
-greek,greek,greek,'greek and middle eastern',greek,greek,greek
-bbq,bbq,bbq,bbq,bbq,bbq,bbq
-'pacific rim','pacific new wave',cafeterias,'pacific new wave','pacific new wave','pacific new wave','pacific new wave'
-continental,continental,continental,continental,continental,continental,continental
-eclectic,eclectic,eclectic,eclectic,eclectic,eclectic,eclectic
-southern/soul,southern/soul,southern/soul,southern,southern/soul,southern/soul,southern/soul
-thai,thai,thai,thai,thai,thai,thai
+d1,Levenshtein,Needleman-Wunch,Smith-Waterman,Jaro-Winkler,Soundex,Cosine-Similarity,TF/IDF
+steakhouses,steakhouses,steakhouses,steakhouses,steakhouses,'steak houses',steakhouses,steakhouses
+delis,delis,delis,delis,delis,delis,delis,delis
+californian,californian,californian,californian,californian,californian,californian,californian
+'french bistro','french bistro','french bistro',french,'french bistro','french bistro','french bistro','french bistro'
+'pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave'
+'french (new)','french (new)','french (new)',french,'french (new)','french (new)','french (new)','french (new)'
+'american (traditional)','american (new)','ext 6108 international',american,'french bistro',american,'american (new)',american
+japanese,japanese,japanese,japanese,japanese,japanese,japanese,japanese
+'french (classic)','french (classic)','french (classic)',french,'french (classic)','french (classic)','french (classic)','french (classic)'
+italian,italian,italian,italian,italian,italian,italian,italian
+seafood,seafood,seafood,seafood,seafood,seafood,seafood,seafood
+cafeterias,cafeterias,cafeterias,cafeterias,cafeterias,cafeterias,cafeterias,cafeterias
+'nuova cucina italian','tel caribbean',italian,italian,'only in las vegas',coffeehouses,american,italian
+chinese,chinese,chinese,chinese,chinese,chinese,chinese,chinese
+'american (new)','american (new)','american (new)',american,'american (new)',american,'american (new)','american (new)'
+scandinavian,indonesian,indonesian,asian,spanish,sandwiches,american,american
+coffeehouses,coffeehouses,coffeehouses,coffeehouses,coffeehouses,coffeehouses,coffeehouses,coffeehouses
+indian,indian,indian,indian,indian,indian,indian,indian
+caribbean,caribbean,caribbean,'tel caribbean',caribbean,caribbean,caribbean,caribbean
+asian,asian,asian,asian,asian,asian,asian,asian
+southwestern,southwestern,southwestern,southwestern,southwestern,southwestern,southwestern,southwestern
+mexican,mexican,mexican,mexican,mexican,mexican,mexican,mexican
+russian,russian,russian,russian/german,russian,russian,russian,russian
+mediterranean,mediterranean,mediterranean,mediterranean,mediterranean,mediterranean,mediterranean,mediterranean
+greek,greek,greek,'greek and middle eastern',greek,greek,greek,greek
+bbq,bbq,bbq,bbq,bbq,bbq,bbq,bbq
+'pacific rim','pacific new wave',cafeterias,'pacific new wave','pacific new wave','pacific new wave','pacific new wave','pacific new wave'
+continental,continental,continental,continental,continental,continental,continental,continental
+eclectic,eclectic,eclectic,eclectic,eclectic,eclectic,eclectic,eclectic
+southern/soul,southern/soul,southern/soul,southern,southern/soul,southern/soul,southern/soul,southern/soul
+thai,thai,thai,thai,thai,thai,thai,thai

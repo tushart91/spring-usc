@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,13 +19,13 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 import uk.ac.shef.wit.simmetrics.similaritymetrics.*;
-import uk.ac.shef.wit.simmetrics.SimpleExample;
+import uk.ac.shef.wit.simmetrics.tokenisers.InterfaceTokeniser;
+import uk.ac.shef.wit.simmetrics.tokenisers.TokeniserWhitespace;
 
 public class Program {
 
+	private static final InterfaceTokeniser tokeniser = new TokeniserWhitespace();
 	private static final Integer NAME = 0;
 	private static final Integer ADDR = 1;
 	private static final Integer CITY = 2;
@@ -39,10 +38,11 @@ public class Program {
 	private static final Integer JW   = 3;
 	private static final Integer SX   = 4;
 	private static final Integer CS   = 5;
-	private static final Integer L    = 6;
+	private static final Integer TI   = 6;
+	private static final Integer L    = 7;
 	private static final String[] fileName = {"name", "addr", "city", "type"};
 	private static final String[] algoName = {"Levenshtein", "Needleman-Wunch", "Smith-Waterman",
-		"Jaro-Winkler", "Soundex", "Cosine-Similarity"};
+		"Jaro-Winkler", "Soundex", "Cosine-Similarity", "TF/IDF"};
 
 	public static void main(String[] args) {
 
@@ -52,6 +52,7 @@ public class Program {
 		AbstractStringMetric jw  = new JaroWinkler();
 		AbstractStringMetric sx  = new Soundex();
 		AbstractStringMetric cs  = new CosineSimilarity();
+		
 		// this single line performs the similarity test
 //		System.out.println(sw.getSimilarity("'french bistro'", "french"));
 		// outputs the results
@@ -69,8 +70,8 @@ public class Program {
 		Integer[][] posMatches = new Integer[N][L];
 		String str1 = "";
 		String str2 = "";
-		String res[]  = {"", "", "", "", "", ""};
-		float[] max = {-1, -1, -1, -1, -1, -1};
+		String res[]  = {"", "", "", "", "", "", ""};
+		float[] max = {-1, -1, -1, -1, -1, -1, -1};
 		Iterator<String> it_D1 = null;
 		Iterator<String> it_D2 = null;
 		List<String> arr;
@@ -131,6 +132,7 @@ public class Program {
 					compare(str2, res, max, jw.getSimilarity(str1, str2), JW);
 					compare(str2, res, max, sx.getSimilarity(str1, str2), SX);
 					compare(str2, res, max, cs.getSimilarity(str1, str2), CS);
+					compare(str2, res, max, TF_IDF(str1, str2), TI);
 				}
 				arr = new ArrayList<String>(Arrays.asList(res));
 				d1[i].put(str1, arr);
@@ -146,6 +148,7 @@ public class Program {
 			for (int j = 0; j < L; j++) {
 				System.out.println(algoName[j] + ": " + ": " + posMatches[i][j]);
 			}
+			System.out.println();
 			write(aOut, fileName[i], posMatches[i]);
 		}
 		closeBufferedWriter(aOut);
@@ -333,5 +336,89 @@ public class Program {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+     * gets the similarity of the two strings using TF/IDF.
+     *
+     * @param string1
+     * @param string2
+     * @return a value between 0-1 of the similarity
+     */
+	public static float TF_IDF(String string1, String string2) {
+		string1 = string1.replace("'", "");
+		string2 = string2.replace("'", "");
+		final ArrayList<String> str1Tokens = tokeniser.tokenizeToArrayList(string1);
+        final ArrayList<String> str2Tokens = tokeniser.tokenizeToArrayList(string2);
+        
+        //Term Frequency
+        final HashMap<String, Integer> str1Map = new HashMap<String, Integer>();
+        final HashMap<String, Integer> str2Map = new HashMap<String, Integer>();
+        for (String str : str1Tokens) {
+    		int count = 0;
+    		if (str1Map.keySet().contains(str))
+    			count = str1Map.get(str);
+    		count += 1;
+    		str1Map.put(str, count);
+    	}
+        for (String str : str2Tokens) {
+    		int count = 0;
+    		if (str2Map.keySet().contains(str))
+    			count = str2Map.get(str);
+    		count += 1;
+    		str2Map.put(str, count);
+    	}
+        final ArrayList<HashMap<String, Integer>> strMap = new ArrayList<HashMap<String, Integer>>();
+        strMap.add(str1Map);
+        strMap.add(str2Map);
+        
+        
+      //Inverse Document Frequency
+        final HashMap<String, Integer> allTokens = new HashMap<String, Integer>();
+        for (String str : str1Map.keySet()) {
+        	allTokens.put(str, 1);
+        }
+        for (String str : str2Map.keySet()) {
+        	int count = 0;
+    		if (allTokens.keySet().contains(str))
+    			count = allTokens.get(str);
+    		count += 1;
+        	allTokens.put(str, count);
+        }
+        
+        float[][] vector = new float[allTokens.size()][2];
+        
+    	Iterator<String> it = allTokens.keySet().iterator();
+    	int i = 0;
+    	float sq_sum = 0;
+    	while(it.hasNext()) {
+    		String str = it.next();
+    		for (int j = 0; j < 2; j++) {
+    			Integer tf = 0;
+    			if (strMap.get(j).keySet().contains(str))
+    				tf = strMap.get(j).get(str);
+        		vector[i][j] = allTokens.get(str) * tf;
+        		sq_sum += Math.pow(vector[i][j], 2);
+        	}
+    		i++;
+        }
+    	float doc_sum[] = {0,0};
+    	float num_sum = 0;
+    	float num = 1;
+    	for (i = 0; i < vector.length; i++) {
+    		num = 1;
+    		for (int j = 0; j < vector[i].length; j++) {
+    			vector[i][j] /= sq_sum;
+//    			System.out.print(vector[i][j] + "\t");
+    			doc_sum[j] += Math.pow(vector[i][j], 2);
+    			num *= vector[i][j];
+    		}
+    		num_sum += num;
+//    		System.out.println();
+    	}
+    	float den = 1;
+    	for (i = 0 ; i < doc_sum.length; i++)
+    		den *= Math.sqrt(doc_sum[i]);
+    	return (num_sum / den);
+	}
+	
 }
