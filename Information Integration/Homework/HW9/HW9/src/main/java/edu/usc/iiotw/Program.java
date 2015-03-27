@@ -38,10 +38,11 @@ public class Program {
 	private static final Integer SW   = 2;
 	private static final Integer JW   = 3;
 	private static final Integer SX   = 4;
-	private static final Integer L    = 5;
+	private static final Integer CS   = 5;
+	private static final Integer L    = 6;
 	private static final String[] fileName = {"name", "addr", "city", "type"};
-	private static final String[] algoName = {"Levenshtein", "Needleman-Wunch", "Smith_waterman",
-		"Jaro-Winkler", "Soundex"};
+	private static final String[] algoName = {"Levenshtein", "Needleman-Wunch", "Smith-Waterman",
+		"Jaro-Winkler", "Soundex", "Cosine-Similarity"};
 
 	public static void main(String[] args) {
 
@@ -50,6 +51,7 @@ public class Program {
 		AbstractStringMetric sw  = new SmithWaterman();
 		AbstractStringMetric jw  = new JaroWinkler();
 		AbstractStringMetric sx  = new Soundex();
+		AbstractStringMetric cs  = new CosineSimilarity();
 		// this single line performs the similarity test
 //		System.out.println(sw.getSimilarity("'french bistro'", "french"));
 		// outputs the results
@@ -67,8 +69,8 @@ public class Program {
 		Integer[][] posMatches = new Integer[N][L];
 		String str1 = "";
 		String str2 = "";
-		String res[]  = {"", "", "", "", ""};
-		float[] max = {-1, -1, -1, -1, -1};
+		String res[]  = {"", "", "", "", "", ""};
+		float[] max = {-1, -1, -1, -1, -1, -1};
 		Iterator<String> it_D1 = null;
 		Iterator<String> it_D2 = null;
 		List<String> arr;
@@ -128,6 +130,7 @@ public class Program {
 					compare(str2, res, max, sw.getSimilarity(str1, str2), SW);
 					compare(str2, res, max, jw.getSimilarity(str1, str2), JW);
 					compare(str2, res, max, sx.getSimilarity(str1, str2), SX);
+					compare(str2, res, max, cs.getSimilarity(str1, str2), CS);
 				}
 				arr = new ArrayList<String>(Arrays.asList(res));
 				d1[i].put(str1, arr);

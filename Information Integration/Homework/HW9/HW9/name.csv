@@ -1,113 +1,113 @@
-d1,Levenshtein,Needleman-Wunch,Smith_waterman,Jaro-Winkler,Soundex
-'arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago'
-'art\'s deli','brent\'s deli','brent\'s deli','art\'s delicatessen','art\'s delicatessen','art\'s delicatessen'
-'bel-air hotel','empire korea','belvedere  the',ct,'belvedere  the','bertolini\'s'
-'cafe bizou','cafe bizou','cafe bizou','cafe bizou','cafe bizou','cafe bizou'
-campanile,campanile,campanile,campanile,campanile,campanile
-'chinois on main','chinois on main','chinois on main','chinois on main','chinois on main','chinois on main'
-citrus,citrus,citrus,citrus,citrus,citrus
-'fenix at the argyle','alon\'s at the terrace','alon\'s at the terrace',fenix,'feast from the east',fenix
-granita,granita,granita,granita,granita,granita
-'grill  the','grill on the alley','bistro  the','grill on the alley','grill on the alley',granita
-katsu,eats,match,'restaurant katsu',kamogawa,'katia\'s'
-'l\'orangerie','l\'orangerie','l\'orangerie','l\'orangerie','l\'orangerie','l\'orangerie'
-'le chardonnay (los angeles)','michael\'s (los angeles)','michael\'s (los angeles)','le chardonnay','le chardonnay','le chardonnay'
-'locanda veneta','locanda veneta','locanda veneta','locanda veneta','locanda veneta','locanda veneta'
-matsuhisa,matsuhisa,matsuhisa,matsuhisa,matsuhisa,matsuhisa
-'palm  the (los angeles)','palm  the (atlanta)','michael\'s (los angeles)',palm,'palm  the (atlanta)','planet hollywood'
-patina,patina,patina,patina,patina,patina
-'philippe the original','philippe\'s the original','philippe\'s the original','philippe\'s the original','pacific dining car','plumpjack cafe'
-'pinot bistro','pinot bistro','pinot bistro','pinot bistro','pinot bistro','pinot bistro'
-'rex il ristorante','rex il ristorante','rex il ristorante','rex il ristorante','rex il ristorante','rex il ristorante'
-'spago (los angeles)','spago (las vegas)','spago (las vegas)',spago,'spago (las vegas)','spago (las vegas)'
-valentino,valentino,valentino,valentino,valentino,valentino
-'yujean kang\'s','tommy tang\'s','tommy tang\'s','yujean kang\'s gourmet chinese cuisine','yujean kang\'s gourmet chinese cuisine','yujean kang\'s gourmet chinese cuisine'
-'21 club','21 club','21 club','21 club','21 club','21 club'
-aquavit,aquavit,aquavit,aquavit,aquavit,aquavit
-aureole,aureole,aureole,aureole,aureole,aureole
-'cafe lalo','cafe lalo','cafe lalo','cafe lalo','cafe lalo','cafe lalo'
-'cafe des artistes','cafe des artistes','cafe des artistes','cafe des artistes','cafe des artistes','cafe des artistes'
-'carmine\'s','carmine\'s','carmine\'s','carmine\'s','carmine\'s','carmine\'s'
-'carnegie deli','carnegie deli','carnegie deli','carnegie deli','carnegie deli','carnegie deli'
-chanterelle,chanterelle,chanterelle,chanterelle,chanterelle,chanterelle
-daniel,daniel,daniel,daniel,daniel,daniel
-dawat,dawat,dawat,dawat,dawat,dawat
-felidia,felidia,felidia,felidia,felidia,felidia
-'four seasons','four seasons grill room','fleur de jour','four seasons grill room','four seasons grill room','four seasons grill room'
-'gotham bar & grill','gotham bar & grill','gotham bar & grill','gotham bar & grill','gotham bar & grill','gotham bar & grill'
-'gramercy tavern','gramercy tavern','gramercy tavern','gramercy tavern','gramercy tavern','gramercy tavern'
-'island spice','island spice','island spice','island spice','island spice','island spice'
-'jo jo','jo jo','jo jo','jo jo','jo jo','jo jo'
-'la caravelle','la caravelle','la caravelle','la caravelle','la caravelle','la caravelle'
-'la cote basque','la cote basque','la cote basque','la cote basque','la cote basque','la cote basque'
-'le bernardin','le bernardin','le bernardin','le bernardin','le bernardin','le bernardin'
-'les celebrites','les celebrites','les celebrites','les celebrites','les celebrites','les celebrites'
-'lespinasse (new york city)','kelly\'s on trinity','lettuce souprise you (at)',lespinasse,'lettuce souprise you (at)',lespinasse
-lutece,lutece,lutece,lutece,lutece,lutece
-'manhattan ocean club','manhattan ocean club','manhattan ocean club','manhattan ocean club','manhattan ocean club','manhattan ocean club'
-march,march,march,march,march,march
-'mesa grill','mesa grill','mesa grill','mesa grill','mesa grill','mesa grill'
-'mi cocina','mi cocina','mi cocina','mi cocina','mi cocina','mi cocina'
-montrachet,montrachet,montrachet,montrachet,montrachet,montrachet
-oceana,oceana,oceana,oceana,oceana,oceana
-'park avenue cafe (new york city)','park avenue cafe','milan cafe and coffee bar','park avenue cafe','park avenue cafe','park avenue cafe'
-petrossian,petrossian,petrossian,petrossian,petrossian,petrossian
-picholine,picholine,picholine,picholine,picholine,picholine
-pisces,pisces,pisces,pisces,pisces,pisces
-'rainbow room','rainbow room','rainbow room','rainbow room','rainbow room','rainbow room'
-'river cafe','river cafe','river cafe','river cafe','river cafe','river cafe'
-'san domenico','san domenico','san domenico','san domenico','san domenico','san domenico'
-'second avenue deli','second avenue deli','second avenue deli','second avenue deli','second avenue deli','second avenue deli'
-seryna,seryna,seryna,seryna,seryna,seryna
-'shun lee palace','shun lee west','shun lee west',palm,'shun lee west','shun lee west'
-'sign of the dove','sign of the dove','sign of the dove','sign of the dove','sign of the dove','sign of the dove'
-'smith & wollensky','smith & wollensky','smith & wollensky','smith & wollensky','smith & wollensky','smith & wollensky'
-'tavern on the green','tavern on the green','tavern on the green','tavern on the green','tavern on the green','tavern on the green'
-'uncle nick\'s','uncle nick\'s','uncle nick\'s','uncle nick\'s','uncle nick\'s','uncle nick\'s'
-'union square cafe','union square cafe','union square cafe','union square cafe','union square cafe','union square cafe'
-'virgil\'s real bbq','virgil\'s','rubin\'s red hots','virgil\'s','virgil\'s','virgil\'s'
-'chin\'s','chin\'s','chin\'s','chin\'s','chin\'s','chin\'s'
-'coyote cafe (las vegas)','michael\'s (las vegas)','michael\'s (las vegas)','coyote cafe','coyote cafe','coyote cafe'
-'le montrachet bistro','le montrachet','hyde street bistro',montrachet,'le montrachet','le montrachet'
-'palace court','palace court','palace court','palace court','palace court','palace court'
-'second street grill','second street grille','second street grille','second street grille','second street grille','second street grille'
-'steak house  the','steakhouse  the','steakhouse  the','steakhouse  the','steakhouse  the','steakhouse  the'
-'tillerman  the','apple pan  the','apple pan  the',tillerman,'thelma\'s kitchen',tillerman
-abruzzi,abruzzi,abruzzi,abruzzi,abruzzi,abruzzi
-bacchanalia,bacchanalia,bacchanalia,bacchanalia,bacchanalia,bacchanalia
-'bone\'s restaurant','piero\'s restaurant','piero\'s restaurant','bone\'s','bone\'s','bone\'s'
-'brasserie le coze','brasserie le coze','brasserie le coze','brasserie le coze','brasserie le coze','brasserie le coze'
-'buckhead diner','buckhead diner','buckhead diner','buckhead diner','buckhead diner','buckhead diner'
-'ciboulette restaurant','colonnade restaurant','colonnade restaurant',ciboulette,'colonnade restaurant',ciboulette
-delectables,delectables,delectables,delectables,delectables,delectables
-'georgia grille','georgia grille','georgia grille','georgia grille','georgia grille','georgia grille'
-'hedgerose heights inn  the','hedgerose heights inn','hedgerose heights inn','hedgerose heights inn','hedgerose heights inn','hedgerose heights inn'
-'heera of india','heera of india','heera of india','heera of india','heera of india','heera of india'
-'indigo coastal grill','indigo coastal grill','indigo coastal grill','indigo coastal grill','indigo coastal grill','indigo coastal grill'
-'la grotta','la grotta','la grotta','la grotta','la grotta','la grotta'
-'mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room'
-'nikolai\'s roof','nikolai\'s roof','nikolai\'s roof','nikolai\'s roof','nikolai\'s roof','nikolai\'s roof'
-'pano\'s & paul\'s','pano\'s and paul\'s','pano\'s and paul\'s','pano\'s and paul\'s','pano\'s and paul\'s','pink\'s famous chili dogs'
-'ritz-carlton cafe (buckhead)','ritz-carlton cafe (atlanta)','ritz-carlton cafe (atlanta)',carta,'ritz-carlton cafe (atlanta)','ritz-carlton restaurant and dining room'
-'ritz-carlton dining room (buckhead)','ritz-carlton cafe (atlanta)','dining room  ritz-carlton  buckhead','dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room'
-'ritz-carlton restaurant','ritz-carlton cafe (atlanta)','thailand restaurant','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room'
-toulouse,toulouse,toulouse,toulouse,toulouse,toulouse
-'veni vidi vici','veni vidi vici','veni vidi vici','veni vidi vici','veni vidi vici','veni vidi vici'
-'alain rondelli','alain rondelli','alain rondelli','alain rondelli','alain rondelli','alain rondelli'
-aqua,aqua,aqua,aquavit,aqua,aqua
-boulevard,boulevard,boulevard,boulevard,boulevard,boulevard
-'cafe claude','cafe claude','cafe claude','cafe claude','cafe claude','cafe claude'
-'campton place','campton place','campton place','campton place','campton place','campton place'
-'chez michel','chez michel','chez michel','chez michel','chez michel','chez michel'
-'fleur de lys','fleur de lys','fleur de lys','fleur de lys','fleur de lys','fleur de lys'
-fringale,fringale,fringale,fringale,fringale,fringale
-'hawthorne lane','hawthorne lane','hawthorne lane','hawthorne lane','hawthorne lane','hawthorne lane'
-'khan toke thai house','khan toke thai house','khan toke thai house','khan toke thai house','khan toke thai house','khan toke thai house'
-'la folie','la folie','la folie','la folie','la folie','la folie'
-'lulu restaurant-bis-cafe','restaurant horikawa','restaurant horikawa',lulu,'mambo restaurante cubano','l\'orangerie'
-'masa\'s','masa\'s','masa\'s','masa\'s','masa\'s','masa\'s'
-mifune,adrienne,adrienne,'mifune japan center  kintetsu building',montien,'mifune japan center  kintetsu building'
-'plumpjack cafe','plumpjack cafe','plumpjack cafe','plumpjack cafe','plumpjack cafe','plumpjack cafe'
-postrio,postrio,postrio,postrio,postrio,postrio
-'ritz-carlton dining room (san francisco)','ritz-carlton cafe (atlanta)','ritz-carlton restaurant and dining room','dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room'
-'rose pistola','rose pistola','rose pistola','rose pistola','rose pistola','rose pistola'
+d1,Levenshtein,Needleman-Wunch,Smith-Waterman,Jaro-Winkler,Soundex,Cosine-Similarity
+'arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago','arnie morton\'s of chicago'
+'art\'s deli','brent\'s deli','brent\'s deli','art\'s delicatessen','art\'s delicatessen','art\'s delicatessen','art\'s delicatessen'
+'bel-air hotel','empire korea','belvedere  the',ct,'belvedere  the','bertolini\'s','golden nugget hotel'
+'cafe bizou','cafe bizou','cafe bizou','cafe bizou','cafe bizou','cafe bizou','cafe bizou'
+campanile,campanile,campanile,campanile,campanile,campanile,campanile
+'chinois on main','chinois on main','chinois on main','chinois on main','chinois on main','chinois on main','chinois on main'
+citrus,citrus,citrus,citrus,citrus,citrus,citrus
+'fenix at the argyle','alon\'s at the terrace','alon\'s at the terrace',fenix,'feast from the east',fenix,'alon\'s at the terrace'
+granita,granita,granita,granita,granita,granita,granita
+'grill  the','grill on the alley','bistro  the','grill on the alley','grill on the alley',granita,'belvedere  the'
+katsu,eats,match,'restaurant katsu',kamogawa,'katia\'s','arnie morton\'s of chicago'
+'l\'orangerie','l\'orangerie','l\'orangerie','l\'orangerie','l\'orangerie','l\'orangerie','l\'orangerie'
+'le chardonnay (los angeles)','michael\'s (los angeles)','michael\'s (los angeles)','le chardonnay','le chardonnay','le chardonnay','michael\'s (los angeles)'
+'locanda veneta','locanda veneta','locanda veneta','locanda veneta','locanda veneta','locanda veneta','locanda veneta'
+matsuhisa,matsuhisa,matsuhisa,matsuhisa,matsuhisa,matsuhisa,matsuhisa
+'palm  the (los angeles)','palm  the (atlanta)','michael\'s (los angeles)',palm,'palm  the (atlanta)','planet hollywood','michael\'s (los angeles)'
+patina,patina,patina,patina,patina,patina,patina
+'philippe the original','philippe\'s the original','philippe\'s the original','philippe\'s the original','pacific dining car','plumpjack cafe','philippe\'s the original'
+'pinot bistro','pinot bistro','pinot bistro','pinot bistro','pinot bistro','pinot bistro','pinot bistro'
+'rex il ristorante','rex il ristorante','rex il ristorante','rex il ristorante','rex il ristorante','rex il ristorante','rex il ristorante'
+'spago (los angeles)','spago (las vegas)','spago (las vegas)',spago,'spago (las vegas)','spago (las vegas)','michael\'s (los angeles)'
+valentino,valentino,valentino,valentino,valentino,valentino,valentino
+'yujean kang\'s','tommy tang\'s','tommy tang\'s','yujean kang\'s gourmet chinese cuisine','yujean kang\'s gourmet chinese cuisine','yujean kang\'s gourmet chinese cuisine','yujean kang\'s gourmet chinese cuisine'
+'21 club','21 club','21 club','21 club','21 club','21 club','21 club'
+aquavit,aquavit,aquavit,aquavit,aquavit,aquavit,aquavit
+aureole,aureole,aureole,aureole,aureole,aureole,aureole
+'cafe lalo','cafe lalo','cafe lalo','cafe lalo','cafe lalo','cafe lalo','cafe lalo'
+'cafe des artistes','cafe des artistes','cafe des artistes','cafe des artistes','cafe des artistes','cafe des artistes','cafe des artistes'
+'carmine\'s','carmine\'s','carmine\'s','carmine\'s','carmine\'s','carmine\'s','carmine\'s'
+'carnegie deli','carnegie deli','carnegie deli','carnegie deli','carnegie deli','carnegie deli','carnegie deli'
+chanterelle,chanterelle,chanterelle,chanterelle,chanterelle,chanterelle,chanterelle
+daniel,daniel,daniel,daniel,daniel,daniel,daniel
+dawat,dawat,dawat,dawat,dawat,dawat,dawat
+felidia,felidia,felidia,felidia,felidia,felidia,felidia
+'four seasons','four seasons grill room','fleur de jour','four seasons grill room','four seasons grill room','four seasons grill room','four seasons grill room'
+'gotham bar & grill','gotham bar & grill','gotham bar & grill','gotham bar & grill','gotham bar & grill','gotham bar & grill','gotham bar & grill'
+'gramercy tavern','gramercy tavern','gramercy tavern','gramercy tavern','gramercy tavern','gramercy tavern','gramercy tavern'
+'island spice','island spice','island spice','island spice','island spice','island spice','island spice'
+'jo jo','jo jo','jo jo','jo jo','jo jo','jo jo','jo jo'
+'la caravelle','la caravelle','la caravelle','la caravelle','la caravelle','la caravelle','la caravelle'
+'la cote basque','la cote basque','la cote basque','la cote basque','la cote basque','la cote basque','la cote basque'
+'le bernardin','le bernardin','le bernardin','le bernardin','le bernardin','le bernardin','le bernardin'
+'les celebrites','les celebrites','les celebrites','les celebrites','les celebrites','les celebrites','les celebrites'
+'lespinasse (new york city)','kelly\'s on trinity','lettuce souprise you (at)',lespinasse,'lettuce souprise you (at)',lespinasse,'new york noodletown'
+lutece,lutece,lutece,lutece,lutece,lutece,lutece
+'manhattan ocean club','manhattan ocean club','manhattan ocean club','manhattan ocean club','manhattan ocean club','manhattan ocean club','manhattan ocean club'
+march,march,march,march,march,march,march
+'mesa grill','mesa grill','mesa grill','mesa grill','mesa grill','mesa grill','mesa grill'
+'mi cocina','mi cocina','mi cocina','mi cocina','mi cocina','mi cocina','mi cocina'
+montrachet,montrachet,montrachet,montrachet,montrachet,montrachet,montrachet
+oceana,oceana,oceana,oceana,oceana,oceana,oceana
+'park avenue cafe (new york city)','park avenue cafe','milan cafe and coffee bar','park avenue cafe','park avenue cafe','park avenue cafe','park avenue cafe'
+petrossian,petrossian,petrossian,petrossian,petrossian,petrossian,petrossian
+picholine,picholine,picholine,picholine,picholine,picholine,picholine
+pisces,pisces,pisces,pisces,pisces,pisces,pisces
+'rainbow room','rainbow room','rainbow room','rainbow room','rainbow room','rainbow room','rainbow room'
+'river cafe','river cafe','river cafe','river cafe','river cafe','river cafe','river cafe'
+'san domenico','san domenico','san domenico','san domenico','san domenico','san domenico','san domenico'
+'second avenue deli','second avenue deli','second avenue deli','second avenue deli','second avenue deli','second avenue deli','second avenue deli'
+seryna,seryna,seryna,seryna,seryna,seryna,seryna
+'shun lee palace','shun lee west','shun lee west',palm,'shun lee west','shun lee west','shun lee west'
+'sign of the dove','sign of the dove','sign of the dove','sign of the dove','sign of the dove','sign of the dove','sign of the dove'
+'smith & wollensky','smith & wollensky','smith & wollensky','smith & wollensky','smith & wollensky','smith & wollensky','smith & wollensky'
+'tavern on the green','tavern on the green','tavern on the green','tavern on the green','tavern on the green','tavern on the green','tavern on the green'
+'uncle nick\'s','uncle nick\'s','uncle nick\'s','uncle nick\'s','uncle nick\'s','uncle nick\'s','uncle nick\'s'
+'union square cafe','union square cafe','union square cafe','union square cafe','union square cafe','union square cafe','union square cafe'
+'virgil\'s real bbq','virgil\'s','rubin\'s red hots','virgil\'s','virgil\'s','virgil\'s','san francisco bbq'
+'chin\'s','chin\'s','chin\'s','chin\'s','chin\'s','chin\'s','chin\'s'
+'coyote cafe (las vegas)','michael\'s (las vegas)','michael\'s (las vegas)','coyote cafe','coyote cafe','coyote cafe','michael\'s (las vegas)'
+'le montrachet bistro','le montrachet','hyde street bistro',montrachet,'le montrachet','le montrachet',montrachet
+'palace court','palace court','palace court','palace court','palace court','palace court','palace court'
+'second street grill','second street grille','second street grille','second street grille','second street grille','second street grille','second street grille'
+'steak house  the','steakhouse  the','steakhouse  the','steakhouse  the','steakhouse  the','steakhouse  the','steak house'
+'tillerman  the','apple pan  the','apple pan  the',tillerman,'thelma\'s kitchen',tillerman,'belvedere  the'
+abruzzi,abruzzi,abruzzi,abruzzi,abruzzi,abruzzi,abruzzi
+bacchanalia,bacchanalia,bacchanalia,bacchanalia,bacchanalia,bacchanalia,bacchanalia
+'bone\'s restaurant','piero\'s restaurant','piero\'s restaurant','bone\'s','bone\'s','bone\'s','lanza restaurant'
+'brasserie le coze','brasserie le coze','brasserie le coze','brasserie le coze','brasserie le coze','brasserie le coze','brasserie le coze'
+'buckhead diner','buckhead diner','buckhead diner','buckhead diner','buckhead diner','buckhead diner','buckhead diner'
+'ciboulette restaurant','colonnade restaurant','colonnade restaurant',ciboulette,'colonnade restaurant',ciboulette,'lanza restaurant'
+delectables,delectables,delectables,delectables,delectables,delectables,delectables
+'georgia grille','georgia grille','georgia grille','georgia grille','georgia grille','georgia grille','georgia grille'
+'hedgerose heights inn  the','hedgerose heights inn','hedgerose heights inn','hedgerose heights inn','hedgerose heights inn','hedgerose heights inn','hedgerose heights inn'
+'heera of india','heera of india','heera of india','heera of india','heera of india','heera of india','heera of india'
+'indigo coastal grill','indigo coastal grill','indigo coastal grill','indigo coastal grill','indigo coastal grill','indigo coastal grill','indigo coastal grill'
+'la grotta','la grotta','la grotta','la grotta','la grotta','la grotta','la grotta'
+'mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room','mary mac\'s tea room'
+'nikolai\'s roof','nikolai\'s roof','nikolai\'s roof','nikolai\'s roof','nikolai\'s roof','nikolai\'s roof','nikolai\'s roof'
+'pano\'s & paul\'s','pano\'s and paul\'s','pano\'s and paul\'s','pano\'s and paul\'s','pano\'s and paul\'s','pink\'s famous chili dogs','pano\'s and paul\'s'
+'ritz-carlton cafe (buckhead)','ritz-carlton cafe (atlanta)','ritz-carlton cafe (atlanta)',carta,'ritz-carlton cafe (atlanta)','ritz-carlton restaurant and dining room','ritz-carlton cafe (atlanta)'
+'ritz-carlton dining room (buckhead)','ritz-carlton cafe (atlanta)','dining room  ritz-carlton  buckhead','dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room'
+'ritz-carlton restaurant','ritz-carlton cafe (atlanta)','thailand restaurant','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room','lanza restaurant'
+toulouse,toulouse,toulouse,toulouse,toulouse,toulouse,toulouse
+'veni vidi vici','veni vidi vici','veni vidi vici','veni vidi vici','veni vidi vici','veni vidi vici','veni vidi vici'
+'alain rondelli','alain rondelli','alain rondelli','alain rondelli','alain rondelli','alain rondelli','alain rondelli'
+aqua,aqua,aqua,aquavit,aqua,aqua,aqua
+boulevard,boulevard,boulevard,boulevard,boulevard,boulevard,boulevard
+'cafe claude','cafe claude','cafe claude','cafe claude','cafe claude','cafe claude','cafe claude'
+'campton place','campton place','campton place','campton place','campton place','campton place','campton place'
+'chez michel','chez michel','chez michel','chez michel','chez michel','chez michel','chez michel'
+'fleur de lys','fleur de lys','fleur de lys','fleur de lys','fleur de lys','fleur de lys','fleur de lys'
+fringale,fringale,fringale,fringale,fringale,fringale,fringale
+'hawthorne lane','hawthorne lane','hawthorne lane','hawthorne lane','hawthorne lane','hawthorne lane','hawthorne lane'
+'khan toke thai house','khan toke thai house','khan toke thai house','khan toke thai house','khan toke thai house','khan toke thai house','khan toke thai house'
+'la folie','la folie','la folie','la folie','la folie','la folie','la folie'
+'lulu restaurant-bis-cafe','restaurant horikawa','restaurant horikawa',lulu,'mambo restaurante cubano','l\'orangerie','arnie morton\'s of chicago'
+'masa\'s','masa\'s','masa\'s','masa\'s','masa\'s','masa\'s','masa\'s'
+mifune,adrienne,adrienne,'mifune japan center  kintetsu building',montien,'mifune japan center  kintetsu building','arnie morton\'s of chicago'
+'plumpjack cafe','plumpjack cafe','plumpjack cafe','plumpjack cafe','plumpjack cafe','plumpjack cafe','plumpjack cafe'
+postrio,postrio,postrio,postrio,postrio,postrio,postrio
+'ritz-carlton dining room (san francisco)','ritz-carlton cafe (atlanta)','ritz-carlton restaurant and dining room','dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room','ritz-carlton restaurant and dining room'
+'rose pistola','rose pistola','rose pistola','rose pistola','rose pistola','rose pistola','rose pistola'
