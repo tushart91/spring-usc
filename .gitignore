@@ -60,4 +60,41 @@ Probabilistic\ Reasoning/Probablistic\ Graphic\ Models.pdf
 Probabilistic\ Reasoning/HW3/Msbn3.Err
 Probabilistic\ Reasoning/HW4/Msbn3.Err
 *.swp
-*.DS_Store
+
+*/archive/
+
+__MACOSX
+.DS_Store
+
+###########################
+# eclipse generated files #
+###########################
+.project
+.settings
+.classpath
+.sass-cache/
+
+######################
+# OS generated files #
+######################
+*/.DS_Store
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+############
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
