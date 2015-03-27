@@ -1,0 +1,17 @@
+d1,Levenshtein,Needleman-Wunch,Smith_waterman,Jaro-Winkler,Soundex
+'los angeles','los angeles','los angeles','los angeles','los angeles','los angeles'
+'studio city','studio city','studio city','studio city','studio city','studio city'
+'bel air','bel air','bel air','bel air','bel air','bel air'
+'sherman oaks','sherman oaks','sherman oaks','sherman oaks','sherman oaks','sherman oaks'
+'santa monica','santa monica','santa monica','santa monica','santa monica','santa monica'
+'w. hollywood','w. hollywood','w. hollywood',hollywood,'w. hollywood','w. hollywood'
+malibu,malibu,malibu,malibu,malibu,malibu
+'beverly hills','beverly hills','beverly hills','beverly hills','beverly hills','beverly hills'
+'los feliz','los feliz','los feliz','los feliz','los feliz','los feliz'
+chinatown,chinatown,chinatown,chinatown,chinatown,chinatown
+pasadena,pasadena,pasadena,pasadena,pasadena,pasadena
+'new york city','new york city','new york city','new york city','new york city','new york city'
+brooklyn,brooklyn,brooklyn,brooklyn,brooklyn,brooklyn
+'las vegas','las vegas','las vegas','las vegas','las vegas','las vegas'
+atlanta,atlanta,atlanta,atlanta,atlanta,atlanta
+'san francisco','san francisco','san francisco','san francisco','san francisco','san francisco'

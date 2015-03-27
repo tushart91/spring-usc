@@ -97,7 +97,7 @@ public class SimpleExample {
      * @param str1 the first string with which to compare
      * @param str2 the second string to compare with the first
      */
-    private static void outputResult(final float result, final AbstractStringMetric metric, final String str1, final String str2) {
+    public static void outputResult(final float result, final AbstractStringMetric metric, final String str1, final String str2) {
         System.out.println("Using Metric " + metric.getShortDescriptionString() + " on strings \"" + str1 + "\" & \"" + str2 + "\" gives a similarity score of " + result);
 
     }

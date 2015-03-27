@@ -89,8 +89,6 @@ def agent():
                     outgoing_delta = delta.inverse
                 else:
                     psi = matrixwise_multiply(psi, delta.value)
-                print "psi:",
-                print psi
                 print "Delta:", outgoing_delta, "value:"
                 outgoing_delta.value = maxi(psi)
                 print_1d(outgoing_delta.value)
@@ -102,8 +100,6 @@ def agent():
                 for delta in clique.incoming_deltas:
                     if delta.inverse.__str__() != outgoing_delta.__str__():
                         psi = matrixwise_multiply(psi, delta.value)
-                print "psi:",
-                print psi
                 print "Delta:", outgoing_delta, "value:"
                 outgoing_delta.value = maxi(psi)
                 print_1d(outgoing_delta.value)
