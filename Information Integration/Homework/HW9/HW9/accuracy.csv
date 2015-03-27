@@ -1,0 +1,5 @@
+column,Levenshtein,Needleman-Wunch,Smith_waterman,Jaro-Winkler,Soundex
+name,92,89,102,97,100
+addr,80,78,92,95,56
+city,16,16,16,16,16
+type,27,28,27,27,28
