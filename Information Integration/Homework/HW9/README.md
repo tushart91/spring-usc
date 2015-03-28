@@ -4,6 +4,7 @@
 cd HW9
 make
 ```
+Output files generated within HW9 folder.
 
 ## compile within eclipse
 * Import both HW9 and simmetrics (java-similarities/simmetrics/) into eclipse.
