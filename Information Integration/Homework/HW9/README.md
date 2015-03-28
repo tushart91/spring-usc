@@ -1,3 +1,6 @@
+#Libraries
+http://code.google.com/p/java-similarities/source/browse/trunk/simmetrics/src/main/java/uk/ac/shef/wit/simmetrics/
+
 #How to
 ## run
 ```
