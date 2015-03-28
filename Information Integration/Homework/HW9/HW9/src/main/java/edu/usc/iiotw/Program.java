@@ -67,7 +67,7 @@ public class Program {
 		obj.get_groundtruth(classToString, stringToClass);
 		
 		//declarations
-		Integer[][] posMatches = new Integer[N][L];
+		Float[][] posMatches = new Float[N][L];
 		String str1 = "";
 		String str2 = "";
 		String res[]  = {"", "", "", "", "", "", ""};
@@ -92,7 +92,7 @@ public class Program {
 		
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < L; j++) { 
-				posMatches[i][j] = new Integer(0);
+				posMatches[i][j] = new Float(0);
 			}
 		}
 		
@@ -146,7 +146,8 @@ public class Program {
 			closeFileOutputStream(fout);
 			System.out.println(fileName[i]);
 			for (int j = 0; j < L; j++) {
-				System.out.println(algoName[j] + ": " + ": " + posMatches[i][j]);
+				posMatches[i][j] /= d1[i].size();
+				System.out.println(algoName[j] + ": " + posMatches[i][j]);
 			}
 			System.out.println();
 			write(aOut, fileName[i], posMatches[i]);
@@ -155,7 +156,7 @@ public class Program {
 		closeFileOutputStream(aFout);
 	}
 	
-	private static void accuracy(Integer[] matches, 
+	private static void accuracy(Float[] matches, 
 			LinkedHashMap<String, HashSet<Integer>> stringToClass,
 			LinkedHashMap<Integer, HashSet<String>> classToString, String str, String[] result) {
 		HashSet<Integer> klass = null;
@@ -190,7 +191,7 @@ public class Program {
 		for (Object string : algo) {
 			if (string instanceof String)
 				res.append("," + string);
-			else if (string instanceof Integer)
+			else if (string instanceof Float)
 				res.append("," + string.toString());
 		}
 		res.append("\n");
