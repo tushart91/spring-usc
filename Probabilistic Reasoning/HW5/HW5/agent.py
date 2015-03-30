@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 ########################################
 # @file     agent.py
@@ -89,8 +90,9 @@ def agent():
                     outgoing_delta = delta.inverse
                 else:
                     psi = matrixwise_multiply(psi, delta.value)
+                #print psi
                 print "Delta:", outgoing_delta, "value:"
-                outgoing_delta.value = maxi(psi)
+                outgoing_delta.value = max_3d(psi)
                 print_1d(outgoing_delta.value)
             print
         elif r == 0:
@@ -100,12 +102,12 @@ def agent():
                 for delta in clique.incoming_deltas:
                     if delta.inverse.__str__() != outgoing_delta.__str__():
                         psi = matrixwise_multiply(psi, delta.value)
+                #print psi
                 print "Delta:", outgoing_delta, "value:"
-                outgoing_delta.value = maxi(psi)
+                outgoing_delta.value = max_3d(psi)
                 print_1d(outgoing_delta.value)
             print
 
-    exit(0)
     ###############################
     ## Compute the distributions ##
     ###############################
@@ -116,9 +118,13 @@ def agent():
         if clique.incoming_deltas_ready == len(clique.incoming_deltas):
             clique.compute_belief()
             print "Distribution for", clique
+            #print clique.belief
             print_3d(clique.belief, clique.id)
+            print "MAP value(" + clique.id + "):",
+            print max(max_3d(clique.belief))
             print
 
+    '''
     print "###################"
     print "## Probabilities ##"
     print "###################"
@@ -130,7 +136,7 @@ def agent():
                 print "P("+key+")"
                 print_1d(normalized(prob[key]))
                 print
-
+    '''
 
     #######################################
     ## Compute probability of P(E|j1,m0) ##
@@ -156,50 +162,58 @@ def agent():
             delta.ready = False
 
     for clique in cliques:
-        print "Outbound message from Clique", clique
-        for outgoing_delta in clique.outgoing_deltas:
-            psi = clique.psi[:]
-            for delta in clique.incoming_deltas:
-                if delta.inverse.__str__() != outgoing_delta.__str__():
-                    psi = matrixwise_multiply(psi, delta.value)
-            print "Delta:", outgoing_delta, "value:"
-            outgoing_delta.value = marginalize_first(psi) if clique.id!="BEA" \
-                else marginalize_first_second(psi)
-            print_1d(outgoing_delta.value)
+        if clique.id != "BEA":
+            print "Outbound message from Clique", clique
+            for outgoing_delta in clique.outgoing_deltas:
+                psi = clique.psi[:]
+                for delta in clique.incoming_deltas:
+                    if delta.inverse.__str__() != outgoing_delta.__str__():
+                        psi = matrixwise_multiply(psi, delta.value)
+                print "Delta:", outgoing_delta, "value:"
+                outgoing_delta.value = marginalize_first(psi) if clique.id!="BEA" \
+                    else max_3d(psi)
+                print_1d(outgoing_delta.value)
         print
 
-    print "In Clique", JTA
-    JTA.compute_belief()
-    print "Unnormalized Distribution for", JTA
-    print_2d(JTA.belief, JTA.id)
-    print
-    prob = JTA.compute_prob(True)
-    for key in prob.keys():
-        print "P("+key+")"
-        print_1d(prob[key])
-        print
+    #print "In Clique", JTA
+    #JTA.compute_belief()
+    #print "Unnormalized Distribution for", JTA
+    #print_2d(JTA.belief, JTA.id)
+    #print
+    #prob = JTA.compute_prob(True)
+    #for key in prob.keys():
+        #print "P("+key+")"
+        #print_1d(prob[key])
+        #print
 
-    print "In Clique", MNA
-    MNA.compute_belief()
-    print "Unnormalized Distribution for", MNA
-    print_2d(MNA.belief, MNA.id)
-    print
-    prob = MNA.compute_prob(True)
-    for key in prob.keys():
-        print "P("+key+")"
-        print_1d(prob[key])
-        print
+    #print "In Clique", MNA
+    #MNA.compute_belief()
+    #print "Unnormalized Distribution for", MNA
+    #print_2d(MNA.belief, MNA.id)
+    #print
+    #prob = MNA.compute_prob(True)
+    #for key in prob.keys():
+        #print "P("+key+")"
+        #print_1d(prob[key])
+        #print
 
     print "In Clique", BEA
     BEA.compute_belief()
-    print "Unnormalized Distribution for", BEA
+    print "Distribution for", BEA.id
     print_3d(BEA.belief, BEA.id)
     print
-    prob = BEA.compute_prob()
-    for key in prob.keys():
-        print "P("+key+")"
-        print_1d(prob[key])
-        print
+    BE = marginalize_last(BEA.belief)
+    print 
+    print "Distribution for BE"
+    print_2d(BE, "BE")
+    print
+    print "MAP(B,E|J=True, M=False) value:",
+    print max([max(BE[0]), max(BE[1])])
+    #prob = BEA.compute_prob()
+    #for key in prob.keys():
+        #print "P("+key+")"
+        #print_1d(prob[key])
+        #print
     
 if __name__ == "__main__":
     print

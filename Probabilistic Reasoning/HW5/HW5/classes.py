@@ -49,13 +49,21 @@ def print_1d(item):
     print "False", "=", round(item[0], 8)
     print "True", " =", round(item[1], 8)
 
-def maxi(psi):
+def max_3d(psi):
     max = [-1, -1]
     for i in range(len(psi)):
         for j in psi[i]:
             for k in j:
                 if max[i] < k:
                     max[i] = k
+    return max
+
+def max_2d(psi):
+    max = [-1, -1]
+    for i in range(len(psi)):
+        for j in psi[i]:
+            if max[i] < j:
+                max[i] = j
     return max
 
 def pointwise_multiply(factor_3d, factor_1d):
