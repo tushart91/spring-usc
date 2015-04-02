@@ -162,7 +162,7 @@ Aureole 34 E. 61st St. New York City 212-319-1660 American (New)
 Aureole 34 E. 61st St. New York 212/ 319-1660 American
 ########################
 
-BCafe Lalo 201 W. 83rd St. New York City 212-496-6031 Coffeehouses
+Cafe Lalo 201 W. 83rd St. New York City 212-496-6031 Coffeehouses
 
 
 Caf&eacute; Lalo 201 W. 83rd St. New York 212/496-6031 Coffee Bar
@@ -192,7 +192,7 @@ Chanterelle 2 Harrison St. New York City 212-966-6960 French (New)
 Chanterelle 2 Harrison St.  near Hudson St. New York 212/966-6960 American
 ########################
 
-CDaniel 20 E. 76th St. New York City 212-288-0033 French (New)
+Daniel 20 E. 76th St. New York City 212-288-0033 French (New)
 
 
 Daniel 20 E. 76th St. New York 212/288-0033 French
@@ -507,8 +507,7 @@ Hedgerose Heights Inn 490 E. Paces Ferry Rd. Atlanta 404/233-7673 International
 Heera of India 595 Piedmont Ave. Atlanta 404-876-4408 Indian
 
 
-Heera of India 595 Piedmont Ave.  Rio Shopping Mall Atlanta 404/876-4408
- Asian
+Heera of India 595 Piedmont Ave.  Rio Shopping Mall Atlanta 404/876-4408 Asian
 ########################
 
 Indigo Coastal Grill 1397 N. Highland Ave. Atlanta 404-876-0676 Eclectic
