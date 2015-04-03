@@ -83,13 +83,12 @@
                     <param name="replace3" value="and"/>
                     <param name="replace2" value="\s"/>
                     <param name="replace1" value="/"/>
-                    <param name="new-string2" value=""/>
                     <param name="new-string3" value=" "/>
                     <param name="new-string4" value=" "/>
                     <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;for (int i = 0; i &lt; lookFor.length; i++) {&#xa;&#x9;column = column.replaceAll(lookFor[i], replaceWith[i]);&#xa;}&#xa;return column;&#xa;"/>
                     <param name="out-column" value="phone"/>
-                    <param name="replace4" value="or"/>
                     <param name="new-string1" value="-"/>
+                    <param name="replace4" value="or"/>
                 </params>
             </column>
             <column column="type"
@@ -131,8 +130,8 @@
                 left-column="name" right-column="name" weight="10">
                 <params>
                     <param name="match-level-start" value="0.05"/>
-                    <param name="soundex-length" value="10"/>
                     <param name="math-level-end" value="0.3"/>
+                    <param name="soundex-length" value="10"/>
                 </params>
             </condition>
         </join-condition>
