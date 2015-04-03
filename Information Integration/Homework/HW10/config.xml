@@ -149,12 +149,11 @@
         <results-saver class="cdc.impl.resultsavers.DeduplicatingResultsSaver">
             <params>
                 <param name="deduplication" value="both"/>
-                <param name="delete-duplicates" value="false"/>
+                <param name="delete-duplicates" value="ask"/>
             </params>
             <savers>
                 <results-saver class="cdc.impl.resultsavers.CSVFileSaver">
                     <params>
-                        <param name="encoding" value="UTF-8"/>
                         <param name="output-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/results.csv"/>
                     </params>
                 </results-saver>
