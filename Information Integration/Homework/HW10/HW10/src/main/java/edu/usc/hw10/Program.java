@@ -25,7 +25,7 @@ public class Program {
 		//Initialize data structure
 		HashMap<String, Integer> d1 = obj.get_d("data/d1.csv", N);
 		HashMap<String, Integer> d2 = obj.get_d("data/d2.csv", N);
-		LinkedHashMap<String, String> result = obj.get_results();
+		LinkedHashMap<String, String> output = obj.get_output();
 		HashMap<String, String> gt = obj.get_groundtruth();
 		
 		//Initialize
@@ -33,7 +33,7 @@ public class Program {
 		FileOutputStream fout = null;
 		BufferedWriter out = null;
 		try {
-			file = new File("output.csv");
+			file = new File("results.csv");
 			fout = new FileOutputStream(file);
 			out = new BufferedWriter(new OutputStreamWriter(fout));
 		} catch (FileNotFoundException e1) {
@@ -43,22 +43,22 @@ public class Program {
 		//Line number for output
 		String str = null;
 		Float count = 0f;
-		Iterator<String> it = result.keySet().iterator();
+		Iterator<String> it = output.keySet().iterator();
 		try{
 			out.write("d1,d2\n");
 			
 			while(it.hasNext()) {
 				str = it.next();
-				System.out.println(str + ": " + d1.get(str) + ", " + d2.get(result.get(str)));
-				out.write(d1.get(str) + "," + d2.get(result.get(str)) + "\n");
+				System.out.println(str + ": " + d1.get(str) + ", " + d2.get(output.get(str)));
+				out.write(d1.get(str) + "," + d2.get(output.get(str)) + "\n");
 				
 				//count for true positive matches
-				if (result.get(str).equalsIgnoreCase(gt.get(str)))
+				if (output.get(str).equalsIgnoreCase(gt.get(str)))
 					count++;
 				else {
 					System.out.println();
 					System.out.println("No matches for:");
-					System.out.println(str + " : " + result.get(str) + " - " + gt.get(str));
+					System.out.println(str + " : " + output.get(str) + " - " + gt.get(str));
 					System.out.println();
 				}
 				
@@ -71,7 +71,7 @@ public class Program {
 		
 		//Compute F-Score
 		System.out.println(count.intValue() + " true positive matches");
-		Float precision = count / result.size();
+		Float precision = count / output.size();
 		System.out.println("Precision: " + precision);
 		Float recall = count / gt.size();
 		System.out.println("Recall: " + recall);
@@ -104,14 +104,14 @@ public class Program {
 		return d;
 	}
 
-	public LinkedHashMap<String, String> get_results() {
+	public LinkedHashMap<String, String> get_output() {
 
 		//Initialize data structure
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 		
 		// Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("data/results.csv");
+		InputStream inputStream = classLoader.getResourceAsStream("data/output.csv");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				inputStream));
 		String line = "";

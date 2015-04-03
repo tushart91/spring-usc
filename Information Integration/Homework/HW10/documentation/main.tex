@@ -1,0 +1,226 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+% Custom sectioning
+%\usepackage{sectsty}
+%\allsectionsfont{\centering \normalfont\scshape}
+
+\captionsetup{justification=centering,
+singlelinecheck=false
+}
+\graphicspath{ {required/} }
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass}
+\rhead{\hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 10}
+\newcommand{\hmwkDueDate}{April 3, 2015}
+\newcommand{\hmwkClass}{Information Integration on the Web}
+\newcommand{\hmwkClassInstructor}{Prof. Ambite \& Knoblock}
+\newcommand{\hmwkAuthorName}{Tushar Tiwari}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\section{\textbf{\Large Solution}}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+% Language Definitions for SPARQL
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{PREFIX},
+morecomment=[l][\color{grey}]{BASE},
+morecomment=[l][\color{olivegreen}]{SELECT},
+morestring=[b][\color{blue}]",
+showstringspaces=false,
+}
+\lstset{%
+  numbers=none,
+  tabsize=4,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  framerule=10pt,
+  columns=fullflexible,
+  language=ttl
+}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+% Language Definitions for Turtle
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{@},
+morecomment=[l][\color{grey}]{PREFIX},
+morecomment=[l][\color{grey}]{BASE},
+morecomment=[l][\color{olivegreen}]{\#},
+morestring=[b][\color{blue}]\",
+showstringspaces=false,
+}
+\lstset{%
+  numbers=none,
+  tabsize=4,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  framerule=10pt,
+  columns=fullflexible,
+  language=ttl
+}
+
+\begin{homeworkProblem}
+    Describe the performed record linkage
+    \solution
+    \subsubsection{Data Transformation}
+    After loading both the files, a few transformations were performed in order to get better matches.
+    \begin{itemize}
+    \item Transform name, addr and type to lower cased strings. This ensures that different casings of the field do not cause a wrong match. For example, "steakhouse" and "Steakhouse" may not give a perfect edit distance score even though they are spelled the same way.
+    \item Trimmed any leading and trailing whitespaces
+    \item Transformed phone num of d1.csv from "xxx/xxx-xxxx" to "xxx-xxx-xxxx" using regex.
+    \end{itemize}
+    \subsubsection{Metrics for matching}
+    \begin{itemize}
+    \item In the given data I immediately noticed that a lot of the matches have the exact same phone number assosciated with them. That is a matching pair of records shared the same phone number. This is however not true for all, but for most. Hence, I added a q grams comparision metric on phone no with weight 60\% because if they have the exact same phone number then they must be a matching pair. The q value was chosen to be 4 because most restaurants will share the same area code so it must be atleast more than 3.
+    \item After using the above metric, I noticed that the some of the records that did not match from the above metric had same names but different phone nums and hence I added an equal fields boolean distance metric on the name column. Obviously records with exactly the same name will be a matching pair. The weightage I gave this was 30\% because the soundex metric explained below added another 10\%.
+    \item A phone match was causing lots of matches with similar confidence levels and to put one match ahead of the other match, I added a metric that performed a soundex on the name with weightage 10\%. If there were two matches on phone numbers, then the one with more similar soundex name would get selected.
+    \item I chose an acceptance level of 40\% because records with same name should get accepted if their phones do not match. 30\% from exact and 10\% from soundex.
+    \end{itemize}
+    \subsubsection{F-Score}
+    \begin{itemize}
+    \item The output file generated (output.csv) by fril contains 112 total matches.
+    \item The groundtruth file also contains 112 matches.
+    \item The number of true positive matches is 109.
+    \item $precision = 109 / 112 = 0.97321427 $
+    \item $recall = 109 / 112 = 0.97321427$
+    \item $F-Score = 2 \cdot \frac{precision \cdot recall}{precision + recall} = 0.97321427$
+    \end{itemize}
+    
+\end{homeworkProblem}
+\end{document}

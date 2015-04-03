@@ -97,9 +97,9 @@
     </right-data-source>
     <join class="cdc.impl.join.snm.SNMJoin_v1" summary-left="false" summary-right="false">
         <params>
-            <param name="window" value="10000"/>
-            <param name="sort-order-right" value="name,phone,name,addr,name,name,name,name,name,name,name"/>
-            <param name="sort-order-left" value="name,phone,name,addr,name,name,name,name,name,name,name"/>
+            <param name="window" value="300"/>
+            <param name="sort-order-right" value="name,phone,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name"/>
+            <param name="sort-order-left" value="name,phone,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name"/>
         </params>
         <join-condition class="cdc.impl.conditions.WeightedJoinCondition">
             <params>
@@ -122,15 +122,8 @@
                 left-column="name" right-column="name" weight="10">
                 <params>
                     <param name="match-level-start" value="0.05"/>
-                    <param name="soundex-length" value="10"/>
+                    <param name="soundex-length" value="5"/>
                     <param name="math-level-end" value="0.3"/>
-                </params>
-            </condition>
-            <condition class="cdc.impl.distance.EditDistance"
-                left-column="addr" right-column="addr" weight="0">
-                <params>
-                    <param name="match-level-start" value="0.1"/>
-                    <param name="math-level-end" value="0.2"/>
                 </params>
             </condition>
         </join-condition>
@@ -154,7 +147,7 @@
             <savers>
                 <results-saver class="cdc.impl.resultsavers.CSVFileSaver">
                     <params>
-                        <param name="output-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/results.csv"/>
+                        <param name="output-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/output.csv"/>
                     </params>
                 </results-saver>
             </savers>
