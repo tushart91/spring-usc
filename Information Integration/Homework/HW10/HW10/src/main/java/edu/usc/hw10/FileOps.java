@@ -21,7 +21,7 @@ public class FileOps {
 		InputStream inputStream = classLoader.getResourceAsStream(filename);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				inputStream));
-		File file = new File("d1.csv");
+		File file = new File("data/d1.csv");
 		FileOutputStream fout = null;
 		BufferedWriter out = null;
 		try {

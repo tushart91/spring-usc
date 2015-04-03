@@ -3,10 +3,10 @@ package edu.usc.hw10;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class Program {
 		FileOutputStream fout = null;
 		BufferedWriter out = null;
 		try {
-			file = new File("results.csv");
+			file = new File("data/results.csv");
 			fout = new FileOutputStream(file);
 			out = new BufferedWriter(new OutputStreamWriter(fout));
 		} catch (FileNotFoundException e1) {
@@ -49,7 +49,7 @@ public class Program {
 			
 			while(it.hasNext()) {
 				str = it.next();
-				System.out.println(str + ": " + d1.get(str) + ", " + d2.get(output.get(str)));
+//				System.out.println(str + ": " + d1.get(str) + ", " + d2.get(output.get(str)));
 				out.write(d1.get(str) + "," + d2.get(output.get(str)) + "\n");
 				
 				//count for true positive matches
@@ -83,10 +83,17 @@ public class Program {
 		HashMap<String, Integer> d = new HashMap<String, Integer>();
 
 		// Get file from resources folder
-		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream(fileName);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				inputStream));
+		
+		File file = new File(fileName);
+		FileInputStream fin = null;
+		try {
+			fin = new FileInputStream(file);
+		} catch (FileNotFoundException e1) {
+			System.out.println(fileName + " not found");
+			System.exit(0);
+		}
+		BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
+		
 		String line = "";
 		String[] parts = null;
 		Integer i = 1;
@@ -97,7 +104,7 @@ public class Program {
 				d.put(parts[NAME].trim().toLowerCase(), i++);
 			}
 			reader.close();
-			inputStream.close();
+			fin.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -110,10 +117,18 @@ public class Program {
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 		
 		// Get file from resources folder
-		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("data/output.csv");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				inputStream));
+		
+		File file = new File("data/output.csv");
+		FileInputStream fin = null;
+		try {
+			fin = new FileInputStream(file);
+		} catch (FileNotFoundException e1) {
+			System.out.println("output.csv not found");
+			e1.printStackTrace();
+			System.exit(0);
+		}
+		BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
+		
 		String line = "";
 		String[] parts = null;
 		//Read results.csv
@@ -124,7 +139,7 @@ public class Program {
 				map.put(parts[4].toLowerCase(), parts[0].toLowerCase());
 			}
 			reader.close();
-			inputStream.close();
+			fin.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -137,10 +152,18 @@ public class Program {
 		HashMap<String, String> map = new HashMap<String, String>();
 		
 		// Get file from resources folder
-		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("data/groundtruth.csv");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				inputStream));
+		
+		File file = new File("data/groundtruth.csv");
+		FileInputStream fin = null;
+		try {
+			fin = new FileInputStream(file);
+		} catch (FileNotFoundException e1) {
+			System.out.println("groundtruth.csv not found");
+			e1.printStackTrace();
+			System.exit(0);
+		}
+		BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
+		
 		String line = "";
 		String[] parts = null;
 		String key = null;
@@ -156,7 +179,7 @@ public class Program {
 				map.put(parts[0].toLowerCase(), key);
 			}
 			reader.close();
-			inputStream.close();
+			fin.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
