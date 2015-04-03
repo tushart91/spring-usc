@@ -9,14 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.nio.ByteBuffer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.Charset;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 public class Program {
 
@@ -51,16 +46,18 @@ public class Program {
 		Iterator<String> it = result.keySet().iterator();
 		try{
 			out.write("d1,d2\n");
-			System.out.println("No matches for:");
+			
 			while(it.hasNext()) {
 				str = it.next();
-				
+				System.out.println(str + ": " + d1.get(str) + ", " + d2.get(result.get(str)));
 				out.write(d1.get(str) + "," + d2.get(result.get(str)) + "\n");
 				
 				//count for true positive matches
 				if (result.get(str).equalsIgnoreCase(gt.get(str)))
 					count++;
 				else {
+					System.out.println();
+					System.out.println("No matches for:");
 					System.out.println(str + " : " + result.get(str) + " - " + gt.get(str));
 					System.out.println();
 				}
@@ -71,8 +68,9 @@ public class Program {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(count.toString() + " true positive matches");
+		
 		//Compute F-Score
+		System.out.println(count.intValue() + " true positive matches");
 		Float precision = count / result.size();
 		System.out.println("Precision: " + precision);
 		Float recall = count / gt.size();
