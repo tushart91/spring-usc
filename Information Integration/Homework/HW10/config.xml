@@ -4,51 +4,7 @@
         <params>
             <param name="column-separator" value=","/>
             <param name="source-name" value="Zagat"/>
-            <param name="input-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/d2.csv"/>
-        </params>
-        <row-model>
-            <column column="name"
-                converter="cdc.datamodel.converters.ReplaceConverter" name="name">
-                <empty-values/>
-                <params>
-                    <param name="replace1" value="&quot;&quot;"/>
-                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;column = column.toLowerCase().trim();&#xa;&#xa;return column;&#xa;"/>
-                    <param name="out-column" value="name"/>
-                    <param name="new-string1" value="&quot;&quot;"/>
-                </params>
-            </column>
-            <column column="addr"
-                converter="cdc.datamodel.converters.ReplaceConverter" name="addr">
-                <empty-values/>
-                <params>
-                    <param name="replace1" value="&quot;&quot;"/>
-                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;column = column.toLowerCase().trim();&#xa;&#xa;return column;&#xa;"/>
-                    <param name="out-column" value="addr"/>
-                    <param name="new-string1" value="&quot;&quot;"/>
-                </params>
-            </column>
-            <column column="phone"
-                converter="cdc.datamodel.converters.DummyConverter" name="phone">
-                <empty-values/>
-                <params/>
-            </column>
-            <column column="type"
-                converter="cdc.datamodel.converters.ReplaceConverter" name="type">
-                <empty-values/>
-                <params>
-                    <param name="replace1" value="&quot;&quot;"/>
-                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;column = column.toLowerCase().trim();&#xa;&#xa;return column;&#xa;"/>
-                    <param name="out-column" value="type"/>
-                    <param name="new-string1" value="&quot;&quot;"/>
-                </params>
-            </column>
-        </row-model>
-    </left-data-source>
-    <right-data-source class="cdc.impl.datasource.text.CSVDataSource" name="Fodors">
-        <params>
-            <param name="column-separator" value=","/>
-            <param name="source-name" value="Fodors"/>
-            <param name="input-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/d1.csv"/>
+            <param name="input-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/HW10/data/d2.csv"/>
         </params>
         <row-model>
             <column column="name"
@@ -75,12 +31,10 @@
                 converter="cdc.datamodel.converters.ReplaceConverter" name="phone">
                 <empty-values/>
                 <params>
-                    <param name="replace2" value="\s?or\s?"/>
-                    <param name="replace1" value="/\s?"/>
-                    <param name="new-string2" value=" "/>
-                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;for (int i = 0; i &lt; lookFor.length; i++) {&#xa;&#x9;column = column.trim().replaceAll(lookFor[i], replaceWith[i]);&#xa;}&#xa;return column;&#xa;"/>
+                    <param name="replace1" value="&quot;&quot;"/>
+                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;column = column.replace(&quot;.&quot;, &quot;&quot;).trim();&#xa;&#xa;return column;&#xa;"/>
                     <param name="out-column" value="phone"/>
-                    <param name="new-string1" value="-"/>
+                    <param name="new-string1" value="&quot;&quot;"/>
                 </params>
             </column>
             <column column="type"
@@ -94,12 +48,67 @@
                 </params>
             </column>
         </row-model>
+    </left-data-source>
+    <right-data-source class="cdc.impl.datasource.text.CSVDataSource" name="Fodors">
+        <params>
+            <param name="column-separator" value=","/>
+            <param name="source-name" value="Fodors"/>
+            <param name="input-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/HW10/data/d1.csv"/>
+        </params>
+        <row-model>
+            <column column="name"
+                converter="cdc.datamodel.converters.ReplaceConverter" name="name">
+                <empty-values/>
+                <params>
+                    <param name="replace1" value="&quot;&quot;"/>
+                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;column = column.toLowerCase().trim();&#xa;return column;&#xa;"/>
+                    <param name="out-column" value="name"/>
+                    <param name="new-string1" value="&quot;&quot;"/>
+                </params>
+            </column>
+            <column column="addr"
+                converter="cdc.datamodel.converters.ReplaceConverter" name="addr">
+                <empty-values/>
+                <params>
+                    <param name="replace1" value="&quot;&quot;"/>
+                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;column = column.toLowerCase().trim();&#xa;return column;&#xa;"/>
+                    <param name="out-column" value="addr"/>
+                    <param name="new-string1" value="&quot;&quot;"/>
+                </params>
+            </column>
+            <column column="phone"
+                converter="cdc.datamodel.converters.ReplaceConverter" name="phone">
+                <empty-values/>
+                <params>
+                    <param name="replace3" value="and"/>
+                    <param name="replace2" value="\s"/>
+                    <param name="replace1" value="/"/>
+                    <param name="new-string2" value=""/>
+                    <param name="new-string3" value=" "/>
+                    <param name="new-string4" value=" "/>
+                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;for (int i = 0; i &lt; lookFor.length; i++) {&#xa;&#x9;column = column.replaceAll(lookFor[i], replaceWith[i]);&#xa;}&#xa;return column;&#xa;"/>
+                    <param name="out-column" value="phone"/>
+                    <param name="replace4" value="or"/>
+                    <param name="new-string1" value="-"/>
+                </params>
+            </column>
+            <column column="type"
+                converter="cdc.datamodel.converters.ReplaceConverter" name="type">
+                <empty-values/>
+                <params>
+                    <param name="replace1" value="&quot;&quot;"/>
+                    <param name="script" value="//This script can use two parameters:&#xa;//   column - value of converter's input column&#xa;//   lookFor - regular expressions to be looked for (Array of Strings)&#xa;//   replaceWith - values (Array of Strings)&#xa;//Comment: lookFor[i] should be replaced with replaceWith[i]&#xa;//Return value: String&#xa;&#xa;column = column.toLowerCase().trim();&#xa;return column;&#xa;"/>
+                    <param name="out-column" value="type"/>
+                    <param name="new-string1" value="&quot;&quot;"/>
+                </params>
+            </column>
+        </row-model>
     </right-data-source>
     <join class="cdc.impl.join.snm.SNMJoin_v1" summary-left="false" summary-right="false">
         <params>
             <param name="window" value="300"/>
-            <param name="sort-order-right" value="name,phone,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name"/>
-            <param name="sort-order-left" value="name,phone,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name"/>
+            <param name="sort-order-right" value="name,phone,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name"/>
+            <param name="sort-order-left" value="name,phone,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name,name"/>
         </params>
         <join-condition class="cdc.impl.conditions.WeightedJoinCondition">
             <params>
@@ -122,7 +131,7 @@
                 left-column="name" right-column="name" weight="10">
                 <params>
                     <param name="match-level-start" value="0.05"/>
-                    <param name="soundex-length" value="5"/>
+                    <param name="soundex-length" value="10"/>
                     <param name="math-level-end" value="0.3"/>
                 </params>
             </condition>
@@ -147,7 +156,7 @@
             <savers>
                 <results-saver class="cdc.impl.resultsavers.CSVFileSaver">
                     <params>
-                        <param name="output-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/output.csv"/>
+                        <param name="output-file" value="/Users/therelaxist/Dropbox/Study/Information Integration/Homework/HW10/HW10/data/output.csv"/>
                     </params>
                 </results-saver>
             </savers>
