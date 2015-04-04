@@ -74,6 +74,11 @@ __MACOSX
 .classpath
 .sass-cache/
 
+###########################
+# pycharm generated files #
+###########################
+.idea
+
 ######################
 # OS generated files #
 ######################
