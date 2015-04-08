@@ -51,11 +51,8 @@ def agent():
     print "Minimum separation for stable distribution: 0.00000000000001"
 
     print "Initial Assignment"
-    print "E:", evidence["E"]
-    print "B:", evidence["B"]
-    print "T:", evidence["T"]
-    print "N:", evidence["N"]
-    print "A:", evidence["A"]
+    for i in evidence.keys():
+        print i + ":", evidence[i]
     print
 
     while(True):
@@ -109,27 +106,22 @@ def agent():
                 if math.fabs(value[i][0] - old_value[i][0]) > 0.00000000000001:
                     flag = False
                     break
-            old_value["E"] = value["E"]
-            old_value["B"] = value["B"]
-            old_value["A"] = value["A"]
-            old_value["T"] = value["T"]
-            old_value["N"] = value["N"]
+            for i in evidence.keys():
+                old_value[i] = value[i]
 
         if flag: break
         if time % 500 == 0:
             print "T:", time
-            print "E:", evidence["E"], "\t", value["E"]
-            print "B:", evidence["B"], "\t", value["B"]
-            print "T:", evidence["T"], "\t", value["T"]
-            print "N:", evidence["N"], "\t", value["N"]
-            print "A:", evidence["A"], "\t", value["A"]
+            for i in evidence.keys():
+                print i + ":", evidence[i], "\t", value[i]
             print
 
         time += 1
     print
-    print evidence
-    print "E:", value["E"]
-    print "T:", time
+    print "Convergence at T =", time  
+    print "Assignment:", evidence
+    for i in evidence.keys():
+        print i + ":", value[i]
 
 def reduce_column(twoD, sel):
     ret = []
