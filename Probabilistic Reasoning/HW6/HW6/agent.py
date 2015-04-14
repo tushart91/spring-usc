@@ -37,7 +37,7 @@ def agent():
     N = [0.75, 0.25]
 
     evidence = {
-        "E": 1, "B": 1, "T": 0, "N": 1, "A": 1
+        "E": 0, "B": 0, "T": 0, "N": 0, "A": 0
     }
     old_value = {
         "E": [0], "B": [0], "T": [0], "N": [0], "A": [0]
@@ -45,34 +45,17 @@ def agent():
     value = {
         "E": [0], "B": [0], "T": [0], "N": [0], "A": [0]
     }
-    time = 0
+    time = 1
 
     # initial random assignment B = 0, A = 0, T = 0, N = 0
-    print "Minimum separation for stable distribution: 0.00000000000001"
+    print "Minimum separation for stable distribution: 0.00000000000001 and 1000000T"
 
     print "Initial Assignment"
     for i in evidence.keys():
         print i + ":", evidence[i]
     print
 
-    while(True):
-
-        aBE = reduce_matrix(ABE, evidence["A"])
-
-        # compute P(E)
-        # ø(E).ø(a|b,E)
-        abE = reduce_row(aBE, evidence["B"])
-        abE = pointwise_multiply(abE, E)
-        value["E"] = normalize(abE)
-        evidence["E"] = random_assignment(value["E"])
-
-        # compute B
-        # ø(B).ø(a|B,e)
-        aBe = reduce_column(aBE, evidence["E"])
-        aBe = pointwise_multiply(aBe, B)
-        value["B"] = normalize(aBe)
-        evidence["B"] = random_assignment(value["B"])
-
+    def computeT():
         # compute T
         # ø(j,T,A).ø(T)
         jTa = reduce_column(jTA, evidence["A"])
@@ -80,6 +63,7 @@ def agent():
         value["T"] = normalize(jTa)
         evidence["T"] = random_assignment(value["T"])
 
+    def computeN():
         # compute N
         # ø(m,N,A).ø(N)
         mNa = reduce_column(mNA, evidence["A"])
@@ -87,6 +71,7 @@ def agent():
         value["N"] = normalize(mNa)
         evidence["N"] = random_assignment(value["N"])
 
+    def computeA():
         # compute A
         # ø(A,b,e).ø(j,t,A).ø(m,n,A)
         AbE = [reduce_row(ABE[0], evidence["B"]), reduce_row(ABE[1], evidence["B"])]
@@ -99,8 +84,42 @@ def agent():
         value["A"] = normalize(Abe)
         evidence["A"] = random_assignment(value["A"])
 
+    def computeB():
+        # compute B
+        # ø(B).ø(a|B,e)
+        aBE = reduce_matrix(ABE, evidence["A"])
+
+        aBe = reduce_column(aBE, evidence["E"])
+        aBe = pointwise_multiply(aBe, B)
+        value["B"] = normalize(aBe)
+        evidence["B"] = random_assignment(value["B"])
+
+    def computeE():
+        # compute P(E)
+        # ø(E).ø(a|b,E)
+        aBE = reduce_matrix(ABE, evidence["A"])
+
+        abE = reduce_row(aBE, evidence["B"])
+        abE = pointwise_multiply(abE, E)
+        value["E"] = normalize(abE)
+        evidence["E"] = random_assignment(value["E"])
+
+    options = {
+        0: computeT,
+        1: computeN,
+        2: computeA,
+        3: computeB,
+        4: computeE
+    }
+
+    while(True):
+
+        num = random.randint(0, 4)
+
+        options[num]()
+
         flag = False
-        if time !=0 and time % 1000 == 0:
+        if time !=0 and time % 1000000 == 0:
             flag = True
             for i in value.keys():
                 if math.fabs(value[i][0] - old_value[i][0]) > 0.00000000000001:
@@ -110,7 +129,7 @@ def agent():
                 old_value[i] = value[i]
 
         if flag: break
-        if time % 500 == 0:
+        if time % 100000 == 0:
             print "T:", time
             for i in evidence.keys():
                 print i + ":", evidence[i], "\t", value[i]

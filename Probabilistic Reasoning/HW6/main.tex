@@ -1,0 +1,279 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+% Custom sectioning
+%\usepackage{sectsty}
+%\allsectionsfont{\centering \normalfont\scshape}
+
+\captionsetup{justification=centering,
+singlelinecheck=false
+}
+\graphicspath{ {required/} }
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass}
+\rhead{\hmwkTitle}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ 6a}
+\newcommand{\hmwkDueDate}{April 8, 2015}
+\newcommand{\hmwkClass}{Probabilistic Reasoning}
+\newcommand{\hmwkClassInstructor}{Prof. Nevatia}
+\newcommand{\hmwkAuthorName}{Tushar Tiwari}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\section{\textbf{\Large Solution}}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+% Language Definitions for SPARQL
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{PREFIX},
+morecomment=[l][\color{grey}]{BASE},
+morecomment=[l][\color{olivegreen}]{SELECT},
+morestring=[b][\color{blue}]",
+showstringspaces=false,
+}
+\lstset{%
+  numbers=none,
+  tabsize=4,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  framerule=10pt,
+  columns=fullflexible,
+  language=ttl
+}
+
+\newcommand{\prOutput}[4]{
+\ifx&#4&%
+    #1:& #2& #3\\
+\else
+    \ifx&#3&%    
+        #1:& #2&\\
+    \else
+        #1:& #2& [#3,\ & #4]\\
+    \fi
+\fi
+}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+% Language Definitions for Turtle
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{@},
+morecomment=[l][\color{grey}]{PREFIX},
+morecomment=[l][\color{grey}]{BASE},
+morecomment=[l][\color{olivegreen}]{\#},
+morestring=[b][\color{blue}]\",
+showstringspaces=false,
+}
+\lstset{%
+  numbers=none,
+  tabsize=4,
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  framerule=10pt,
+  columns=fullflexible,
+  language=ttl
+}
+
+\begin{homeworkProblem}
+    {Description of Homework}
+    \solution
+    \subsection{Description of code}
+    \begin{itemize}
+    \item Reduced all initial factors based on evidence $j^{1}, m^{0}$
+    \item Maintained a hashmap that maps variable name to current assignment.
+    \item Maintained hashmaps that maps variable name to distribution in current and older iteration.
+    \item Initial assignment given to variables ${e^{1},\ b^{1},\ t^{1},\ n^{1},\ a^{0}}$
+    \item Computed distribution of the variable under consideration, by reducing the factors that contain the variable based on evidence specified in the hashmap. Multiply the reduced factors to obtain distribution. Saved the value of the distribution in the current iteration hashmap against the variable name.
+    \item Used random.uniform() in python to obtain a random number in [0, 1]. Select an assignment based on this random number and save this in the hashmap against variable name.
+    \item After doing the above computation for all variables, check if the time step is a multiple of $1000000$ and $\mid old\ distribution\ -\ new\ distribution \mid\ <\ 0.00000000000001$ for all variables. If true, break. Convergence is achieved. Else, copy all distributions to the old\_iteration hashmap.
+    \end{itemize}
+    
+    \subsection{Final Values}
+    \begin{align*}
+    \prOutput{T}{Time\_Step}{}{}
+    \prOutput{Variable}{Assignment}{False\_Value}{True\_Value}\\
+\prOutput{T}{3000000}{}{}
+\prOutput{A}{0}{0.992466248795}{0.0075337512054}
+\prOutput{B}{0}{0.999698887087}{0.000301112913328}
+\prOutput{E}{0}{0.999598958093}{0.000401041906874}
+\prOutput{T}{1}{0.142857142857}{0.857142857143}
+\prOutput{N}{0}{0.748299319728}{0.251700680272}
+    \end{align*}
+    \newpage
+
+    \subsection{Intermediate Values}
+    The intermediate values are taken when time step T is a factor of 500000.\\
+    \begin{align*}
+    \prOutput{T}{Time\_Step}{}{}
+    \prOutput{Variable}{Assignment}{False\_Value}{True\_Value}\\
+    \prOutput{T}{0}{}{}
+\prOutput{A}{1}{0.00531385805244}{0.994686141948}
+\prOutput{B}{1}{0.540043290043}{0.459956709957}
+\prOutput{E}{0}{0.998905985319}{0.00109401468097}
+\prOutput{T}{0}{0.328358208955}{0.671641791045}
+\prOutput{N}{1}{0.5}{0.5}\\
+\prOutput{T}{500000}{}{}
+\prOutput{A}{0}{0.992466248795}{0.0075337512054}
+\prOutput{B}{0}{0.999698887087}{0.000301112913328}
+\prOutput{E}{0}{0.999598958093}{0.000401041906874}
+\prOutput{T}{1}{0.142857142857}{0.857142857143}
+\prOutput{N}{0}{0.748299319728}{0.251700680272}\\
+\prOutput{T}{1000000}{}{}
+\prOutput{A}{0}{0.978218253104}{0.0217817468961}
+\prOutput{B}{0}{0.999698887087}{0.000301112913328}
+\prOutput{E}{0}{0.999598958093}{0.000401041906874}
+\prOutput{T}{0}{0.142857142857}{0.857142857143}
+\prOutput{N}{0}{0.748299319728}{0.251700680272}\\
+\prOutput{T}{1500000}{}{}
+\prOutput{A}{0}{0.992466248795}{0.0075337512054}
+\prOutput{B}{0}{0.999698887087}{0.000301112913328}
+\prOutput{E}{0}{0.999598958093}{0.000401041906874}
+\prOutput{T}{1}{0.142857142857}{0.857142857143}
+\prOutput{N}{0}{0.748299319728}{0.251700680272}\\
+\prOutput{T}{2000000}{}{}
+\prOutput{A}{0}{0.992466248795}{0.0075337512054}
+\prOutput{B}{0}{0.999698887087}{0.000301112913328}
+\prOutput{E}{0}{0.999598958093}{0.000401041906874}
+\prOutput{T}{1}{0.142857142857}{0.857142857143}
+\prOutput{N}{0}{0.748299319728}{0.251700680272}\displaybreak\\
+\prOutput{T}{2500000}{}{}
+\prOutput{A}{0}{0.978218253104}{0.0217817468961}
+\prOutput{B}{0}{0.999698887087}{0.000301112913328}
+\prOutput{E}{0}{0.999598958093}{0.000401041906874}
+\prOutput{T}{0}{0.142857142857}{0.857142857143}
+\prOutput{N}{0}{0.748299319728}{0.251700680272}
+    \end{align*}
+\end{homeworkProblem}
+\end{document}
