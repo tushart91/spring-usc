@@ -29,67 +29,71 @@ import org.openrdf.sail.memory.MemoryStore;
 public class Program {
 
 	static private int output = 1;
+	static private int queries = 1;
 	
 	public static void main(String[] args) {
 
 		File folder = new File(args[output]);
 		File[] file = folder.listFiles();
-		FileInputStream fin = null;
-		for(int i = 0; i < file.length; i++) {
-			HttpClientPost.call(args);
+		for (int i = 0; i < file.length; i++) {
+			//HttpClientPost.call(args);
 			if (file[i].getName().contains("DS_Store")) {
 				i++;
 			}
-			try {
-				fin = new FileInputStream(file[i]);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
-			
-			Repository repo = new SailRepository(new MemoryStore());
-			RepositoryConnection con = null;
-			String baseURI = "http://s.opencalais.com/1/type/em";
-			TupleQuery tupleQuery = null;
-			TupleQueryResult result = null;
-			BindingSet bindingSet = null;
-			String value = null;
-			
-			String queryString = getQuery("person");
-			
-			try {
-				repo.initialize();
-				con = repo.getConnection();
-				con.add(file[i], baseURI, RDFFormat.RDFXML);
-				tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL,
-						queryString);
-				result = tupleQuery.evaluate();
-				while (result.hasNext()) {
-					bindingSet = result.next();
-					value = bindingSet.getValue("name").toString();
-					System.out.println(value);
-				}
-			}
-			catch (RepositoryException e) {
-				e.printStackTrace();
-			} catch (RDFParseException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-			} catch (MalformedQueryException e) {
-				e.printStackTrace();
-			} catch (QueryEvaluationException e) {
-				e.printStackTrace();
-			} finally {
-				closeTupleQueryResult(result);
-				closeRepositoryConnection(con);
-				closeBufferedReader(reader);
-				closeInputStream(fin);
+			addToStore(file[i], "person");
+		}
+	}
+	
+	public static void addToStore(File file, String query) {
+		FileInputStream fin = null;
+		try {
+			fin = new FileInputStream(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
+		
+		Repository repo = new SailRepository(new MemoryStore());
+		RepositoryConnection con = null;
+		String baseURI = "http://s.opencalais.com/1/type/em";
+		TupleQuery tupleQuery = null;
+		TupleQueryResult result = null;
+		BindingSet bindingSet = null;
+		String value = null;
+		
+		String queryString = getQuery(query);
+		
+		try {
+			repo.initialize();
+			con = repo.getConnection();
+			con.add(file, baseURI, RDFFormat.RDFXML);
+			tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL,
+					queryString);
+			result = tupleQuery.evaluate();
+			while (result.hasNext()) {
+				bindingSet = result.next();
+				value = bindingSet.getValue("name").toString();
+				System.out.println(value);
 			}
 		}
-			
+		catch (RepositoryException e) {
+			e.printStackTrace();
+		} catch (RDFParseException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (MalformedQueryException e) {
+			e.printStackTrace();
+		} catch (QueryEvaluationException e) {
+			e.printStackTrace();
+		} finally {
+			closeTupleQueryResult(result);
+			closeRepositoryConnection(con);
+			closeBufferedReader(reader);
+			closeInputStream(fin);
+		}
 	}
 	
 	/*
