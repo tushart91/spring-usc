@@ -20,6 +20,18 @@ city =  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
             ?url c:name ?name    . \
         }
 
+
+org =   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
+        PREFIX c:   <http://s.opencalais.com/1/pred/> \
+        SELECT ?url ?name ?exact WHERE \
+        { \
+            ?instance rdf:type <http://s.opencalais.com/1/type/sys/InstanceInfo>    . \
+            ?instance c:subject ?url    . \
+            ?instance c:exact ?exact    . \
+            ?url rdf:type <http://s.opencalais.com/1/type/em/e/Organization>    . \
+            ?url c:name ?name    . \
+        }
+            
 generic =   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
             PREFIX c:   <http://s.opencalais.com/1/pred/> \
             SELECT ?url ?name ?exact WHERE \
