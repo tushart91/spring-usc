@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import org.openrdf.query.BindingSet;
@@ -29,22 +30,30 @@ import org.openrdf.sail.memory.MemoryStore;
 public class Program {
 
 	static private int output = 1;
-	static private int queries = 1;
 	
 	public static void main(String[] args) {
-
+		
+		Repository repo = null;
 		File folder = new File(args[output]);
 		File[] file = folder.listFiles();
 		for (int i = 0; i < file.length; i++) {
+			System.out.println("Calling REST API");
 			//HttpClientPost.call(args);
+			System.out.println("Output in " + args[1]);
+			System.out.println();
 			if (file[i].getName().contains("DS_Store")) {
 				i++;
 			}
-			addToStore(file[i], "person");
+			repo = addToStore(file[i]);
+//			query(repo, "person");
+//			query(repo, "city");
+			System.out.println();
+			String [] vars = {"name", "exact"};
+			query(repo, "org", vars);
 		}
 	}
 	
-	public static void addToStore(File file, String query) {
+	public static Repository addToStore(File file) {
 		FileInputStream fin = null;
 		try {
 			fin = new FileInputStream(file);
@@ -56,25 +65,11 @@ public class Program {
 		Repository repo = new SailRepository(new MemoryStore());
 		RepositoryConnection con = null;
 		String baseURI = "http://s.opencalais.com/1/type/em";
-		TupleQuery tupleQuery = null;
-		TupleQueryResult result = null;
-		BindingSet bindingSet = null;
-		String value = null;
-		
-		String queryString = getQuery(query);
 		
 		try {
 			repo.initialize();
 			con = repo.getConnection();
 			con.add(file, baseURI, RDFFormat.RDFXML);
-			tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL,
-					queryString);
-			result = tupleQuery.evaluate();
-			while (result.hasNext()) {
-				bindingSet = result.next();
-				value = bindingSet.getValue("name").toString();
-				System.out.println(value);
-			}
 		}
 		catch (RepositoryException e) {
 			e.printStackTrace();
@@ -84,6 +79,42 @@ public class Program {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
 			e.printStackTrace();
+		} finally {
+			closeRepositoryConnection(con);
+			closeBufferedReader(reader);
+			closeInputStream(fin);
+		}
+		return repo;
+	}
+	
+	/*
+	 * Util for querying
+	 */
+	
+	public static void query(Repository repo, String query, String[] vars) {
+		
+		RepositoryConnection con = null;
+		TupleQuery tupleQuery = null;
+		TupleQueryResult result = null;
+		BindingSet bindingSet = null;
+		ArrayList<String> value = new ArrayList<String>();
+		
+		String queryString = getQuery(query);
+		try {
+			con = repo.getConnection();
+			tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL,
+					queryString);
+			result = tupleQuery.evaluate();
+			while (result.hasNext()) {
+				bindingSet = result.next();
+				value.clear();
+				for (String var : vars) {
+					value.add(bindingSet.getValue(var).toString().replace("\n", " "));
+				}
+				System.out.println(value);
+			}
+		} catch (RepositoryException e) {
+			e.printStackTrace();
 		} catch (MalformedQueryException e) {
 			e.printStackTrace();
 		} catch (QueryEvaluationException e) {
@@ -91,8 +122,6 @@ public class Program {
 		} finally {
 			closeTupleQueryResult(result);
 			closeRepositoryConnection(con);
-			closeBufferedReader(reader);
-			closeInputStream(fin);
 		}
 	}
 	

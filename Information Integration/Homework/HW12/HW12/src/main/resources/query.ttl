@@ -10,14 +10,18 @@ city =  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
         PREFIX c:   <http://s.opencalais.com/1/pred/> \
         SELECT ?name WHERE \
         { \
-            ?person rdf:type <http://s.opencalais.com/1/type/em/e/Person>    . \
-            ?person c:name ?name    . \
+            ?city rdf:type <http://s.opencalais.com/1/type/er/Geo/City>    . \
+            ?city c:shortname ?name    . \
         }
 
 org  =  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
         PREFIX c:   <http://s.opencalais.com/1/pred/> \
-        SELECT ?name WHERE \
+        SELECT ?name ?exact WHERE \
         { \
-            ?person rdf:type <http://s.opencalais.com/1/type/em/e/Person>    . \
+            ?instance rdf:type <http://s.opencalais.com/1/type/sys/InstanceInfo>    . \
+            ?instance c:subject ?generic    . \
+            ?instance c:exact ?exact    . \
+            ?generic rdf:type <http://s.opencalais.com/1/type/em/r/GenericRelations>    . \
+            ?generic c:relationsubject ?person    . \
             ?person c:name ?name    . \
         }
