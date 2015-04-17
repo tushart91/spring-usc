@@ -1,4 +1,4 @@
 run:	clean
-	java -jar target/hw9-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+	java -jar target/tushar_tiwari_HW12-jar-with-dependencies.jar ./input ./output
 clean:
 	rm -rf *.csv

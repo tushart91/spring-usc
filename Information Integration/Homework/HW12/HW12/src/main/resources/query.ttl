@@ -1,27 +1,33 @@
 person =    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
             PREFIX c:   <http://s.opencalais.com/1/pred/> \
-            SELECT ?name WHERE \
+            SELECT ?url ?name ?exact WHERE \
             { \
-                ?person rdf:type <http://s.opencalais.com/1/type/em/e/Person>    . \
-                ?person c:name ?name    . \
+                ?instance rdf:type <http://s.opencalais.com/1/type/sys/InstanceInfo>    . \
+                ?instance c:subject ?url    . \
+                ?instance c:exact ?exact    . \
+                ?url rdf:type <http://s.opencalais.com/1/type/em/e/Person>    . \
+                ?url c:name ?name    . \
             }
 
 city =  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
         PREFIX c:   <http://s.opencalais.com/1/pred/> \
-        SELECT ?name WHERE \
-        { \
-            ?city rdf:type <http://s.opencalais.com/1/type/er/Geo/City>    . \
-            ?city c:shortname ?name    . \
-        }
-
-org  =  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
-        PREFIX c:   <http://s.opencalais.com/1/pred/> \
-        SELECT ?name ?exact WHERE \
+        SELECT ?url ?name ?exact WHERE \
         { \
             ?instance rdf:type <http://s.opencalais.com/1/type/sys/InstanceInfo>    . \
-            ?instance c:subject ?generic    . \
+            ?instance c:subject ?url    . \
             ?instance c:exact ?exact    . \
-            ?generic rdf:type <http://s.opencalais.com/1/type/em/r/GenericRelations>    . \
-            ?generic c:relationsubject ?person    . \
-            ?person c:name ?name    . \
+            ?url rdf:type <http://s.opencalais.com/1/type/em/e/City>    . \
+            ?url c:name ?name    . \
         }
+
+generic =   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
+            PREFIX c:   <http://s.opencalais.com/1/pred/> \
+            SELECT ?url ?name ?exact WHERE \
+            { \
+                ?instance rdf:type <http://s.opencalais.com/1/type/sys/InstanceInfo>    . \
+                ?instance c:subject ?url    . \
+                ?instance c:exact ?exact    . \
+                ?url rdf:type <http://s.opencalais.com/1/type/em/r/GenericRelations>    . \
+                ?url c:relationsubject ?person    . \
+                ?person c:name ?name    . \
+            }
