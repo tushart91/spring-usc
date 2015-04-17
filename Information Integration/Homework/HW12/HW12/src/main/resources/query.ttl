@@ -40,6 +40,13 @@ generic =   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
                 ?instance c:subject ?url    . \
                 ?instance c:exact ?exact    . \
                 ?url rdf:type <http://s.opencalais.com/1/type/em/r/GenericRelations>    . \
-                ?url c:relationsubject ?person    . \
-                ?person c:name ?name    . \
+                OPTIONAL { \
+                    ?url c:relationsubject ?subject    . \
+                    ?subject c:name ?sname    . \
+                } \
+                OPTIONAL { \
+                    ?url c:relationobject ?object    . \
+                    ?object c:name ?oname    . \
+                } \
+                BIND(IF(BOUND(?sname),?sname,?oname) AS ?name)    . \
             }
