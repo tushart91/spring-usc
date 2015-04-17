@@ -49,22 +49,15 @@ public class Program {
 		File outFile = null;
 		FileOutputStream fout = null;
 		BufferedWriter writer = null;
-		try {
-			outFile = new File("entities.csv");
-			fout = new FileOutputStream(outFile);
-			writer = new BufferedWriter(new OutputStreamWriter(fout));
-			writer.write("uri,label\n");
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 		Repository repo = null;
 		File folder = new File(args[output]);
 		File[] file = folder.listFiles();
+		
+		// Call to API		
 		System.out.println("Calling REST API");
 //		HttpClientPost.call(args);
+		
 		System.out.println("Output in " + args[output]);
 		System.out.println();
 		Map<ArrayList<String>, Integer>[] map = new HashMap[3];
@@ -72,10 +65,27 @@ public class Program {
 			map[i] = new HashMap<ArrayList<String>, Integer>();
 		}
 		for (int i = 0; i < file.length; i++) {
+			
+			if (file[i] == null) continue;
+			
 			if (file[i].getName().contains("DS_Store")) {
-				i++;
+				file[i] = file[i+1];
+				file[i+1] = file[i+2];
+				file[i+3] = null;
 				continue;
 			}
+			
+			try {
+				outFile = new File("entities-" + (i+1) + ".csv");
+				fout = new FileOutputStream(outFile);
+				writer = new BufferedWriter(new OutputStreamWriter(fout));
+				writer.write("uri,label\n");
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			repo = addToStore(file[i]);
 			System.out.println();
 			String [] vars = {"exact", "name"};
@@ -84,15 +94,17 @@ public class Program {
 			
 			map[1] = query(repo, "city", vars, writer);
 			
+			map[1] = query(repo, "org", vars, writer);
+			
 			map[2] = query(repo, "generic", vars, writer);
 			
-		}
-		
-		try {
-			writer.close();
-			fout.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+			try {
+				writer.close();
+				fout.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		/*
@@ -104,7 +116,7 @@ public class Program {
 		FileInputStream fin = null;
 		BufferedReader reader = null;
 		try {
-			inFile = new File("tables.csv");
+			inFile = new File("tables-2.csv");
 			fin = new FileInputStream(inFile);
 			reader = new BufferedReader(new InputStreamReader(fin));
 			reader.readLine();
