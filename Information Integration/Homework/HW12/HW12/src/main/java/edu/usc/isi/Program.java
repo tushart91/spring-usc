@@ -43,6 +43,10 @@ public class Program {
 		String[] _args = {args[0] + "/input", args[0] + "/output"};
 		args = _args;
 		
+		// Call to API		
+		System.out.println("Calling REST API");
+		HttpClientPost.call(args);
+		
 		// File Initialize
 		File outFile = null;
 		FileOutputStream fout = null;
@@ -51,10 +55,6 @@ public class Program {
 		Repository repo = null;
 		File folder = new File(args[output]);
 		File[] file = folder.listFiles();
-		
-		// Call to API		
-		System.out.println("Calling REST API");
-		HttpClientPost.call(args);
 		
 		System.out.println("Output in " + args[output]);
 		System.out.println();
