@@ -54,7 +54,7 @@ public class Program {
 		
 		// Call to API		
 		System.out.println("Calling REST API");
-//		HttpClientPost.call(args);
+		HttpClientPost.call(args);
 		
 		System.out.println("Output in " + args[output]);
 		System.out.println();
