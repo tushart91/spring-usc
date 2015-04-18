@@ -36,16 +36,14 @@ import org.openrdf.sail.memory.MemoryStore;
 public class Program {
 
 	static private int output = 1;
-	static private int person = 0;
-	static private int city = 1;
-	static private int generic = 2;
 	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		
 		String[] _args = {args[0] + "/input", args[0] + "/output"};
 		args = _args;
-		//File Initialize
+		
+		// File Initialize
 		File outFile = null;
 		FileOutputStream fout = null;
 		BufferedWriter writer = null;
@@ -75,6 +73,9 @@ public class Program {
 				continue;
 			}
 			
+			/*
+			 * File that writes uri, label in file calais-i.csv
+			 */
 			try {
 				outFile = new File("entities-" + (i+1) + ".csv");
 				fout = new FileOutputStream(outFile);
@@ -85,58 +86,38 @@ public class Program {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+			// Adding file[i] to repo
+			System.out.println("Adding " + file[i].getName() + " to repo");
 			repo = addToStore(file[i]);
-			System.out.println();
+			
+			// Querying in file[i]
+			System.out.println("Querying in " + file[i].getName());
 			String [] vars = {"exact", "name"};
 			
+			// Query for persons
 			map[0] = query(repo, "person", vars, writer);
 			
+			// Query for city
 			map[1] = query(repo, "city", vars, writer);
 			
+			// Query for org
 			map[1] = query(repo, "org", vars, writer);
 			
+			// Query for generic relations
 			map[2] = query(repo, "generic", vars, writer);
-			
+			System.out.println();
 			try {
 				writer.close();
 				fout.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
-		
-		/*
-		 * Calculate F-Score
-		 */
-		
-		//File Initialize
-		File inFile = null;
-		FileInputStream fin = null;
-		BufferedReader reader = null;
-		try {
-			inFile = new File("tables-2.csv");
-			fin = new FileInputStream(inFile);
-			reader = new BufferedReader(new InputStreamReader(fin));
-			reader.readLine();
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		try {
-			reader.close();
-			fin.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
+		System.out.println("Finish");
 	}
 	
 	/*
-	 * Util for querying
+	 * Util for querying in repo
 	 */
 	
 	public static Map<ArrayList<String>, Integer> query(Repository repo, String query, String[] vars,
@@ -170,7 +151,8 @@ public class Program {
 				
 				try {
 					temp = _replace(bindingSet.getValue("url")) +
-							"," + _replace(bindingSet.getValue("exact")) + "\n";
+							"," + _replace(bindingSet.getValue("exact")) + "->" +
+							_replace(bindingSet.getValue("name")) + "\n";
 					writer.write(temp);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -186,7 +168,7 @@ public class Program {
 			closeTupleQueryResult(result);
 			closeRepositoryConnection(con);
 		}
-		printMap(map);
+		//printMap(map);
 		return map;
 	}
 	
