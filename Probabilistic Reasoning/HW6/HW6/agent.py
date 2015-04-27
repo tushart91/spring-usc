@@ -90,7 +90,7 @@ def agent():
         aBE = reduce_matrix(ABE, evidence["A"])
 
         aBe = reduce_column(aBE, evidence["E"])
-        aBe = pointwise_multiply(aBe, B)
+        aBe = multiply(pointwise_multiply(aBe, B), E[evidence["E"]])
         value["B"] = normalize(aBe)
         evidence["B"] = random_assignment(value["B"])
 
@@ -100,7 +100,7 @@ def agent():
         aBE = reduce_matrix(ABE, evidence["A"])
 
         abE = reduce_row(aBE, evidence["B"])
-        abE = pointwise_multiply(abE, E)
+        abE = multiply(pointwise_multiply(abE, E), B[evidence["B"]])
         value["E"] = normalize(abE)
         evidence["E"] = random_assignment(value["E"])
 
@@ -141,6 +141,12 @@ def agent():
     print "Assignment:", evidence
     for i in evidence.keys():
         print i + ":", value[i]
+
+def multiply(oneD, num):
+    ret = []
+    for i in range(len(oneD)):
+        ret.append(oneD[i]*num)
+    return ret
 
 def reduce_column(twoD, sel):
     ret = []
